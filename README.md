@@ -3,6 +3,8 @@
 ![Software Development](https://img.shields.io/badge/Software%20Development-blue)
 ![Cyber Security](https://img.shields.io/badge/Cyber%20Security-red)
 ![Cloud Technologies](https://img.shields.io/badge/Cloud%20Technologies-brightgreen)
+![Profile Views](https://komarev.com/ghpvc/?username=burnt-exe&color=brightgreen)
+[![GitHub followers](https://img.shields.io/github/followers/burnt-exe?label=Follow&style=social)](https://github.com/burnt-exe)
 
 ---
 
@@ -36,10 +38,6 @@
 | [Training and Certification](https://github.com/Skunkworks-Lab-Services/training-certification) | Online training courses and certification programs. |
 
 ---
-# Hi there! 👋 I'm burnt-exe
-
-![Profile Views](https://komarev.com/ghpvc/?username=burnt-exe&color=brightgreen)
-[![GitHub followers](https://img.shields.io/github/followers/burnt-exe?label=Follow&style=social)](https://github.com/burnt-exe)
 
 ## 🔥 My Tech Stack
 
