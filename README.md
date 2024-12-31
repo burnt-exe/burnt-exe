@@ -57,7 +57,7 @@
 
 ## 📈 Contribution Graph
 
-![GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=burnt-exe&theme=github)
+[![GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=burnt-exe&theme=github)
 
 ## 🎯 Future Objectives
 
