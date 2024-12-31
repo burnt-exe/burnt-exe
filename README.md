@@ -36,6 +36,30 @@
 | [Training and Certification](https://github.com/Skunkworks-Lab-Services/training-certification) | Online training courses and certification programs. |
 
 ---
+# Hi there! 👋 I'm burnt-exe
+
+![Profile Views](https://komarev.com/ghpvc/?username=burnt-exe&color=brightgreen)
+[![GitHub followers](https://img.shields.io/github/followers/burnt-exe?label=Follow&style=social)](https://github.com/burnt-exe)
+
+## 🔥 My Tech Stack
+
+[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight)](https://github.com/burnt-exe)
+
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight)](https://github.com/burnt-exe)
+
+## 📊 Weekly Development Breakdown
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
+## 🚀 Recent Activity
+
+<!--START_SECTION:activity-->
+<!--END_SECTION:activity-->
+
+## 📈 Contribution Graph
+
+![GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=burnt-exe&theme=github)
 
 ## 🎯 Future Objectives
 
