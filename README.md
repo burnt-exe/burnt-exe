@@ -32,8 +32,6 @@ Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, a
 
 ## 🧪 Projects
 
-Here’s a sample of my hands-on contributions to global innovation:
-
 | 🚀 Repository | 🧠 What It Does |
 |--------------|------------------|
 | [`noopener-noreferrer-demo`](https://github.com/Skunkworks-Lab-Services/noopener-noreferrer-demo) | Secure HTML link behavior showcase |
@@ -51,32 +49,43 @@ Here’s a sample of my hands-on contributions to global innovation:
 
 ## 🧰 My Toolbox
 
-```text
-Languages   ▸ TypeScript | Python | Bash | YAML
-Frameworks  ▸ React | Flask | Node | Tailwind
-DevOps      ▸ GitHub Actions | Docker | Firebase | OpenShift
-Monitoring  ▸ Instana | Prometheus | Grafana
-Security    ▸ Zero Trust | SIEM | IAM | NIST CSF
-```
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=ts,py,bash,yaml,react,flask,nodejs,tailwind,docker,githubactions,firebase,openshift,prometheus,grafana,security" alt="Tech stack icons" />
+</div>
 
 ---
 
 ## 📊 GitHub Insights
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight&count_private=true&hide=issues" height="160"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight&hide=html" height="160"/>
+  <table>
+    <tr>
+      <td><img src="https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight&count_private=true&hide=issues" width="100%"/></td>
+      <td><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight&hide=html" width="100%"/></td>
+    </tr>
+    <tr>
+      <td><img src="https://streak-stats.demolab.com/?user=burnt-exe&theme=tokyonight" width="100%"/></td>
+      <td><img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=burnt-exe&theme=tokyonight" width="100%"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><img src="https://github-readme-activity-graph.vercel.app/graph?username=burnt-exe&theme=tokyonight" width="100%"/></td>
+    </tr>
+  </table>
 </div>
 
 ---
 
 ## 📈 Contributions
 
-![Snake animation](https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake.svg)
+<div align="center">
+  <a href="https://fileflip.jamtax.co.za/">
+    <img src="https://raw.githubusercontent.com/jamtax/FileFlip/refs/heads/main/assets/favicon.png" alt="FileFlip" width="60"/>
+  </a>
+ </div>
 
 ---
 
-## 🧠 What’s Next
+## 🚀 Goals & Milestones
 
 - 🌐 **Expand Skunkworks** across LATAM, Africa & EU
 - 🛡️ **Secure Everything**: From endpoints to cloud
@@ -86,8 +95,8 @@ Security    ▸ Zero Trust | SIEM | IAM | NIST CSF
 
 ---
 
-#### 🔗 Always Building. Always Learning.
-
-> *“Code. Defend. Scale. Repeat.”*
-
-© 2024 [Skunkworks Lab Services](https://www.skunkworks.africa)
+<div align="center">
+  <h2>🧠 Always Building. Always Learning.</h2>
+  <blockquote><em>“Code. Defend. Scale. Repeat.”</em></blockquote>
+  <p>© 2024 <a href="https://www.skunkworks.africa">Skunkworks Lab Services</a></p>
+</div>
