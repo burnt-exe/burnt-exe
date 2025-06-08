@@ -1,83 +1,93 @@
-# Hi there 👋, I’m @burnt-exe
+---
+# 🔥 Welcome — I'm @burnt-exe
 
-![Software Development](https://img.shields.io/badge/Software%20Development-blue)
-![Cyber Security](https://img.shields.io/badge/Cyber%20Security-red)
-![Cloud Technologies](https://img.shields.io/badge/Cloud%20Technologies-brightgreen)
-![Profile Views](https://komarev.com/ghpvc/?username=burnt-exe&color=brightgreen)
-[![GitHub followers](https://img.shields.io/github/followers/burnt-exe?label=Follow&style=social)](https://github.com/burnt-exe)
+![Dev Badge](https://img.shields.io/badge/Software%20Engineer-181717?style=flat-square&logo=github)
+![Cybersec Badge](https://img.shields.io/badge/Cybersecurity-FE3C3C?style=flat-square&logo=hack-the-box)
+![Cloud Badge](https://img.shields.io/badge/Cloud%20Native-00BFA5?style=flat-square&logo=cloudflare)
+![Profile Views](https://komarev.com/ghpvc/?username=burnt-exe&color=blueviolet&style=flat-square)
+[![Follow](https://img.shields.io/github/followers/burnt-exe?label=Follow&style=social)](https://github.com/burnt-exe)
 
 ---
 
-👀 I’m interested in **Software Development**, **Cyber Security**, and **Cloud Technologies**.  
-🌱 I’m currently learning IBM, Redhat, Microsoft, SAP, Google, and more.
+## 🧩 Who I Am
 
-💞️ I’m looking to collaborate on innovative technology projects that align with Skunkworks' vision.
+Hi! I'm Raydo, CTO of Skunkworks, known as `@burnt-exe` in the dev world. I'm a multi-cloud software engineer and cybersecurity strategist on a mission to:
 
----
+- 💻 Build secure, scalable systems.
+- ☁️ Automate modern cloud infrastructures.
+- 🤖 Lead AI-driven innovation.
 
-## 📫 How to reach me
-- **Email**: [info@skunkworks.africa](mailto:info@skunkworks.africa)
-- **Profile**: [burnt-exe's Profile](https://burnt-exe.github.io/burnt-exe.io)
-- **Website**: [Skunkworks Website](https://www.skunkworks.africa)
+Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, and **Microsoft**.
 
 ---
 
-## 🚀 Projects I'm Involved In
+## 🧭 Reach Out
 
-| Project | Description |
-| --- | --- |
-| [noopener-noreferrer-demo](https://github.com/Skunkworks-Lab-Services/noopener-noreferrer-demo) | Demonstrates the use of the `rel="noopener noreferrer"` attribute in HTML links. |
-| [Managed CI/CD](https://github.com/Skunkworks-Lab-Services/ci-cd) | Managed CI/CD pipeline services. |
-| [Data Integration](https://github.com/Skunkworks-Lab-Services/data-integration) | Data integration and ETL services. |
-| [Security Monitoring](https://github.com/Skunkworks-Lab-Services/security-monitoring) | Security monitoring and incident response services. |
-| [AI Chatbots](https://github.com/Skunkworks-Lab-Services/ai-chatbots) | AI chatbot development and management. |
-| [Instana Managed Services](https://github.com/Skunkworks-Lab-Services/instana-managed-services) | Application performance monitoring using Instana. |
-| [AIOps Insights](https://github.com/Skunkworks-Lab-Services/aiops-insights) | AI-driven operations insights and automation. |
-| [Custom SaaS Applications](https://github.com/Skunkworks-Lab-Services/custom-saas) | Custom applications solving specific business problems. |
-| [IBM Maximo Application Suite](https://github.com/Skunkworks-Lab-Services/maximo) | Asset management as a service using IBM Maximo. |
-| [Training and Certification](https://github.com/Skunkworks-Lab-Services/training-certification) | Online training courses and certification programs. |
+- 📧 [info@skunkworks.africa](mailto:info@skunkworks.africa)
+- 🖥️ [burnt-exe.github.io](https://burnt-exe.github.io/burnt-exe.io)
+- 🌐 [Skunkworks](https://www.skunkworks.africa)
+- 💼 [LinkedIn](https://www.linkedin.com/in/raydo-matthee/)
 
 ---
 
-## 🔥 My Tech Stack
+## 🧪 Projects
 
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight)](https://github.com/burnt-exe)
+Here’s a sample of my hands-on contributions to global innovation:
 
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight)](https://github.com/burnt-exe)
-
-## 📊 Weekly Development Breakdown
-
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
-
-## 🚀 Recent Activity
-
-<!--START_SECTION:activity-->
-<!--END_SECTION:activity-->
-
-## 📈 Contribution Graph
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake.svg">
-</picture>
-
-## 🎯 Future Objectives
-
-- **Expand Expertise**: Continue learning and mastering technologies from IBM, Redhat, Microsoft, SAP, Google, and more.
-- **Innovate**: Collaborate on cutting-edge projects that push the boundaries of technology.
-- **Educate**: Develop and deliver comprehensive training programs to empower the next generation of tech professionals.
-- **Secure**: Enhance cybersecurity measures to protect data and infrastructure.
-- **Automate**: Increase the efficiency of processes through advanced automation techniques.
+| 🚀 Repository | 🧠 What It Does |
+|--------------|------------------|
+| [`noopener-noreferrer-demo`](https://github.com/Skunkworks-Lab-Services/noopener-noreferrer-demo) | Secure HTML link behavior showcase |
+| [`ci-cd`](https://github.com/Skunkworks-Lab-Services/ci-cd) | GitHub Actions-powered CI/CD frameworks |
+| [`data-integration`](https://github.com/Skunkworks-Lab-Services/data-integration) | ETL pipelines with orchestration |
+| [`security-monitoring`](https://github.com/Skunkworks-Lab-Services/security-monitoring) | Threat intel and log correlation |
+| [`ai-chatbots`](https://github.com/Skunkworks-Lab-Services/ai-chatbots) | Conversational AI and LLM assistants |
+| [`instana-managed-services`](https://github.com/Skunkworks-Lab-Services/instana-managed-services) | Application monitoring with Instana |
+| [`aiops-insights`](https://github.com/Skunkworks-Lab-Services/aiops-insights) | Predictive ops powered by machine learning |
+| [`custom-saas`](https://github.com/Skunkworks-Lab-Services/custom-saas) | Business-specific SaaS applications |
+| [`maximo`](https://github.com/Skunkworks-Lab-Services/maximo) | IBM Maximo service delivery |
+| [`training-certification`](https://github.com/Skunkworks-Lab-Services/training-certification) | Training kits and certification tracks |
 
 ---
 
-## 🌐 Connect with Me
+## 🧰 My Toolbox
 
-- **LinkedIn**: [Raydo Matthee](https://www.linkedin.com/in/raydo-matthee/)
-- **GitHub**: [burnt-exe](https://github.com/burnt-exe)
+```text
+Languages   ▸ TypeScript | Python | Bash | YAML
+Frameworks  ▸ React | Flask | Node | Tailwind
+DevOps      ▸ GitHub Actions | Docker | Firebase | OpenShift
+Monitoring  ▸ Instana | Prometheus | Grafana
+Security    ▸ Zero Trust | SIEM | IAM | NIST CSF
+```
 
 ---
 
-© 2024 Skunkworks Lab Services
+## 📊 GitHub Insights
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight&count_private=true&hide=issues" height="160"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight&hide=html" height="160"/>
+</div>
+
+---
+
+## 📈 Contributions
+
+![Snake animation](https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake.svg)
+
+---
+
+## 🧠 What’s Next
+
+- 🌐 **Expand Skunkworks** across LATAM, Africa & EU
+- 🛡️ **Secure Everything**: From endpoints to cloud
+- 🎓 **Train 1,000+ learners** through automation-led bootcamps
+- ⚙️ **Automate smarter**, not harder
+- 📦 **Release open-source toolkits** for ethical hacking & DevSecOps
+
+---
+
+#### 🔗 Always Building. Always Learning.
+
+> *“Code. Defend. Scale. Repeat.”*
+
+© 2024 [Skunkworks Lab Services](https://www.skunkworks.africa)
