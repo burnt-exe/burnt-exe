@@ -1,4 +1,12 @@
 ---
+```
+     _                            _  
+    | |__  _   _ _ __  __  _    _| |_      ___  __  __ ____
+    | '_ \| | | |  \ \ | |/ \ \|_   _| __ / /_\ \ \/ // /_\\
+    | |_) | |_| | |_|| | |   | | | |  |__|| |__  \  / | |__ 
+    |_.__/|__/|_| | \_\| |   | | |_|       \___//_/\_\ \___/                                            
+```  
+
 # 🔥 Welcome — I'm @burnt-exe
 
 ![Dev Badge](https://img.shields.io/badge/Software%20Engineer-181717?style=flat-square&logo=github)
@@ -32,18 +40,18 @@ Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, a
 
 ## 🧪 Projects
 
-| 🚀 Repository | 🧠 What It Does |
-|--------------|------------------|
-| [`noopener-noreferrer-demo`](https://github.com/Skunkworks-Lab-Services/noopener-noreferrer-demo) | Secure HTML link behavior showcase |
-| [`ci-cd`](https://github.com/Skunkworks-Lab-Services/ci-cd) | GitHub Actions-powered CI/CD frameworks |
-| [`data-integration`](https://github.com/Skunkworks-Lab-Services/data-integration) | ETL pipelines with orchestration |
-| [`security-monitoring`](https://github.com/Skunkworks-Lab-Services/security-monitoring) | Threat intel and log correlation |
-| [`ai-chatbots`](https://github.com/Skunkworks-Lab-Services/ai-chatbots) | Conversational AI and LLM assistants |
-| [`instana-managed-services`](https://github.com/Skunkworks-Lab-Services/instana-managed-services) | Application monitoring with Instana |
-| [`aiops-insights`](https://github.com/Skunkworks-Lab-Services/aiops-insights) | Predictive ops powered by machine learning |
-| [`custom-saas`](https://github.com/Skunkworks-Lab-Services/custom-saas) | Business-specific SaaS applications |
-| [`maximo`](https://github.com/Skunkworks-Lab-Services/maximo) | IBM Maximo service delivery |
-| [`training-certification`](https://github.com/Skunkworks-Lab-Services/training-certification) | Training kits and certification tracks |
+📦 Here are a few of my most **recently active** repositories:
+
+<!--START_SECTION:activity-projects-->
+<!-- Automatically populated by GitHub workflow or external action like GitHub Readme Workflows -->
+1. 🔄 [`ci-cd`](https://github.com/Skunkworks-Lab-Services/ci-cd) - CI/CD Automation using GitHub Actions
+2. 📡 [`security-monitoring`](https://github.com/Skunkworks-Lab-Services/security-monitoring) - Real-time Threat Detection Pipelines
+3. 🤖 [`ai-chatbots`](https://github.com/Skunkworks-Lab-Services/ai-chatbots) - LLM-based Conversational Agents
+4. 🧠 [`aiops-insights`](https://github.com/Skunkworks-Lab-Services/aiops-insights) - Predictive Monitoring & Remediation
+5. 🚀 [`custom-saas`](https://github.com/Skunkworks-Lab-Services/custom-saas) - Tailored SaaS Deployments
+<!--END_SECTION:activity-projects-->
+
+📍 Visit my [GitHub profile](https://github.com/burnt-exe) for a full list.
 
 ---
 
@@ -81,7 +89,7 @@ Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, a
   <a href="https://fileflip.jamtax.co.za/">
     <img src="https://raw.githubusercontent.com/jamtax/FileFlip/refs/heads/main/assets/favicon.png" alt="FileFlip" width="60"/>
   </a>
- </div>
+</div>
 
 ---
 
