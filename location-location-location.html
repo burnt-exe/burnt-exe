@@ -11,43 +11,59 @@
   <title>Gauteng School + Home Area Quiz (Age 4 → Primary Path)</title>
   <meta name="description" content="Interactive quiz to recommend Gauteng school corridors and home areas for a 4-year-old, with personalized conclusions and next steps." />
   <style>
+    /* ---------- Light theme tokens ---------- */
     :root{
-      --bg:#0b1020;
-      --card:#121a33;
-      --card2:#0f1730;
-      --text:#e8ecff;
-      --muted:#b8c1ffcc;
-      --line:#2a3566;
-      --good:#5ef0a6;
-      --warn:#ffd166;
-      --bad:#ff6b6b;
-      --accent:#7aa2ff;
-      --accent2:#a78bfa;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg: #f6f8ff;
+      --bg2:#ffffff;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --muted2:#6b7280;
+      --line:#e5e7eb;
+
+      --good:#16a34a;
+      --warn:#d97706;
+      --bad:#dc2626;
+
+      --accent:#2563eb;   /* blue */
+      --accent2:#7c3aed;  /* violet */
+
+      --shadow: 0 12px 32px rgba(17,24,39,.10);
+      --shadow2: 0 6px 18px rgba(17,24,39,.08);
       --radius: 18px;
+
+      --focus: 0 0 0 4px rgba(37,99,235,.18);
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(122,162,255,.18), transparent 60%),
-                  radial-gradient(900px 600px at 90% 30%, rgba(167,139,250,.14), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1100px 650px at 20% 0%, rgba(37,99,235,.10), transparent 60%),
+        radial-gradient(900px 600px at 95% 18%, rgba(124,58,237,.10), transparent 60%),
+        linear-gradient(180deg, #fbfcff, var(--bg));
       color:var(--text);
-      line-height:1.4;
+      line-height:1.45;
     }
+
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
+
     header{
-      padding: 28px 16px 12px;
-      max-width: 1000px;
+      padding: 26px 16px 12px;
+      max-width: 1020px;
       margin: 0 auto;
     }
     .wrap{
-      max-width: 1000px;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 0 16px 40px;
+      padding: 0 16px 44px;
     }
+
+    /* ---------- Layout ---------- */
     .hero{
       display:flex;
       gap:16px;
@@ -55,12 +71,14 @@
       flex-wrap:wrap;
     }
     .title{
-      flex: 1 1 520px;
-      background: linear-gradient(180deg, rgba(18,26,51,.9), rgba(18,26,51,.65));
-      border:1px solid rgba(42,53,102,.7);
+      flex: 1 1 540px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
+      border:1px solid var(--line);
       border-radius: var(--radius);
       padding: 18px 18px 14px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
     }
     .title h1{
       margin: 0 0 8px;
@@ -72,15 +90,16 @@
       color: var(--muted);
       font-size: 14.5px;
     }
+
     .chips{
       margin-top: 12px;
       display:flex; gap:8px; flex-wrap:wrap;
     }
     .chip{
       font-size: 12.5px;
-      color: #dfe6ff;
-      background: rgba(122,162,255,.14);
-      border: 1px solid rgba(122,162,255,.28);
+      color: #1f2937;
+      background: rgba(37,99,235,.08);
+      border: 1px solid rgba(37,99,235,.16);
       padding: 7px 10px;
       border-radius: 999px;
       user-select:none;
@@ -93,27 +112,29 @@
       gap:12px;
       min-width: 260px;
     }
+
     .card{
-      background: linear-gradient(180deg, rgba(15,23,48,.92), rgba(15,23,48,.68));
-      border:1px solid rgba(42,53,102,.7);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.90));
+      border:1px solid var(--line);
       border-radius: var(--radius);
       padding: 16px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
     }
     .card h3{
       margin:0 0 8px;
       font-size: 14px;
       letter-spacing: .2px;
-      color:#eaf0ff;
+      color:#111827;
     }
     .card p, .card li{
       margin:0;
       color: var(--muted);
-      font-size: 13.5px;
+      font-size: 13.7px;
     }
     .card ul{margin:10px 0 0 18px; padding:0}
     .card li{margin: 6px 0}
 
+    /* ---------- Progress ---------- */
     .progress{
       display:flex;
       align-items:center;
@@ -124,8 +145,8 @@
     .bar{
       flex: 1;
       height: 10px;
-      background: rgba(232,236,255,.08);
-      border:1px solid rgba(42,53,102,.7);
+      background: rgba(17,24,39,.05);
+      border:1px solid var(--line);
       border-radius: 999px;
       overflow:hidden;
     }
@@ -137,7 +158,7 @@
       transition: width .35s ease;
     }
     .progress small{
-      color: var(--muted);
+      color: var(--muted2);
       font-size: 12.5px;
       white-space:nowrap;
     }
@@ -149,9 +170,10 @@
       gap: 14px;
     }
 
+    /* ---------- Quiz card ---------- */
     .qcard{
-      background: linear-gradient(180deg, rgba(18,26,51,.86), rgba(18,26,51,.62));
-      border:1px solid rgba(42,53,102,.7);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.90));
+      border:1px solid var(--line);
       border-radius: var(--radius);
       padding: 16px;
       box-shadow: var(--shadow);
@@ -165,9 +187,9 @@
     }
     .qnum{
       font-size: 12px;
-      color: rgba(232,236,255,.65);
-      background: rgba(232,236,255,.08);
-      border:1px solid rgba(42,53,102,.7);
+      color: rgba(17,24,39,.70);
+      background: rgba(17,24,39,.05);
+      border:1px solid var(--line);
       padding: 6px 10px;
       border-radius: 999px;
       user-select:none;
@@ -175,8 +197,8 @@
     }
     .qtitle{
       margin:0;
-      font-size: 15.5px;
-      color:#f1f4ff;
+      font-size: 15.8px;
+      color:#0f172a;
     }
     .qhelp{
       margin: 6px 0 0;
@@ -194,20 +216,22 @@
       display:flex;
       gap: 10px;
       align-items:flex-start;
-      background: rgba(232,236,255,.06);
-      border: 1px solid rgba(42,53,102,.7);
+      background: rgba(17,24,39,.03);
+      border: 1px solid var(--line);
       border-radius: 14px;
       padding: 12px 12px;
       cursor:pointer;
-      transition: transform .08s ease, border-color .2s ease, background .2s ease;
+      transition: transform .08s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
     }
     .opt:hover{
       transform: translateY(-1px);
-      border-color: rgba(122,162,255,.55);
-      background: rgba(122,162,255,.10);
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.06);
+      box-shadow: 0 10px 24px rgba(17,24,39,.08);
     }
     .opt input{margin-top: 2px}
-    .opt strong{display:block; font-size: 13.8px}
+    .opt input:focus{outline:none; box-shadow: var(--focus); border-radius: 6px}
+    .opt strong{display:block; font-size: 13.9px; color:#0f172a}
     .opt span{display:block; color: var(--muted); font-size: 13px; margin-top: 2px}
 
     .controls{
@@ -221,49 +245,53 @@
     .btns{
       display:flex; gap:10px; flex-wrap:wrap;
     }
+
     button{
       appearance:none;
-      border: 1px solid rgba(42,53,102,.9);
-      background: rgba(232,236,255,.08);
-      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(17,24,39,.03);
+      color: #0f172a;
       padding: 10px 14px;
       border-radius: 12px;
       cursor:pointer;
       font-weight: 650;
       letter-spacing:.15px;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
     button:hover{
       transform: translateY(-1px);
-      border-color: rgba(122,162,255,.65);
-      background: rgba(122,162,255,.14);
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.06);
+      box-shadow: 0 10px 24px rgba(17,24,39,.08);
     }
+    button:focus{outline:none; box-shadow: var(--focus)}
     button.primary{
-      background: linear-gradient(90deg, rgba(122,162,255,.95), rgba(167,139,250,.95));
+      background: linear-gradient(90deg, rgba(37,99,235,.95), rgba(124,58,237,.95));
       border-color: transparent;
-      color:#081022;
+      color:#ffffff;
     }
     button.primary:hover{
-      background: linear-gradient(90deg, rgba(122,162,255,1), rgba(167,139,250,1));
+      background: linear-gradient(90deg, rgba(37,99,235,1), rgba(124,58,237,1));
       transform: translateY(-1px);
     }
     button.danger{
-      border-color: rgba(255,107,107,.6);
-      background: rgba(255,107,107,.08);
+      border-color: rgba(220,38,38,.35);
+      background: rgba(220,38,38,.06);
+      color:#7f1d1d;
     }
     button.danger:hover{
-      background: rgba(255,107,107,.14);
-    }
-    .hint{
-      color: rgba(255,209,102,.92);
-      font-size: 12.5px;
+      border-color: rgba(220,38,38,.55);
+      background: rgba(220,38,38,.10);
     }
 
-    /* Results */
-    .results{
-      display:none;
-      margin-top: 10px;
+    .hint{
+      color: rgba(217,119,6,.92);
+      font-size: 12.6px;
     }
+
+    /* ---------- Results ---------- */
+    .results{ display:none; margin-top: 10px; }
+
     .grid2{
       display:grid;
       grid-template-columns: 1fr;
@@ -273,26 +301,26 @@
       main{grid-template-columns: 1.3fr .7fr}
       .grid2{grid-template-columns: 1fr 1fr}
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding: 7px 10px;
       border-radius: 999px;
-      border:1px solid rgba(42,53,102,.7);
-      background: rgba(232,236,255,.06);
-      font-size: 12.5px;
-      color: rgba(232,236,255,.85);
+      border:1px solid var(--line);
+      background: rgba(17,24,39,.03);
+      font-size: 12.6px;
+      color: rgba(17,24,39,.82);
       margin: 6px 6px 0 0;
     }
     .dot{width:10px;height:10px;border-radius:999px;background:var(--accent)}
     .dot.good{background:var(--good)}
     .dot.warn{background:var(--warn)}
     .dot.bad{background:var(--bad)}
-    .mini{
-      font-size: 12.8px;
-      color: var(--muted);
-    }
+
+    .mini{ font-size: 12.9px; color: var(--muted2); }
+
     .kpi{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -300,38 +328,68 @@
       margin-top: 10px;
     }
     .kpi > div{
-      background: rgba(232,236,255,.06);
-      border:1px solid rgba(42,53,102,.7);
+      background: rgba(17,24,39,.03);
+      border:1px solid var(--line);
       border-radius: 14px;
       padding: 12px;
     }
-    .kpi b{display:block; font-size: 15px}
-    .kpi small{color: var(--muted)}
+    .kpi b{display:block; font-size: 15px; color:#0f172a}
+    .kpi small{color: var(--muted2)}
+
     .list{
       margin: 10px 0 0 18px;
       color: var(--muted);
-      font-size: 13.5px;
-    }
-    .callout{
-      border-left: 3px solid rgba(122,162,255,.9);
-      padding: 10px 12px;
-      background: rgba(122,162,255,.10);
-      border-radius: 12px;
-      color: rgba(232,236,255,.88);
-      font-size: 13.5px;
+      font-size: 13.6px;
     }
 
+    .callout{
+      border-left: 3px solid rgba(37,99,235,.85);
+      padding: 10px 12px;
+      background: rgba(37,99,235,.06);
+      border:1px solid rgba(37,99,235,.14);
+      border-radius: 12px;
+      color: rgba(17,24,39,.86);
+      font-size: 13.7px;
+    }
+
+    /* ---------- Responsive footer (new) ---------- */
     .footer{
       margin-top: 14px;
-      color: rgba(232,236,255,.55);
-      font-size: 12.5px;
-      text-align:center;
+      padding: 14px 10px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      color: rgba(17,24,39,.60);
+      font-size: clamp(12px, 3.4vw, 13.5px);
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .footer .foot-note{ max-width: 70ch; }
+    .footer .foot-sign{
+      color: rgba(17,24,39,.72);
+      font-weight: 650;
+      letter-spacing: .1px;
+    }
+    .footer .heart{ display:inline-block; transform: translateY(1px); }
+
+    @media (min-width: 900px){
+      .footer{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
     }
 
+    /* ---------- Print ---------- */
     @media print{
       body{background:#fff;color:#000}
       .title,.card,.qcard{box-shadow:none}
-      button,.progress,.hint,.footer{display:none !important}
+      button,.progress,.hint{display:none !important}
       .results{display:block !important}
       a{color:#000;text-decoration:underline}
     }
@@ -348,6 +406,7 @@
         safety, and schooling pathway. At the end you’ll get a <b>personalized conclusion</b>,
         suggested <b>corridors</b>, and a <b>shortlist starter</b> of schools to investigate.
       </p>
+
       <div class="chips">
         <div class="chip">Mobile-first</div>
         <div class="chip">Offline</div>
@@ -501,10 +560,14 @@
         </div>
         <div class="mini" id="copyStatus"></div>
       </div>
+
       <div class="footer">
-        Built for real families making high-stakes decisions. Always confirm admissions, zoning, and fees directly with schools.
-        <br>
-        with <span aria-label="heart" role="img">❤</span> from Raydo
+        <span class="foot-note">
+          Built for real families making high-stakes decisions. Always confirm admissions, zoning, and fees directly with schools.
+        </span>
+        <span class="foot-sign">
+          with <span class="heart" aria-label="heart" role="img">❤</span> from Raydo
+        </span>
       </div>
     </div>
   </section>
@@ -802,7 +865,6 @@
       wrap.addEventListener("click", () => {
         answers[q.id] = i;
         setProgress();
-        // small UX: auto-enable next
         el.nextBtn.textContent = (idx === questions.length - 1) ? "Finish" : "Next";
       });
       el.opts.appendChild(wrap);
@@ -815,17 +877,12 @@
 
   function computeScores(){
     const score = {
-      // corridors
       jhbN: 0, jhbCN: 0, jhbE: 0, ptaE: 0, cent: 0,
-
-      // preferences
       commute: 0, commuteLabel: "",
       budgetLabel: "",
       envLabel: "",
       aftercareNeed: 0,
       estate: 0, suburb: 0,
-
-      // constraints
       constraint: "",
       values: "",
       pathway: ""
@@ -835,41 +892,23 @@
       if (answers[q.id] == null) continue;
       const opt = q.options[answers[q.id]];
       if (!opt || !opt.score) continue;
+
       for (const [k,v] of Object.entries(opt.score)){
         if (typeof score[k] === "number") score[k] += v;
         else score[k] = (score[k] || 0) + v;
       }
-      // derive labels from specific questions
-      if (q.id === "commute"){
-        const label = q.options[answers[q.id]].label;
-        score.commuteLabel = label;
-      }
-      if (q.id === "budget"){
-        score.budgetLabel = q.options[answers[q.id]].label;
-      }
-      if (q.id === "learning_env"){
-        score.envLabel = q.options[answers[q.id]].label;
-      }
-      if (q.id === "stress"){
-        score.constraint = q.options[answers[q.id]].label;
-      }
-      if (q.id === "values"){
-        score.values = q.options[answers[q.id]].label;
-      }
-      if (q.id === "future_path"){
-        score.pathway = q.options[answers[q.id]].label;
-      }
+
+      if (q.id === "commute") score.commuteLabel = q.options[answers[q.id]].label;
+      if (q.id === "budget") score.budgetLabel = q.options[answers[q.id]].label;
+      if (q.id === "learning_env") score.envLabel = q.options[answers[q.id]].label;
+      if (q.id === "stress") score.constraint = q.options[answers[q.id]].label;
+      if (q.id === "values") score.values = q.options[answers[q.id]].label;
+      if (q.id === "future_path") score.pathway = q.options[answers[q.id]].label;
     }
-    // commute numeric posture
-    const commuteMap = {
-      "0–15 minutes": 3,
-      "15–30 minutes": 2,
-      "30–45 minutes": 1,
-      "45+ minutes": 0
-    };
+
+    const commuteMap = {"0–15 minutes": 3,"15–30 minutes": 2,"30–45 minutes": 1,"45+ minutes": 0};
     score.commute = commuteMap[score.commuteLabel] ?? 2;
 
-    // choose best corridor + runner up
     const corridorScores = ["jhbN","jhbCN","jhbE","ptaE","cent"]
       .map(k => ({ k, v: score[k] }))
       .sort((a,b) => b.v - a.v);
@@ -890,20 +929,16 @@
     el.badges.innerHTML = "";
     const b = [];
 
-    // A simple "completeness" measure
     const completed = Object.keys(answers).length;
     const completeness = Math.round((completed / questions.length) * 10);
     b.push({ label: `Completion: ${completed}/${questions.length}`, tone: completeness >= 9 ? "good" : (completeness >= 7 ? "warn" : "bad") });
 
-    // Logistics risk (commute + aftercare need)
     const logistics = (score.commute * 2) + (score.aftercareNeed ? 2 : 0);
     b.push({ label: `Logistics pressure`, tone: gradeDot(logistics) });
 
-    // Decision clarity
     const unclear = (score.budgetLabel === "Not sure yet" ? 1 : 0) + (score.pathway === "Not sure yet" ? 1 : 0);
     b.push({ label: unclear === 0 ? "Decision clarity: High" : (unclear === 1 ? "Decision clarity: Medium" : "Decision clarity: Low"), tone: unclear === 0 ? "good" : (unclear === 1 ? "warn" : "bad") });
 
-    // Corridor picks
     b.push({ label: `Top corridor: ${corridors[best.k].name}`, tone: "good" });
     b.push({ label: `Backup corridor: ${corridors[second.k].name}`, tone: "warn" });
 
@@ -915,15 +950,17 @@
     }
   }
 
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  }
+
   function buildConclusion({score, best, second, corridorScores}){
-    // Core narrative: fit + stability + options
     const corridorName = corridors[best.k].name;
 
     const env = score.envLabel || "Balanced structure";
     const budget = score.budgetLabel || "Public/CAPS focus";
     const commute = score.commuteLabel || "15–30 minutes";
 
-    // Titles
     let title = "A stability-first plan with strong optionality";
     if (budget.includes("Premium")) title = "A premium pathway plan (protect routines, not just reputation)";
     if (budget.includes("Public")) title = "A smart public-school strategy (win with zoning + support)";
@@ -932,7 +969,6 @@
     el.resTitle.textContent = title;
     el.resSubtitle.textContent = `Best-fit corridor: ${corridorName}. Your quiz signals: ${env} learning environment, ${budget} budget posture, commute tolerance ${commute}.`;
 
-    // Score pill: show corridor score spread (simple)
     const spread = corridorScores.slice(0,3).map(x => `${x.k}:${x.v}`).join(" · ");
     el.resScorePill.textContent = `Signals: ${spread}`;
 
@@ -941,7 +977,6 @@
     el.kpiBudget.textContent = budget;
     el.kpiStyle.textContent = env;
 
-    // Callout: constraint-aware advice
     const constraint = score.constraint || "";
     let callout = "Design your move around routines: school proximity, aftercare reliability, and a backup school plan in the same area.";
     if (constraint.startsWith("Time")) callout = "Time is your limiting reagent. Prioritize living close to school (and aftercare), even if it means sacrificing some ‘dream house’ features.";
@@ -950,14 +985,11 @@
     if (constraint.startsWith("Support")) callout = "Support is key. Prioritize schools with strong aftercare and learning support access, and home areas where help (family/amenities) is close.";
     el.callout.textContent = callout;
 
-    // Home areas list (best corridor + some overlap with runner-up if close)
     const homeAreas = [];
     corridors[best.k].homeAreas.forEach(a => homeAreas.push(a));
-    // Add a couple from second to build Plan B options
     corridors[second.k].homeAreas.slice(0,2).forEach(a => homeAreas.push(`(Plan B) ${a}`));
     el.homeAreas.innerHTML = homeAreas.map(x => `<li>${x}</li>`).join("");
 
-    // School shortlist (show 5 from best + 2 from runner-up)
     const schools = [];
     corridors[best.k].schools.forEach(s => schools.push(s));
     corridors[second.k].schools.slice(0,2).forEach(s => schools.push({name:`(Plan B) ${s.name}`, map:s.map}));
@@ -966,7 +998,6 @@
       `<li><a href="${s.map}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a></li>`
     ).join("");
 
-    // Next steps
     const nextSteps = [
       "Pick 3 schools in your top corridor: one “reach”, one “solid”, one “safety”.",
       "Phone/email each school: admissions timeline, Grade R entry age rules, waiting list process, sibling priority.",
@@ -977,7 +1008,6 @@
     ];
     el.nextSteps.innerHTML = nextSteps.map(x => `<li>${x}</li>`).join("");
 
-    // Reality checks (high-impact questions)
     const checks = [
       "If we miss our top school, are we still happy with the suburb and the Plan B school?",
       "Can we sustain this commute daily for 10 years without burning out?",
@@ -989,12 +1019,7 @@
     el.realityChecks.innerHTML = checks.map(x => `<li>${x}</li>`).join("");
   }
 
-  function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-  }
-
   function showResults(){
-    // Require all answers for best accuracy, but don’t block hard — just warn.
     const missing = questions.filter(q => answers[q.id] == null).length;
     const { score, best, second, corridorScores } = computeScores();
 
@@ -1082,9 +1107,9 @@
   el.saveBtn.addEventListener("click", save);
   el.resetBtn.addEventListener("click", reset);
 
-  el.printBtn.addEventListener("click", () => window.print());
+  document.getElementById("printBtn").addEventListener("click", () => window.print());
 
-  el.copyBtn.addEventListener("click", async () => {
+  document.getElementById("copyBtn").addEventListener("click", async () => {
     try{
       const text = buildSummaryText();
       await navigator.clipboard.writeText(text);
@@ -1096,7 +1121,7 @@
     }
   });
 
-  el.restartBtn.addEventListener("click", () => {
+  document.getElementById("restartBtn").addEventListener("click", () => {
     el.results.style.display = "none";
     el.quizCard.style.display = "block";
     idx = 0;
@@ -1107,7 +1132,6 @@
   // --- Boot ---
   load();
   renderQuestion();
-
 })();
 </script>
 </body>
