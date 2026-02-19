@@ -1,1811 +1,319 @@
 <!doctype html>
 <html lang="en-ZA">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Raydo Matthee — Founder & CTO at Skunkworks (Pty) Ltd | IBM Certified Technical Trainer & Solutions Architect. Integration, automation, data, hybrid cloud, and CP4I Proof of Value support." />
-  <title>Raydo Matthee — Professional Profile (Skunkworks)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raydo Matthee | Enterprise Integration Profile</title>
 
-  <style>
-    :root{
-      --bg: #0b1220;
-      --bg2:#070c16;
-      --card:#0f1a2f;
-      --card2:#0d172a;
-      --text:#eaf0ff;
-      --muted:#a8b5d6;
-      --muted2:#7f91bf;
-      --line: rgba(255,255,255,.10);
-      --line2: rgba(255,255,255,.16);
-      --accent:#63b3ff;
-      --accent2:#7c5cff;
-      --good:#3ef0b3;
-      --warn:#ffd166;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --shadow2: 0 10px 28px rgba(0,0,0,.25);
-      --radius: 18px;
-      --radius2: 14px;
-      --pad: 18px;
-      --pad2: 14px;
-      --max: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      --focus: 0 0 0 4px rgba(99,179,255,.25);
-    }
+<style>
+:root{
+  --bg:#f8f7f4;
+  --card:#ffffff;
+  --text:#1e2430;
+  --muted:#5a6475;
+  --line:#e4e7ee;
+  --accent:#0f4c5c;
+  --accent-soft:#e6f2f4;
+  --highlight:#c28f2c;
+  --radius:16px;
+  --max:1100px;
+  --shadow:0 8px 30px rgba(0,0,0,.05);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
 
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f8ff;
-        --bg2:#eef2ff;
-        --card:#ffffff;
-        --card2:#ffffff;
-        --text:#0b1220;
-        --muted:#4b5a7a;
-        --muted2:#5a6a90;
-        --line: rgba(11,18,32,.10);
-        --line2: rgba(11,18,32,.16);
-        --shadow: 0 18px 50px rgba(16,24,40,.12);
-        --shadow2: 0 10px 28px rgba(16,24,40,.10);
-      }
-    }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1200px 520px at 15% 10%, rgba(99,179,255,.25), transparent 60%),
-        radial-gradient(900px 520px at 85% 0%, rgba(124,92,255,.20), transparent 55%),
-        radial-gradient(900px 520px at 85% 100%, rgba(62,240,179,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      line-height:1.45;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+.wrapper{
+  max-width:var(--max);
+  margin:auto;
+  padding:40px 20px 80px;
+}
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-    a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible{
-      outline:none;
-      box-shadow: var(--focus);
-      border-radius: 12px;
-    }
+/* HEADER */
+.header{
+  border-bottom:1px solid var(--line);
+  padding-bottom:24px;
+  margin-bottom:40px;
+}
 
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 18px 54px;
-    }
+.header h1{
+  margin:0;
+  font-size:34px;
+  letter-spacing:-.5px;
+}
 
-    /* Top sticky header */
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(11,18,32,.78), rgba(11,18,32,.55));
-      border-bottom: 1px solid var(--line);
-    }
-    @media (prefers-color-scheme: light){
-      .topbar{
-        background: linear-gradient(180deg, rgba(246,248,255,.88), rgba(246,248,255,.65));
-      }
-    }
-    .topbar-inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: center;
-    }
+.subtitle{
+  margin-top:6px;
+  color:var(--muted);
+  font-weight:500;
+}
 
-    .idblock{
-      display:flex;
-      gap: 12px;
-      align-items:center;
-      min-width: 0;
-    }
-    .mark{
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.55), transparent 60%),
-        linear-gradient(135deg, rgba(99,179,255,.95), rgba(124,92,255,.95));
-      box-shadow: var(--shadow2);
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(255,255,255,.18);
-    }
-    @media (prefers-color-scheme: light){
-      .mark{ border: 1px solid rgba(11,18,32,.10); }
-    }
-    .mark svg{ width: 22px; height: 22px; opacity:.95; }
+.contact{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  font-size:14px;
+}
 
-    .idtext{ min-width:0; }
-    .name{
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .title{
-      margin: 2px 0 0;
-      font-size: 12.5px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.contact a{
+  text-decoration:none;
+  color:var(--accent);
+  font-weight:600;
+}
 
-    .actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line2);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      box-shadow: none;
-      font-weight: 650;
-      font-size: 12.5px;
-      color: var(--text);
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
-    }
-    @media (prefers-color-scheme: light){
-      .btn{ background: linear-gradient(180deg, rgba(11,18,32,.04), rgba(11,18,32,.02)); }
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: var(--shadow2);
-      text-decoration: none;
-    }
-    .btn svg{ width: 16px; height: 16px; opacity: .9; }
-    .btn.primary{
-      border: 1px solid rgba(99,179,255,.55);
-      background: linear-gradient(135deg, rgba(99,179,255,.22), rgba(124,92,255,.18));
-    }
-    .btn.ghost{
-      background: transparent;
-    }
+/* SECTION */
+.section{
+  margin-bottom:50px;
+}
 
-    /* Hero */
-    .hero{
-      margin-top: 18px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background:
-        radial-gradient(1200px 460px at 10% 0%, rgba(99,179,255,.22), transparent 60%),
-        radial-gradient(900px 460px at 80% 30%, rgba(124,92,255,.18), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    }
-    @media (prefers-color-scheme: light){
-      .hero{
-        background:
-          radial-gradient(1200px 460px at 10% 0%, rgba(99,179,255,.16), transparent 60%),
-          radial-gradient(900px 460px at 80% 30%, rgba(124,92,255,.12), transparent 60%),
-          linear-gradient(180deg, rgba(11,18,32,.03), rgba(11,18,32,.01));
-      }
-    }
-    .hero-inner{
-      padding: 22px 20px 18px;
-      display:grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 16px;
-      align-items: start;
-    }
-    @media (max-width: 900px){
-      .hero-inner{ grid-template-columns: 1fr; }
-    }
+.section h2{
+  font-size:18px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color:var(--accent);
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:20px;
+}
 
-    .headline{
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-    }
-    .avatar{
-      width: 62px;
-      height: 62px;
-      border-radius: 20px;
-      border: 1px solid var(--line2);
-      background:
-        radial-gradient(30px 30px at 30% 35%, rgba(255,255,255,.6), transparent 60%),
-        linear-gradient(135deg, rgba(99,179,255,.22), rgba(124,92,255,.18));
-      box-shadow: var(--shadow2);
-      display:grid;
-      place-items:center;
-      flex: 0 0 auto;
-    }
-    .avatar svg{ width: 26px; height: 26px; opacity: .9; }
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 26px;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
 
-    h1{
-      margin: 0;
-      font-size: 26px;
-      letter-spacing: -0.3px;
-      line-height: 1.15;
-    }
-    .subhead{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 66ch;
-    }
+.card p{
+  margin:0;
+  color:var(--muted);
+}
 
-    .chips{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      font-size: 12px;
-      color: var(--text);
-    }
-    @media (prefers-color-scheme: light){
-      .chip{ background: rgba(11,18,32,.03); }
-    }
-    .chip .dot{
-      width: 7px; height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 3px rgba(99,179,255,.15);
-    }
+/* GRID */
+.grid{
+  display:grid;
+  gap:18px;
+}
 
-    .quickfacts{
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      padding: 14px 14px 12px;
-    }
-    @media (prefers-color-scheme: light){
-      .quickfacts{ background: rgba(11,18,32,.02); }
-    }
-    .q-title{
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .q-title h2{
-      margin:0;
-      font-size: 13px;
-      letter-spacing: .2px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(62,240,179,.35);
-      background: rgba(62,240,179,.10);
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .badge svg{ width: 14px; height: 14px; }
+.grid-2{
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
 
-    .q-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .q-item{
-      display:grid;
-      grid-template-columns: 18px 1fr;
-      gap: 10px;
-      align-items:start;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .q-item strong{ color: var(--text); font-weight: 700; }
-    .q-item svg{ width: 18px; height: 18px; opacity: .9; margin-top: 1px; }
-    .q-links{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--line);
-    }
-    .q-links a{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      font-size: 12px;
-      color: var(--text);
-      background: rgba(255,255,255,.03);
-    }
-    .q-links a:hover{ text-decoration:none; box-shadow: var(--shadow2); transform: translateY(-1px); }
-    .q-links svg{ width: 14px; height: 14px; opacity: .9; }
+.tag{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:50px;
+  font-size:12px;
+  font-weight:600;
+  background:var(--accent-soft);
+  color:var(--accent);
+  margin:4px 6px 4px 0;
+}
 
-    /* Layout for main sections */
-    .grid{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
 
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow: var(--shadow2);
-      overflow: hidden;
-    }
-    @media (prefers-color-scheme: light){
-      .card{
-        background: linear-gradient(180deg, rgba(11,18,32,.03), rgba(11,18,32,.01));
-      }
-    }
-    .card-head{
-      padding: 14px 16px 12px;
-      border-bottom: 1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .card-head h3{
-      margin: 0;
-      font-size: 14px;
-      letter-spacing: .2px;
-    }
-    .kicker{
-      font-size: 12px;
-      color: var(--muted);
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-    .kicker svg{ width: 14px; height: 14px; opacity: .85; }
-    .card-body{
-      padding: 14px 16px 16px;
-    }
+th,td{
+  padding:14px 10px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
 
-    .lead{
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0;
-      max-width: 92ch;
-    }
+th{
+  text-align:left;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--muted);
+}
 
-    .bullets{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 10px;
-    }
-    .bullets li{
-      display:grid;
-      grid-template-columns: 14px 1fr;
-      gap: 10px;
-      align-items:start;
-      color: var(--muted);
-      font-size: 13.5px;
-    }
-    .bullets li .tick{
-      width: 14px; height: 14px; margin-top: 3px;
-      border-radius: 6px;
-      background: rgba(99,179,255,.15);
-      border: 1px solid rgba(99,179,255,.35);
-      display:grid;
-      place-items:center;
-    }
-    .bullets li .tick svg{ width: 10px; height: 10px; }
+/* LIST */
+ul{
+  margin:0;
+  padding-left:20px;
+  color:var(--muted);
+}
 
-    .pillgrid{
-      margin-top: 12px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-    }
-    @media (max-width: 900px){ .pillgrid{ grid-template-columns: 1fr; } }
-    .pill{
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 12px 12px 12px;
-    }
-    @media (prefers-color-scheme: light){
-      .pill{ background: rgba(11,18,32,.02); }
-    }
-    .pill h4{
-      margin: 0 0 6px;
-      font-size: 13.5px;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-    .pill h4 svg{ width: 16px; height: 16px; opacity:.9; }
-    .pill p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+li{
+  margin-bottom:8px;
+}
 
-    table{
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    @media (prefers-color-scheme: light){
-      table{ background: rgba(11,18,32,.02); }
-    }
-    th, td{
-      padding: 12px 12px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    th{
-      font-size: 12px;
-      color: var(--text);
-      letter-spacing: .15px;
-      text-transform: uppercase;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-    }
-    tr:last-child td{ border-bottom: none; }
-    .t-strong{ color: var(--text); font-weight: 700; }
-    .t-tag{
-      display:inline-flex;
-      align-items:center;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      font-size: 12px;
-      color: var(--text);
-      background: rgba(255,255,255,.03);
-      margin-right: 6px;
-      margin-top: 4px;
-    }
+/* CTA */
+.cta{
+  background:var(--accent);
+  color:white;
+  padding:30px;
+  border-radius:var(--radius);
+}
 
-    /* POV timeline */
-    .timeline{
-      margin-top: 12px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 14px 12px;
-      overflow:hidden;
-    }
-    @media (prefers-color-scheme: light){
-      .timeline{ background: rgba(11,18,32,.02); }
-    }
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
-      gap: 10px;
-    }
-    @media (max-width: 900px){
-      .steps{ grid-template-columns: 1fr; }
-    }
-    .step{
-      position: relative;
-      padding: 12px 12px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      min-height: 92px;
-    }
-    @media (prefers-color-scheme: light){
-      .step{ background: linear-gradient(180deg, rgba(11,18,32,.03), rgba(11,18,32,.01)); }
-    }
-    .step .num{
-      width: 28px; height: 28px;
-      border-radius: 11px;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, rgba(99,179,255,.25), rgba(124,92,255,.20));
-      border: 1px solid rgba(99,179,255,.35);
-      color: var(--text);
-      font-weight: 800;
-      font-size: 12px;
-    }
-    .step h5{
-      margin: 10px 0 4px;
-      font-size: 13px;
-      color: var(--text);
-    }
-    .step p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 12.5px;
-    }
+.cta h3{
+  margin-top:0;
+  font-size:20px;
+}
 
-    /* Experience cards */
-    .exp{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-    @media (max-width: 900px){ .exp{ grid-template-columns: 1fr; } }
-    .expitem{
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 12px;
-    }
-    @media (prefers-color-scheme: light){
-      .expitem{ background: rgba(11,18,32,.02); }
-    }
-    .expitem .top{
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items:flex-start;
-      margin-bottom: 8px;
-    }
-    .expitem h4{
-      margin: 0;
-      font-size: 13.5px;
-    }
-    .expitem .meta{
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .expitem p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+.cta ul{
+  color:white;
+}
 
-    /* Two-column grid */
-    .twocol{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    @media (max-width: 900px){ .twocol{ grid-template-columns: 1fr; } }
-    .panel{
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 12px;
-    }
-    @media (prefers-color-scheme: light){
-      .panel{ background: rgba(11,18,32,.02); }
-    }
-    .panel h4{ margin: 0 0 6px; font-size: 13.5px; display:flex; align-items:center; gap: 10px; }
-    .panel h4 svg{ width: 16px; height: 16px; opacity:.9; }
-    .panel ul{ margin: 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
-    .panel li{ margin: 6px 0; }
+.cta strong{
+  color:var(--highlight);
+}
 
-    /* CTA checklist */
-    .checklist{
-      display:grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .check{
-      display:grid;
-      grid-template-columns: 18px 1fr;
-      gap: 10px;
-      align-items:start;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    }
-    @media (prefers-color-scheme: light){
-      .check{ background: linear-gradient(180deg, rgba(11,18,32,.03), rgba(11,18,32,.01)); }
-    }
-    .check .box{
-      width: 18px; height: 18px;
-      border-radius: 7px;
-      border: 1px solid rgba(99,179,255,.40);
-      background: rgba(99,179,255,.12);
-      display:grid;
-      place-items:center;
-      margin-top: 2px;
-    }
-    .check .box svg{ width: 12px; height: 12px; }
-    .check .text{
-      color: var(--muted);
-      font-size: 13.5px;
-    }
-    .check .text strong{ color: var(--text); }
-
-    /* Email snippet */
-    .snippet{
-      margin-top: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,209,102,.35);
-      background: rgba(255,209,102,.10);
-      padding: 12px;
-    }
-    .snippet .row{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .snippet h4{
-      margin: 0;
-      font-size: 13.5px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
-    .snippet h4 svg{ width: 16px; height: 16px; }
-    .copybtn{
-      border: 1px solid rgba(255,209,102,.40);
-      background: rgba(255,209,102,.10);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 10px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-    }
-    .copybtn:hover{ box-shadow: var(--shadow2); transform: translateY(-1px); }
-    .snippet pre{
-      margin: 0;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(11,18,32,.35);
-      overflow:auto;
-      color: rgba(234,240,255,.95);
-      font-size: 12px;
-      line-height: 1.5;
-      font-family: var(--mono);
-      white-space: pre-wrap;
-    }
-    @media (prefers-color-scheme: light){
-      .snippet pre{
-        background: rgba(11,18,32,.03);
-        color: rgba(11,18,32,.92);
-      }
-    }
-
-    /* Footer */
-    footer{
-      margin-top: 18px;
-      color: var(--muted2);
-      font-size: 12px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
-      justify-content: space-between;
-      padding: 10px 2px 0;
-    }
-    footer .hint{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-    }
-    footer svg{ width: 14px; height: 14px; opacity:.85; }
-
-    /* Print */
-    @media print{
-      .topbar{ position: static; backdrop-filter: none; border-bottom: none; }
-      .btn, .copybtn{ display:none !important; }
-      body{
-        background: #fff !important;
-        color: #0b1220 !important;
-      }
-      .hero, .card{
-        box-shadow: none !important;
-        border-color: rgba(11,18,32,.18) !important;
-      }
-      .chip, .t-tag{
-        border-color: rgba(11,18,32,.20) !important;
-        background: #f4f6ff !important;
-      }
-      .snippet{
-        border-color: rgba(11,18,32,.22) !important;
-        background: #fff7df !important;
-      }
-      a{ color: #0b1220 !important; text-decoration: none !important; }
-      footer{ color: #4b5a7a !important; }
-    }
-
-    /* Small helper */
-    .muted{ color: var(--muted); }
-    .inlinecode{
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-    }
-    @media (prefers-color-scheme: light){
-      .inlinecode{ background: rgba(11,18,32,.03); }
-    }
-  </style>
+/* PRINT */
+@media print{
+  body{background:white;}
+  .card{box-shadow:none;}
+  .cta{background:#1e2430;}
+}
+</style>
 </head>
 
 <body>
-  <!-- Sticky header -->
-  <div class="topbar" role="banner" aria-label="Sticky profile header">
-    <div class="topbar-inner">
-      <div class="idblock">
-        <div class="mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 2.6c5.2 0 9.4 4.2 9.4 9.4S17.2 21.4 12 21.4 2.6 17.2 2.6 12 6.8 2.6 12 2.6Z" stroke="rgba(255,255,255,.9)" stroke-width="1.6"/>
-            <path d="M7.2 12h9.6M12 7.2v9.6" stroke="rgba(255,255,255,.9)" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="idtext">
-          <p class="name">Raydo Matthee</p>
-          <p class="title">Founder &amp; CTO — Skunkworks (Pty) Ltd · IBM Certified Technical Trainer &amp; Solutions Architect</p>
-        </div>
-      </div>
+<div class="wrapper">
 
-      <div class="actions" role="navigation" aria-label="Primary contact actions">
-        <a class="btn primary" href="mailto:raydo@skunkworks.africa" aria-label="Email Raydo">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
-            <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Email
-        </a>
-        <a class="btn" href="tel:+27833807950" aria-label="Call Raydo">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7.5 4.5c-.5 1.7-.4 3.7 1.3 5.4l1 1c1.6 1.6 3.6 3.3 5.6 4.8l.8.6c1.5 1.1 3.1 1.4 4.3.8l.7-.4c.3-.2.4-.6.3-1l-.9-3c-.1-.3-.4-.6-.8-.6l-3-.3c-.3 0-.6.1-.8.3l-.7.7c-1.4-.8-3.4-2.3-5.4-4.4l.7-.7c.2-.2.3-.5.3-.8l-.3-3c0-.3-.3-.6-.6-.8l-3-1c-.4-.1-.8 0-1 .3l-.5.6Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Call
-        </a>
-        <a class="btn" href="https://www.skunkworks.africa" target="_blank" rel="noreferrer" aria-label="Open Skunkworks website">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M10 14a3 3 0 0 0 4 0l2.5-2.5a3 3 0 0 0-4.2-4.2L11.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M14 10a3 3 0 0 0-4 0L7.5 12.5a3 3 0 1 0 4.2 4.2L12.5 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          Website
-        </a>
-        <a class="btn ghost" href="#cta" aria-label="Jump to call to action section">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6.5 9.5 12 15l5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          CTA
-        </a>
-      </div>
-    </div>
+<div class="header">
+  <h1>Raydo Matthee</h1>
+  <div class="subtitle">Founder & CTO | IBM Certified Technical Trainer & Solutions Architect</div>
+
+  <div class="contact">
+    <span>Johannesburg, South Africa</span>
+    <a href="mailto:raydo@skunkworks.africa">raydo@skunkworks.africa</a>
+    <a href="tel:+27833807950">+27 83 380 7950</a>
+    <a href="https://www.skunkworks.africa" target="_blank">skunkworks.africa</a>
   </div>
-
-  <main class="wrap" role="main">
-    <!-- Hero -->
-    <section class="hero" aria-label="Profile hero">
-      <div class="hero-inner">
-        <div>
-          <div class="headline">
-            <div class="avatar" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 12.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M4.6 20.4c1.8-3.7 5-5.5 7.4-5.5s5.6 1.8 7.4 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h1>Raydo Matthee</h1>
-              <p class="subhead">
-                Founder &amp; CTO at Skunkworks (Pty) Ltd · IBM Certified Technical Trainer &amp; Solutions Architect.
-                Focused on enterprise integration and hybrid-cloud execution—where governance, security, and delivery assurance are non-negotiable.
-              </p>
-
-              <div class="chips" aria-label="Key domain tags">
-                <span class="chip"><span class="dot" aria-hidden="true"></span>Integration</span>
-                <span class="chip"><span class="dot" aria-hidden="true"></span>Automation</span>
-                <span class="chip"><span class="dot" aria-hidden="true"></span>Data</span>
-                <span class="chip"><span class="dot" aria-hidden="true"></span>Hybrid Cloud</span>
-                <span class="chip"><span class="dot" aria-hidden="true"></span>Security &amp; Governance</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="quickfacts" aria-label="Quick facts">
-          <div class="q-title">
-            <h2>Quick Facts</h2>
-            <span class="badge" title="Availability indicator">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 12.5l2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 21.2A9.2 9.2 0 1 0 12 2.8a9.2 9.2 0 0 0 0 18.4Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-              </svg>
-              Available for POV / Delivery Support
-            </span>
-          </div>
-
-          <div class="q-grid">
-            <div class="q-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 22s7-4.6 7-12a7 7 0 0 0-14 0c0 7.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M12 12.2a2.3 2.3 0 1 0 0-4.6 2.3 2.3 0 0 0 0 4.6Z" stroke="currentColor" stroke-width="1.6"/>
-              </svg>
-              <div><strong>Johannesburg</strong><br/>South Africa</div>
-            </div>
-
-            <div class="q-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <div><strong>Email</strong><br/><a href="mailto:raydo@skunkworks.africa">raydo@skunkworks.africa</a></div>
-            </div>
-
-            <div class="q-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7.5 4.5c-.5 1.7-.4 3.7 1.3 5.4l1 1c1.6 1.6 3.6 3.3 5.6 4.8l.8.6c1.5 1.1 3.1 1.4 4.3.8l.7-.4c.3-.2.4-.6.3-1l-.9-3c-.1-.3-.4-.6-.8-.6l-3-.3c-.3 0-.6.1-.8.3l-.7.7c-1.4-.8-3.4-2.3-5.4-4.4l.7-.7c.2-.2.3-.5.3-.8l-.3-3c0-.3-.3-.6-.6-.8l-3-1c-.4-.1-.8 0-1 .3l-.5.6Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <div><strong>Phone</strong><br/><a href="tel:+27833807950">+27 83 380 7950</a></div>
-            </div>
-
-            <div class="q-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 21s7-4 7-9.5S16.4 3 12 3 5 6.5 5 11.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M8.8 11.5h6.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-              <div><strong>Website</strong><br/><a href="https://www.skunkworks.africa" target="_blank" rel="noreferrer">skunkworks.africa</a></div>
-            </div>
-
-            <div class="q-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M12 2.8V21.2" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
-              </svg>
-              <div>
-                <strong>Primary Domains</strong><br/>
-                Integration · Automation · Data · Hybrid Cloud · Security
-              </div>
-            </div>
-          </div>
-
-          <div class="q-links" aria-label="External profile links">
-            <a href="[INSERT LINK]" target="_blank" rel="noreferrer" aria-label="Open LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6.5 9.8v8.9M6.5 6.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M10.3 9.8v8.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M10.3 13.5c.5-2.2 2-3.4 4-3.4 2.7 0 3.9 1.7 3.9 4.6v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              LinkedIn
-            </a>
-            <a href="https://www.credly.com/users/raydo-matthee" target="_blank" rel="noreferrer" aria-label="Open Credly profile">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M8.6 12.2l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Credly
-            </a>
-            <a href="https://www.kickresume.com/cv/Raydo-M/" target="_blank" rel="noreferrer" aria-label="Open Kickresume CV">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 3.5h7l3 3V20.5H7V3.5Z" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M14 3.5v3h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M9 12h6M9 15h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-              CV
-            </a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Main sections -->
-    <section class="grid" aria-label="Profile content">
-
-      <!-- A) Executive Summary -->
-      <article class="card" id="summary">
-        <header class="card-head">
-          <h3>A) Executive Summary</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3.2 20.2 7.5v9L12 20.8 3.8 16.5v-9L12 3.2Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M8.5 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M12 8.5v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            Enterprise-ready profile
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            I help enterprises reduce integration risk and accelerate time-to-value by aligning solution design,
-            delivery governance, and enablement (training) around measurable outcomes. My work spans integration
-            architecture, API management, hybrid cloud patterns, and delivery assurance—executed with security-first
-            controls and practical operating procedures. This profile is designed for stakeholders assessing both
-            training alignment and Proof of Value (POV) support for IBM Cloud Pak for Integration (CP4I).
-          </p>
-
-          <ul class="bullets" aria-label="Executive value points">
-            <li>
-              <span class="tick" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span><strong class="t-strong">Outcome-driven delivery:</strong> architecture-to-execution alignment with clear success criteria, evidence packs, and handover-ready artefacts.</span>
-            </li>
-            <li>
-              <span class="tick" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span><strong class="t-strong">Training that maps to enterprise reality:</strong> delivery formats and learning paths that support architects, developers, and operations teams—without creating shelfware.</span>
-            </li>
-            <li>
-              <span class="tick" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span><strong class="t-strong">Security &amp; governance by design:</strong> least privilege, auditability, and production readiness built into POV and deployment workflows.</span>
-            </li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- B) Engagement Context -->
-      <article class="card" id="context">
-        <header class="card-head">
-          <h3>B) Engagement Context</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4.5 8.5h15v10h-15v-10Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M7.5 6.5h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M7.5 12h9M7.5 15h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            CourseMonster thread
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            This document accompanies an ongoing professional discussion with CourseMonster regarding
-            IBM-authorised training offerings and delivery support.
-          </p>
-
-          <div class="pillgrid" aria-label="Engagement context pillars">
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M7.5 10h9M7.5 12.8h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Training overview request
-              </h4>
-              <p>
-                Seeking a current overview of IBM trainings aligned to <strong>integration</strong>, <strong>automation</strong>,
-                <strong>data</strong>, and <strong>hybrid cloud</strong>, including delivery formats, certification tracks, and
-                recommended learning paths for enterprise teams.
-              </p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M8.5 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Deployment / POV confirmation
-              </h4>
-              <p>
-                Confirming whether CourseMonster provides consultant support for IBM solution deployments and
-                <strong>Proof of Value (POV)</strong> engagements (scoping, delivery, and evidence-based outcomes).
-              </p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 18.5h12M7.5 18.5V10.5m3 8v-6m3 6v-9m3 9V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M6.5 7.5 10 4l3 2.5L17.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Live opportunity: CP4I POV
-              </h4>
-              <p>
-                A client has been demonstrated <strong>IBM Cloud Pak for Integration (CP4I)</strong> capabilities including
-                <strong>ESB</strong> and <strong>API management</strong>. The opportunity is close to deployment, with a requested
-                <strong>POV</strong> prior to proceeding—seeking support on scope, timelines, and prerequisites.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- C) Core Capabilities -->
-      <article class="card" id="capabilities">
-        <header class="card-head">
-          <h3>C) Core Capabilities</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            Architecture + enablement
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="pillgrid" aria-label="Core capability blocks">
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 7.5h10v9H7v-9Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 10h6M9 12.8h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Integration Architecture
-              </h4>
-              <p>Pattern-led design for hybrid integration: API-led, event-driven, service orchestration, and domain-aligned integration boundaries.</p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M8.5 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M15.5 19a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M11.5 10.5l4 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                API Management &amp; Governance
-              </h4>
-              <p>API lifecycle governance: standardisation, security policies, versioning, developer experience, and operational telemetry.</p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5.5 7.5h13v9h-13v-9Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M8 17.5v2M16 17.5v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M9 10h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Automation &amp; Operations Enablement
-              </h4>
-              <p>Operational readiness: runbooks, handover packs, observability, incident response alignment, and SRE-friendly practices.</p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3.5c4.7 0 8.5 3.8 8.5 8.5S16.7 20.5 12 20.5 3.5 16.7 3.5 12 7.3 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 7.5v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Proof of Value Execution
-              </h4>
-              <p>Structured POV delivery: define success criteria, build measurable flows, validate outcomes, and package evidence for decision-makers.</p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 19.2 6.6v6.2c0 4.2-3 7.6-7.2 8.4C7.8 20.4 4.8 17 4.8 12.8V6.6L12 2.8Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 12.2l2 2 4-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Security &amp; Compliance
-              </h4>
-              <p>Least privilege, auditability, secure configuration baselines, and integration-layer threat reduction (identity, secrets, network segmentation).</p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 18.5h12M7.5 18.5V9.5m3 9v-6m3 6v-8m3 8V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M6.5 8.5 10 5.2l3 2.3 4.5-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Data &amp; Integration Observability
-              </h4>
-              <p>Instrumentation, dashboards, and evidence: traceability, SLIs/SLOs, and operational analytics for integration reliability.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- D) IBM & Enterprise Delivery Focus -->
-      <article class="card" id="delivery">
-        <header class="card-head">
-          <h3>D) IBM &amp; Enterprise Delivery Focus</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M12 4v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-            Delivery assurance
-          </div>
-        </header>
-        <div class="card-body">
-          <ul class="bullets" aria-label="Delivery focus bullets">
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">Integration patterns:</strong> API-led connectivity, event-driven integration, synchronous vs asynchronous design, idempotency, and error-handling standards.</span></li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">API management:</strong> policy enforcement, throttling, authentication/authorisation, developer onboarding, and API lifecycle governance.</span></li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">ESB &amp; mediation:</strong> canonical data models, transformation and routing, service orchestration, reliability patterns, and operational monitoring.</span></li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">Hybrid integration:</strong> network constraints, secure connectivity, environment parity, and deployment standards across cloud and on-prem contexts.</span></li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">Governance &amp; security:</strong> least privilege, secrets management, audit evidence, separation of duties, and hardened operational baselines.</span></li>
-            <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span><strong class="t-strong">Delivery assurance:</strong> success criteria, acceptance testing, release readiness, runbooks, and handover packs that withstand audit and support scrutiny.</span></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- E) Training Portfolio Fit -->
-      <article class="card" id="training">
-        <header class="card-head">
-          <h3>E) Training Portfolio Fit</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7 3.5h10v17H7v-17Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M9 7h6M9 10h6M9 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            Example tracks (no fabricated codes)
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            Below is an <strong>example</strong> enterprise-aligned structure showing how integration, automation,
-            data, and hybrid cloud enablement can be packaged into role-based learning paths. Exact IBM course codes
-            are intentionally not listed here.
-          </p>
-
-          <div style="margin-top:12px;">
-            <table aria-label="Example training tracks table">
-              <thead>
-                <tr>
-                  <th>Track name</th>
-                  <th>Audience</th>
-                  <th>Delivery format</th>
-                  <th>Outcome (skills / cert readiness)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="t-strong">Enterprise Integration Foundations</td>
-                  <td>
-                    <span class="t-tag">Architects</span>
-                    <span class="t-tag">Developers</span>
-                    <span class="t-tag">Ops</span>
-                  </td>
-                  <td>Virtual · Onsite · Blended</td>
-                  <td>Common patterns, integration governance, operational readiness; typical includes labs and design reviews.</td>
-                </tr>
-                <tr>
-                  <td class="t-strong">API Management &amp; Governance</td>
-                  <td>
-                    <span class="t-tag">Architects</span>
-                    <span class="t-tag">Security</span>
-                    <span class="t-tag">Platform</span>
-                  </td>
-                  <td>Virtual · Blended</td>
-                  <td>API lifecycle controls, policy design, developer experience; typical includes governance templates and policy walkthroughs.</td>
-                </tr>
-                <tr>
-                  <td class="t-strong">Hybrid Integration Operations</td>
-                  <td>
-                    <span class="t-tag">Ops</span>
-                    <span class="t-tag">SRE</span>
-                    <span class="t-tag">Platform</span>
-                  </td>
-                  <td>Virtual · Onsite</td>
-                  <td>Runbooks, monitoring, incident response alignment; typical includes troubleshooting drills and evidence pack outputs.</td>
-                </tr>
-                <tr>
-                  <td class="t-strong">Automation Enablement for Enterprise Teams</td>
-                  <td>
-                    <span class="t-tag">Devs</span>
-                    <span class="t-tag">Ops</span>
-                    <span class="t-tag">Business IT</span>
-                  </td>
-                  <td>Blended</td>
-                  <td>Practical automation patterns, guardrails, and handover; typical includes SOPs and change-control integration.</td>
-                </tr>
-                <tr>
-                  <td class="t-strong">Data &amp; Integration Reliability</td>
-                  <td>
-                    <span class="t-tag">Architects</span>
-                    <span class="t-tag">Devs</span>
-                    <span class="t-tag">Ops</span>
-                  </td>
-                  <td>Virtual</td>
-                  <td>Observability, traceability, error budgets; typical includes dashboards, metrics, and verification evidence.</td>
-                </tr>
-                <tr>
-                  <td class="t-strong">Hybrid Cloud Integration Strategy</td>
-                  <td>
-                    <span class="t-tag">Leads</span>
-                    <span class="t-tag">Architects</span>
-                    <span class="t-tag">Security</span>
-                  </td>
-                  <td>Onsite · Executive Workshop</td>
-                  <td>Reference architectures, governance model, and roadmap; typical includes target-state blueprint and operating model.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </article>
-
-      <!-- F) Proof of Value (POV) Support -->
-      <article class="card" id="pov">
-        <header class="card-head">
-          <h3>F) Proof of Value (POV) Support</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 18.5h12M7.5 18.5V10.5m3 8v-6m3 6v-9m3 9V7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M6.5 7.5 10 4l3 2.5L17.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            CP4I POV packaging
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            A POV should be treated as a controlled delivery engagement: clear success criteria, scoped flows,
-            testable acceptance evidence, and a handover pack that removes ambiguity for procurement and operations.
-          </p>
-
-          <div class="twocol" aria-label="POV scope options and timelines">
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 19.2 6.6v6.2c0 4.2-3 7.6-7.2 8.4C7.8 20.4 4.8 17 4.8 12.8V6.6L12 2.8Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 12.2l2 2 4-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                POV scope options
-              </h4>
-              <ul>
-                <li><strong>Starter</strong> (1–2 flows): validate core integration and governance assumptions; prioritise speed and clarity.</li>
-                <li><strong>Standard</strong> (2–4 flows): add operational readiness, policy design, and evidence pack suitable for enterprise decisioning.</li>
-                <li><strong>Enterprise</strong> (4–6 flows): include multi-environment concerns, security hardening, performance considerations, and handover-ready SOPs.</li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 21.2A9.2 9.2 0 1 0 12 2.8a9.2 9.2 0 0 0 0 18.4Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 7.5v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Timelines &amp; assumptions
-              </h4>
-              <ul>
-                <li><strong>Typical timeline:</strong> 2–4 weeks (Starter), 3–6 weeks (Standard), 6–10 weeks (Enterprise).</li>
-                <li><strong>Assumptions:</strong> timely access provisioning, nominated client stakeholders, and agreed success criteria within week 1.</li>
-                <li><strong>Constraints handled:</strong> network restrictions, identity integration, data availability, and environment readiness.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline" aria-label="POV phases timeline">
-            <div class="steps">
-              <div class="step">
-                <div class="num">1</div>
-                <h5>Discover</h5>
-                <p>Define objectives, success criteria, stakeholders, and constraints. Confirm target flows and evidence requirements.</p>
-              </div>
-              <div class="step">
-                <div class="num">2</div>
-                <h5>Design</h5>
-                <p>Solution blueprint, integration patterns, API policies, security controls, and operational model alignment.</p>
-              </div>
-              <div class="step">
-                <div class="num">3</div>
-                <h5>Build</h5>
-                <p>Implement scoped flows, configurations, and supporting artefacts. Instrument for observability and validation.</p>
-              </div>
-              <div class="step">
-                <div class="num">4</div>
-                <h5>Validate</h5>
-                <p>Run acceptance scenarios, capture evidence, confirm non-functional concerns in-scope (security, reliability).</p>
-              </div>
-              <div class="step">
-                <div class="num">5</div>
-                <h5>Handover</h5>
-                <p>Deliver runbooks, SOPs, architecture pack, and recommendations. Enable teams for deployment readiness.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="twocol" aria-label="Deliverables and prerequisites">
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 3.5h10v17H7v-17Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 7h6M9 10h6M9 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Deliverables (evidence-based)
-              </h4>
-              <ul>
-                <li>POV charter: objectives, scope, success criteria, acceptance tests, and constraints.</li>
-                <li>Architecture pack: target flow designs, integration patterns, and operational considerations.</li>
-                <li>Demo flows + validation scripts: reproducible scenarios and pass/fail evidence.</li>
-                <li>Security posture summary: identity, secrets handling, policy coverage, audit considerations.</li>
-                <li>Runbooks &amp; SOPs: operations handover for support teams (triage, restart, rollback, monitoring).</li>
-                <li>Executive evidence pack: results, recommendations, and deployment readiness checklist.</li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 19.2 6.6v6.2c0 4.2-3 7.6-7.2 8.4C7.8 20.4 4.8 17 4.8 12.8V6.6L12 2.8Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 8.5v3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M12 16.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                </svg>
-                Prerequisites checklist (from client)
-              </h4>
-              <ul>
-                <li>Environment access: required accounts, roles, and approval pathways (least privilege preferred).</li>
-                <li>Connectivity details: network routes, proxies, firewall rules, DNS, and TLS requirements.</li>
-                <li>Data samples: representative payloads, schemas, edge cases, and sanitised test data.</li>
-                <li>System endpoints: source/target systems, auth methods, rate limits, and expected SLAs.</li>
-                <li>Stakeholder availability: product owner, SME(s), security reviewer, and operations representative.</li>
-                <li>Success criteria agreement: what “pass” looks like, how it is evidenced, and who signs off.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- G) Selected Project Experience -->
-      <article class="card" id="experience">
-        <header class="card-head">
-          <h3>G) Selected Project Experience</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7.5 7.5h9v12h-9v-12Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M9 7.5V6a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M9.5 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            Placeholders where needed
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            Project entries are intentionally concise and designed for enterprise scanning. Add specific client names
-            and outcomes where permissible.
-          </p>
-
-          <div class="exp" aria-label="Experience cards">
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] CP4I POV Readiness &amp; Scoping</h4>
-                <div class="meta">Hybrid Integration</div>
-              </div>
-              <p>Defined success criteria, scoped integration flows, identified prerequisites, and packaged an evidence-based POV plan aligned to stakeholder sign-off.</p>
-            </div>
-
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] API Governance Operating Model</h4>
-                <div class="meta">API Management</div>
-              </div>
-              <p>Created policy standards, versioning approach, and onboarding workflow; aligned security controls and operational telemetry for audit-ready API delivery.</p>
-            </div>
-
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] Integration Ops Enablement</h4>
-                <div class="meta">Runbooks &amp; SOPs</div>
-              </div>
-              <p>Developed runbooks, troubleshooting decision trees, and handover packs; implemented verification steps and evidence capture for production readiness.</p>
-            </div>
-
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] Enterprise Training Delivery</h4>
-                <div class="meta">Enablement</div>
-              </div>
-              <p>Delivered role-based training aligned to integration and hybrid cloud adoption, focusing on hands-on labs and operational best practices.</p>
-            </div>
-
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] Security-by-Design Integration Controls</h4>
-                <div class="meta">Security</div>
-              </div>
-              <p>Applied least privilege, secrets handling, and audit-friendly operational controls across integration workflows and supporting documentation.</p>
-            </div>
-
-            <div class="expitem">
-              <div class="top">
-                <h4>[ADD PROJECT] Hybrid Cloud Architecture Blueprint</h4>
-                <div class="meta">Architecture</div>
-              </div>
-              <p>Produced target-state reference architecture, governance checkpoints, and phased roadmap to minimise risk during adoption and rollout.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- H) Certifications & Badges -->
-      <article class="card" id="certs">
-        <header class="card-head">
-          <h3>H) Certifications &amp; Badges</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M8.6 12.2l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Verify via Credly
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            IBM credentials and digital badges can be verified via Credly:
-            <a href="https://www.credly.com/users/raydo-matthee" target="_blank" rel="noreferrer"><strong class="t-strong">credly.com/users/raydo-matthee</strong></a>.
-            (This document avoids listing counts or codes where they may change over time.)
-          </p>
-
-          <div class="twocol" aria-label="Credential highlights">
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 3.5h10v17H7v-17Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 7h6M9 10h6M9 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Professional positioning
-              </h4>
-              <ul>
-                <li><strong>IBM Certified Technical Trainer</strong> (as stated)</li>
-                <li><strong>Solutions Architect</strong> — enterprise integration &amp; hybrid cloud alignment</li>
-                <li>Credentials and badges: <a href="https://www.credly.com/users/raydo-matthee" target="_blank" rel="noreferrer">Credly verification link</a></li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3.5c4.7 0 8.5 3.8 8.5 8.5S16.7 20.5 12 20.5 3.5 16.7 3.5 12 7.3 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 7.2v5.2l3.2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Credibility signals
-              </h4>
-              <ul>
-                <li>Evidence-first approach: success criteria, validation scripts, and handover packs</li>
-                <li>Enterprise readiness: governance, auditability, operations, and change control alignment</li>
-                <li>Training-to-delivery mapping: enablement supports real project execution</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- I) Tools & Platforms -->
-      <article class="card" id="tools">
-        <header class="card-head">
-          <h3>I) Tools &amp; Platforms</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6.5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M8.5 8.5h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M9.8 15.5h4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M4.5 6.5h15v11h-15v-11Z" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-            IBM + enterprise stack
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="pillgrid" aria-label="Tools and platforms cards">
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M8.5 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                IBM Integration &amp; Enablement
-              </h4>
-              <p>
-                IBM Cloud Pak for Integration (CP4I) <span class="muted">(as referenced in engagement)</span>,
-                API management and ESB capabilities, enterprise integration patterns, governance deliverables.
-              </p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3.5c4.7 0 8.5 3.8 8.5 8.5S16.7 20.5 12 20.5 3.5 16.7 3.5 12 7.3 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 12h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Hybrid Cloud &amp; Delivery
-              </h4>
-              <p>
-                Hybrid architecture planning, environment readiness, secure connectivity requirements, delivery governance,
-                and operational handover.
-              </p>
-            </div>
-
-            <div class="pill">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 19.2 6.6v6.2c0 4.2-3 7.6-7.2 8.4C7.8 20.4 4.8 17 4.8 12.8V6.6L12 2.8Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 12.2l2 2 4-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Security &amp; Governance
-              </h4>
-              <p>
-                Least privilege, audit evidence, configuration baselines, policy enforcement, secrets and access workflows,
-                and operational verification.
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- J) Engagement Models -->
-      <article class="card" id="models">
-        <header class="card-head">
-          <h3>J) Engagement Models</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7.5 7.5h9v9h-9v-9Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M4.5 12h3M16.5 12h3M12 4.5v3M12 16.5v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            Practical delivery options
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="twocol" aria-label="Engagement model panels">
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 3.5h10v17H7v-17Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M9 7h6M9 10h6M9 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Training (Enablement)
-              </h4>
-              <ul>
-                <li>Role-based learning paths: Architects, Developers, Ops, Security</li>
-                <li>Virtual / onsite / blended delivery formats</li>
-                <li>Hands-on labs + operational best practices</li>
-                <li>Enterprise readiness: governance templates and evidence outputs</li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6.5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M8.5 8.5h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M9.8 15.5h4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4.5 6.5h15v11h-15v-11Z" stroke="currentColor" stroke-width="1.6"/>
-                </svg>
-                Advisory (Strategy &amp; Design)
-              </h4>
-              <ul>
-                <li>Integration strategy workshops and roadmap definition</li>
-                <li>Architecture blueprints and governance models</li>
-                <li>Security-by-design reviews and operational readiness</li>
-                <li>Delivery assurance: acceptance criteria and decision support</li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 21.2A9.2 9.2 0 1 0 12 2.8a9.2 9.2 0 0 0 0 18.4Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M12 7.5v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                POV (Proof of Value)
-              </h4>
-              <ul>
-                <li>Controlled scope: 1–6 validated flows with evidence</li>
-                <li>Deliverables: charter, architecture pack, runbooks, evidence pack</li>
-                <li>Acceptance tests and reproducible demo scripts</li>
-                <li>Timelines: 2–10 weeks depending on scope and constraints</li>
-              </ul>
-            </div>
-
-            <div class="panel">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M8.5 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Deployment Support
-              </h4>
-              <ul>
-                <li>Production readiness checklist and go-live governance</li>
-                <li>Operational handover: SOPs, monitoring, incident workflows</li>
-                <li>Security posture hardening and audit evidence preparation</li>
-                <li>Enablement wrap-up: training aligned to deployed reality</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- K) Call to Action -->
-      <article class="card" id="cta">
-        <header class="card-head">
-          <h3>K) Call to Action — What we need from CourseMonster</h3>
-          <div class="kicker">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3.5c4.7 0 8.5 3.8 8.5 8.5S16.7 20.5 12 20.5 3.5 16.7 3.5 12 7.3 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M12 8.5v4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M12 16.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-            </svg>
-            Response checklist
-          </div>
-        </header>
-        <div class="card-body">
-          <p class="lead">
-            To progress both enablement planning and the live CP4I opportunity, the following response items would be appreciated.
-          </p>
-
-          <div class="checklist" aria-label="CourseMonster requested response checklist">
-            <div class="check">
-              <div class="box" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="text">
-                <strong>IBM training overview:</strong> integration, automation, data, and hybrid cloud offerings currently available (high-level catalogue summary).
-              </div>
-            </div>
-
-            <div class="check">
-              <div class="box" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="text">
-                <strong>Delivery formats &amp; certification tracks:</strong> virtual / onsite / blended options, certification-aligned tracks, and recommended learning paths for enterprise teams.
-              </div>
-            </div>
-
-            <div class="check">
-              <div class="box" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="text">
-                <strong>Deployment &amp; POV capability confirmation:</strong> whether CourseMonster supports IBM solution deployments and Proof of Value engagements (consultants, approach, availability).
-              </div>
-            </div>
-
-            <div class="check">
-              <div class="box" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="text">
-                <strong>CP4I POV response:</strong> scope options, timeline ranges, prerequisites, and—if possible—commercial approach (even ballpark bands).
-              </div>
-            </div>
-          </div>
-
-          <div class="snippet" aria-label="Email-ready summary snippet">
-            <div class="row">
-              <h4>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
-                  <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Email-ready summary snippet
-              </h4>
-              <button class="copybtn" type="button" id="copyBtn" aria-label="Copy email snippet to clipboard">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M9 9.5h10v10H9v-10Z" stroke="currentColor" stroke-width="1.6"/>
-                  <path d="M5 14.5V5.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                Copy
-              </button>
-            </div>
-
-            <pre id="emailSnippet">Thank you for the update regarding CourseMonster’s IBM-authorised training offerings.
-
-Kindly share an overview of the IBM trainings currently available—especially those aligned to integration, automation, data, and hybrid cloud solutions—along with delivery formats, certification tracks, and any recommended enterprise learning paths.
-
-In addition, please confirm whether CourseMonster supports IBM solution deployments and Proof of Value (POV) engagements.
-
-Context: We have a live client opportunity where IBM Cloud Pak for Integration (CP4I) has been demonstrated (including ESB and API management). The client is close to proceeding to deployment, but has requested a POV first. Please advise whether your consultants can support the CP4I POV, including scope options, timeline ranges, and prerequisites required from our side.
-
-Regards,
-Raydo Matthee
-Founder & CTO — Skunkworks (Pty) Ltd
-raydo@skunkworks.africa | +27 83 380 7950 | https://www.skunkworks.africa</pre>
-          </div>
-
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="mailto:raydo@skunkworks.africa?subject=CourseMonster%20-%20IBM%20Training%20%26%20CP4I%20POV%20Support&body=Hi%20CourseMonster%2C%0A%0APlease%20see%20the%20attached%20profile%20and%20engagement%20context.%20We%20would%20appreciate%20your%20IBM%20training%20overview%20(integration%2Fautomation%2Fdata%2Fhybrid%20cloud)%2C%20delivery%20formats%2C%20certification%20tracks%2C%20and%20confirmation%20of%20POV%2Fdeployment%20consulting%20capability.%0A%0ARegards%2C%0ARaydo" aria-label="Email with prefilled subject and body">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Email CourseMonster
-            </a>
-
-            <a class="btn" href="https://www.skunkworks.africa" target="_blank" rel="noreferrer" aria-label="Open Skunkworks website in new tab">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M10 14a3 3 0 0 0 4 0l2.5-2.5a3 3 0 0 0-4.2-4.2L11.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M14 10a3 3 0 0 0-4 0L7.5 12.5a3 3 0 1 0 4.2 4.2L12.5 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-              View Skunkworks
-            </a>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <footer role="contentinfo" aria-label="Footer">
-      <div class="hint">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M7 3.5h10v17H7v-17Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M9 7h6M9 10h6M9 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span>Download as PDF: use your browser’s Print → “Save as PDF”. (Print styling included.)</span>
-      </div>
-      <div>
-        <span class="muted">LinkedIn:</span> <span class="inlinecode">[INSERT LINK]</span> ·
-        <span class="muted">Last updated:</span> <span class="inlinecode">[UPDATE DATE]</span>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    (function(){
-      const btn = document.getElementById('copyBtn');
-      const snippet = document.getElementById('emailSnippet');
-      if(!btn || !snippet) return;
-
-      async function copyText(text){
-        try{
-          if(navigator.clipboard && navigator.clipboard.writeText){
-            await navigator.clipboard.writeText(text);
-            return true;
-          }
-        }catch(e){}
-        try{
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.focus();
-          ta.select();
-          const ok = document.execCommand('copy');
-          document.body.removeChild(ta);
-          return ok;
-        }catch(e){
-          return false;
-        }
-      }
-
-      btn.addEventListener('click', async function(){
-        const ok = await copyText(snippet.textContent || '');
-        const original = btn.innerHTML;
-        btn.innerHTML = ok
-          ? '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Copied'
-          : '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8.5v4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 16.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M12 21.2A9.2 9.2 0 1 0 12 2.8a9.2 9.2 0 0 0 0 18.4Z" stroke="currentColor" stroke-width="1.6"/></svg>Copy failed';
-        setTimeout(()=>{ btn.innerHTML = original; }, 1400);
-      });
-    })();
-  </script>
+</div>
+
+<!-- Executive Summary -->
+<div class="section">
+<h2>Executive Summary</h2>
+<div class="card">
+<p>
+Enterprise integration specialist focused on reducing delivery risk, accelerating time-to-value, and aligning IBM integration platforms with governance-first operating models. Combines architecture, enablement, and execution into measurable outcomes—especially across CP4I, API governance, and hybrid-cloud deployment frameworks.
+</p>
+</div>
+</div>
+
+<!-- Engagement Context -->
+<div class="section">
+<h2>Engagement Context</h2>
+
+<div class="grid grid-2">
+<div class="card">
+<strong>IBM Training Alignment</strong>
+<p>Seeking overview of IBM trainings aligned to Integration, Automation, Data, and Hybrid Cloud—delivery formats, certification tracks, and recommended enterprise learning paths.</p>
+</div>
+
+<div class="card">
+<strong>Deployment & POV Confirmation</strong>
+<p>Confirming whether CourseMonster supports IBM solution deployments and Proof of Value (POV) engagements.</p>
+</div>
+
+<div class="card">
+<strong>Live CP4I Opportunity</strong>
+<p>IBM Cloud Pak for Integration (ESB + API Management) demonstrated. Client nearing close, but requires structured POV engagement prior to deployment.</p>
+</div>
+</div>
+</div>
+
+<!-- Capabilities -->
+<div class="section">
+<h2>Core Capabilities</h2>
+<div class="card">
+<div>
+<span class="tag">Integration Architecture</span>
+<span class="tag">API Governance</span>
+<span class="tag">Hybrid Integration</span>
+<span class="tag">Security-by-Design</span>
+<span class="tag">POV Delivery</span>
+<span class="tag">Operational Readiness</span>
+</div>
+</div>
+</div>
+
+<!-- Training Table -->
+<div class="section">
+<h2>Training Portfolio Fit</h2>
+<div class="card">
+<table>
+<tr>
+<th>Track</th>
+<th>Audience</th>
+<th>Format</th>
+<th>Outcome</th>
+</tr>
+<tr>
+<td>Enterprise Integration Foundations</td>
+<td>Architects, Developers</td>
+<td>Virtual / Onsite</td>
+<td>Pattern alignment, operational governance</td>
+</tr>
+<tr>
+<td>API Management & Governance</td>
+<td>Architects, Security</td>
+<td>Virtual</td>
+<td>Policy enforcement, lifecycle management</td>
+</tr>
+<tr>
+<td>Hybrid Integration Operations</td>
+<td>Ops, SRE</td>
+<td>Blended</td>
+<td>Runbooks, troubleshooting, evidence packs</td>
+</tr>
+</table>
+</div>
+</div>
+
+<!-- POV -->
+<div class="section">
+<h2>Proof of Value (POV) Support</h2>
+
+<div class="grid grid-2">
+<div class="card">
+<strong>Scope Options</strong>
+<ul>
+<li>Starter (1–2 flows)</li>
+<li>Standard (2–4 flows)</li>
+<li>Enterprise (4–6 flows)</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Deliverables</strong>
+<ul>
+<li>Architecture blueprint</li>
+<li>Success criteria validation</li>
+<li>Demo flows + evidence pack</li>
+<li>Runbooks & operational handover</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<!-- CTA -->
+<div class="section">
+<div class="cta">
+<h3>What We Require from CourseMonster</h3>
+<ul>
+<li><strong>IBM Training Catalogue</strong> (integration / automation / data / hybrid cloud)</li>
+<li>Delivery formats + certification tracks</li>
+<li>Confirmation of POV & deployment consulting capability</li>
+<li>CP4I POV scope, timelines, prerequisites, commercials</li>
+</ul>
+</div>
+</div>
+
+</div>
 </body>
 </html>
