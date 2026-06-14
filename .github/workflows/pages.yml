@@ -23,12 +23,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Inject mobile UX assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("index.html")
+          html = path.read_text()
+          if "mobile-ui-fix.css" not in html:
+              html = html.replace(
+                  "</head>",
+                  '  <link rel="stylesheet" href="./mobile-ui-fix.css?v=3">\n  <script defer src="./mobile-ui-fix.js?v=3"></script>\n</head>'
+              )
+          path.write_text(html)
+          PY
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
