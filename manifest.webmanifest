@@ -1,0 +1,10 @@
+{
+  "name": "Credly Growth Hub",
+  "short_name": "Growth Hub",
+  "description": "Track free Credly badges, learner skills, career growth and scheduled SCORM-style learning.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": []
+}
