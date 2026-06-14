@@ -1,0 +1,161 @@
+:root{--mobile-tap:52px}
+
+@media (max-width:780px){
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    font-size:17px!important;
+    line-height:1.55!important;
+    padding-bottom:calc(104px + env(safe-area-inset-bottom))!important;
+  }
+
+  .topbar{
+    padding:calc(12px + env(safe-area-inset-top)) 14px 12px!important;
+    min-height:auto!important;
+    transition:transform .24s ease, box-shadow .24s ease!important;
+  }
+  .topbar.is-hidden{transform:translateY(-110%)!important;box-shadow:none!important}
+  .topbar h1{
+    font-size:clamp(24px,7vw,32px)!important;
+    white-space:normal!important;
+    line-height:1.08!important;
+  }
+  .subtitle{display:none!important}
+  .top-actions,.desktop-actions,.header-actions{display:none!important}
+
+  .layout{
+    display:block!important;
+    padding:14px 12px 116px!important;
+  }
+  .sidebar{display:none!important}
+
+  .panel,.card{
+    border-radius:20px!important;
+    padding:16px!important;
+  }
+  .section-heading{
+    display:grid!important;
+    gap:10px!important;
+    margin-bottom:14px!important;
+  }
+  .section-heading p,p,li{font-size:16px!important}
+  h2{font-size:clamp(24px,7vw,34px)!important}
+  h3{font-size:19px!important}
+
+  .stats{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+  }
+  .stat{min-height:98px!important;padding:14px!important}
+  .stat strong{font-size:30px!important}
+
+  .two,.three,.form-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+  }
+
+  label{font-size:15px!important;gap:8px!important}
+  input,select,textarea{
+    font-size:16px!important;
+    min-height:52px!important;
+    padding:14px!important;
+    border-radius:16px!important;
+  }
+  textarea{min-height:132px!important}
+  input[type=range]{min-height:42px!important;padding:0!important}
+
+  .btn{
+    min-height:var(--mobile-tap)!important;
+    padding:13px 16px!important;
+    border-radius:999px!important;
+    width:100%;
+    justify-content:center;
+    font-size:15px!important;
+  }
+  .btn.small{min-height:44px!important;font-size:14px!important}
+
+  .actions,.toolbar,.mobile-action-row{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  .toolbar{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  .card-title{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .tag,.pill{
+    font-size:13px!important;
+    width:max-content;
+    max-width:100%;
+    white-space:normal!important;
+  }
+  code{
+    font-size:14px!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .badge-card p code{display:none!important}
+  .badge-card details.mobile-query{display:block!important}
+  .query-box{
+    border:1px dashed var(--line,rgba(255,255,255,.15));
+    border-radius:14px;
+    padding:12px;
+    background:rgba(0,0,0,.18);
+    margin-top:8px;
+  }
+
+  table{display:none!important}
+  .mobile-session-cards{display:grid!important;gap:12px!important}
+  .mobile-session-card{
+    border:1px solid var(--line,rgba(255,255,255,.15));
+    border-radius:18px;
+    padding:14px;
+    background:rgba(255,255,255,.055);
+  }
+  .mobile-session-card h3{margin:8px 0}
+  .mobile-session-card .session-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+
+  .mobile-inline-add{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin:0 0 14px;
+  }
+
+  .bottom-nav{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:calc(8px + env(safe-area-inset-bottom))!important;
+    border-radius:23px!important;
+    padding:8px!important;
+    gap:5px!important;
+  }
+  .bottom-nav button{
+    min-height:58px!important;
+    font-size:12px!important;
+    border-radius:17px!important;
+  }
+
+  .toast{
+    left:12px!important;
+    right:12px!important;
+    bottom:calc(104px + env(safe-area-inset-bottom))!important;
+    font-size:15px!important;
+  }
+  .scorm-frame{min-height:70vh!important}
+}
+
+@media (min-width:781px){
+  .mobile-session-cards,.mobile-inline-add{display:none!important}
+}
