@@ -14,6 +14,20 @@ Credly Growth Hub is a static GitHub Pages web app for learner onboarding, skill
 - SCORM 1.2-style JavaScript API shim for static-module testing
 - GitHub Pages deployment workflow
 
+## Governance copy used in the app
+
+### Storage model
+
+Current version uses browser localStorage, which is suitable for a static MVP and individual learner tracking. For multi-user operations, connect Microsoft Entra-backed services.
+
+### Evidence workflow
+
+Recommended approval flow: learner completes badge, submits Credly badge URL, manager validates issuer/date/skills, then marks the badge as verified in this app or a future backend.
+
+### GitHub Pages
+
+The included workflow publishes this repository as a static site on every push to `main`.
+
 ## Vendor badge discovery coverage
 
 The app generates free-badge search patterns for these vendor ecosystems:
@@ -47,15 +61,26 @@ site:credly.com/org/<vendor>/badge "Cost Free" "<skill>" "Level Foundational"
 
 ## Storage model
 
-This MVP stores learner data in the browser using `localStorage`. This is suitable for demos, personal badge tracking, and lightweight coaching workflows.
+This MVP stores learner data in the browser using `localStorage`. This is suitable for demos, individual badge tracking, coaching reviews, and lightweight manager check-ins.
 
-For production use, connect a backend such as:
+For production multi-user use, connect Microsoft Entra-backed services, for example:
 
-- Supabase Auth + Postgres
-- Firebase Auth + Firestore
-- Microsoft Entra ID + API backend
-- Moodle or another LMS for SCORM runtime tracking
-- SCORM Cloud for production SCORM dispatch and completion tracking
+- Microsoft Entra ID for authentication and identity governance
+- Microsoft Graph for user/profile integration
+- SharePoint Lists, Dataverse, Azure SQL, or Cosmos DB for learner records
+- Azure Functions or Static Web Apps APIs for server-side validation
+- Power BI or Microsoft Fabric for cohort analytics
+- Moodle, SCORM Cloud, or another LMS runtime for formal SCORM completion records
+
+## Evidence workflow
+
+Recommended badge-verification flow:
+
+1. Learner completes vendor learning or assessment.
+2. Learner submits a public Credly badge URL.
+3. Manager validates issuer, badge name, issue date, expiry date, skills, and evidence relevance.
+4. Manager marks the badge as verified in the app or future backend.
+5. Skills matrix and career-growth review are updated.
 
 ## SCORM note
 
@@ -65,13 +90,14 @@ For regulated training, formal audit trails, completion rules, sequencing, and s
 
 ## Suggested next development phases
 
-1. Add multi-user authentication.
-2. Replace browser storage with Supabase or Firebase.
-3. Add manager approval workflow for badge evidence.
-4. Add Credly URL validation and issuer/date checks.
-5. Add cohort analytics dashboards.
-6. Add SCORM/xAPI integration for formal learning record tracking.
-7. Add GitHub Classroom, Microsoft Teams, and LMS integration.
+1. Add Microsoft Entra ID authentication.
+2. Add Microsoft Graph user/profile sync.
+3. Replace browser storage with SharePoint Lists, Dataverse, Azure SQL, or Cosmos DB.
+4. Add manager approval workflow for badge evidence.
+5. Add Credly URL validation and issuer/date checks.
+6. Add cohort analytics dashboards in Power BI or Microsoft Fabric.
+7. Add SCORM/xAPI integration for formal learning record tracking.
+8. Add GitHub Classroom, Microsoft Teams, and LMS integration.
 
 ## GitHub Pages
 
