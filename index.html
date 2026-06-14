@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credly Growth Hub | Badge Career Tracker</title>
+  <meta name="description" content="Static GitHub Pages app for learner onboarding, free Credly badge planning, skills tracking, scheduled learning, and SCORM-style progress." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2e;
+      --panel-2: #13243b;
+      --text: #e8f1ff;
+      --muted: #9bb0ce;
+      --brand: #62d2ff;
+      --brand-2: #8cffc1;
+      --danger: #ff6b6b;
+      --warn: #ffd166;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, rgba(98,210,255,.22), transparent 32rem), linear-gradient(135deg, #07111f 0%, #0b1424 50%, #101526 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    a { color: var(--brand); }
+    .app-header {
+      padding: 32px clamp(18px, 4vw, 56px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,17,31,.74);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .eyebrow { color: var(--brand-2); text-transform: uppercase; font-size: 12px; letter-spacing: .16em; margin: 0 0 8px; font-weight: 800; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; }
+    h1 { font-size: clamp(32px, 5vw, 58px); letter-spacing: -0.05em; }
+    h2 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -0.035em; }
+    h3 { font-size: 18px; }
+    p { color: var(--muted); line-height: 1.65; }
+    .subtitle { max-width: 860px; font-size: 17px; margin-bottom: 0; }
+    .actions, .header-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-end; }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: var(--panel-2);
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .18s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(98,210,255,.55); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04101c; border: 0; }
+    .btn.danger { background: rgba(255,107,107,.14); color: #ffdede; }
+    .btn.small { padding: 7px 10px; font-size: 12px; }
+    .layout { display: grid; grid-template-columns: 285px minmax(0, 1fr); gap: 24px; padding: 24px clamp(18px, 4vw, 56px) 56px; }
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .nav, .panel {
+      background: rgba(13,27,46,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .nav { padding: 10px; position: sticky; top: 144px; }
+    .nav button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .nav button.active, .nav button:hover { background: rgba(98,210,255,.12); color: var(--text); }
+    .panel { padding: 20px; }
+    .content { min-width: 0; }
+    .view { display: none; }
+    .view.active { display: block; animation: fade .18s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .section-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+    .grid { display: grid; gap: 16px; }
+    .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stat { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .stat strong { display: block; font-size: 32px; letter-spacing: -0.04em; }
+    .stat span { color: var(--muted); font-size: 13px; font-weight: 800; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 13px; font-weight: 800; }
+    input, select, textarea {
+      width: 100%;
+      background: #07111f;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 13px;
+      font: inherit;
+    }
+    textarea { resize: vertical; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .wide { grid-column: 1 / -1; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 16px; background: rgba(255,255,255,.045); }
+    .card-title { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .tag { border: 1px solid var(--line); background: rgba(98,210,255,.10); border-radius: 999px; padding: 5px 9px; color: var(--brand); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .muted { color: var(--muted); }
+    .stack { display: grid; gap: 12px; }
+    .progress { height: 10px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+    .progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: inherit; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); padding: 11px 8px; text-align: left; vertical-align: top; }
+    th { color: var(--brand-2); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
+    .file-label input { display: none; }
+    .scorm-frame { width: 100%; min-height: 420px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .notice { border-left: 4px solid var(--warn); background: rgba(255,209,102,.1); padding: 13px 15px; border-radius: 14px; color: #ffeec0; }
+    @media (max-width: 960px) {
+      .app-header, .layout { grid-template-columns: 1fr; }
+      .nav { position: static; }
+      .stats, .two, .three, .form-grid { grid-template-columns: 1fr; }
+      .header-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Credly Growth Hub</p>
+      <h1>Free badge career tracker</h1>
+      <p class="subtitle">Onboard learners, map skills, schedule continuous learning, track badge evidence, and launch SCORM-style modules from a GitHub Pages static app.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn" id="demoBtn">Load demo</button>
+      <button class="btn" id="exportBtn">Export JSON</button>
+      <label class="btn file-label">Import JSON<input type="file" id="importFile" accept="application/json"></label>
+      <button class="btn danger" id="resetBtn">Reset</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <nav class="nav" aria-label="Primary navigation">
+        <button class="active" data-view="dashboard">Dashboard</button>
+        <button data-view="onboard">Onboarding</button>
+        <button data-view="badges">Badge finder</button>
+        <button data-view="skills">Skills matrix</button>
+        <button data-view="schedule">Learning schedule</button>
+        <button data-view="scorm">SCORM player</button>
+        <button data-view="settings">Settings</button>
+      </nav>
+      <section class="panel">
+        <p class="eyebrow">Active learner</p>
+        <div id="profileMini" class="muted">No profile captured yet.</div>
+      </section>
+    </aside>
+
+    <section class="content">
+      <section id="dashboard" class="view active">
+        <div class="section-heading">
+          <div><p class="eyebrow">Progress intelligence</p><h2>Career growth dashboard</h2></div>
+          <button class="btn primary" id="generatePlan">Generate 30-day plan</button>
+        </div>
+        <div class="grid stats" id="stats"></div>
+        <div class="grid two" style="margin-top:16px">
+          <article class="panel"><h3>Recommended next actions</h3><div class="stack" id="recommendations"></div></article>
+          <article class="panel"><h3>Skill coverage</h3><div class="stack" id="coverage"></div></article>
+        </div>
+      </section>
+
+      <section id="onboard" class="view">
+        <div class="section-heading"><div><p class="eyebrow">Learner intake</p><h2>Onboard a user</h2></div></div>
+        <form id="profileForm" class="panel form-grid">
+          <label>Full name<input name="name" required placeholder="Learner name"></label>
+          <label>Email<input name="email" type="email" required placeholder="learner@company.com"></label>
+          <label>Current role<input name="role" placeholder="Junior Developer / Sales / Analyst"></label>
+          <label>Target career path<select name="careerPath" id="careerPath"></select></label>
+          <label>Weekly study hours<input name="weeklyHours" type="number" min="1" max="40" value="5"></label>
+          <label>Credly profile URL<input name="credlyUrl" type="url" placeholder="https://www.credly.com/users/.../badges"></label>
+          <label class="wide">Growth objective<textarea name="objective" rows="4" placeholder="Revenue, placement, delivery, certification or career target"></textarea></label>
+          <button class="btn primary wide" type="submit">Save profile and seed skills</button>
+        </form>
+      </section>
+
+      <section id="badges" class="view">
+        <div class="section-heading">
+          <div><p class="eyebrow">Free Credly discovery</p><h2>Badge finder</h2></div>
+          <input id="badgeSearch" placeholder="Search vendor, skill or query..." style="max-width:320px">
+        </div>
+        <div class="panel">
+          <div class="toolbar">
+            <button class="btn small" data-filter="all">All</button>
+            <button class="btn small" data-filter="AI">AI</button>
+            <button class="btn small" data-filter="Cybersecurity">Cybersecurity</button>
+            <button class="btn small" data-filter="Cloud">Cloud</button>
+            <button class="btn small" data-filter="Data">Data</button>
+            <button class="btn small" data-filter="DevOps">DevOps</button>
+            <button class="btn small" data-filter="Sales">Sales</button>
+          </div>
+          <div class="stack" id="badgeList"></div>
+        </div>
+      </section>
+
+      <section id="skills" class="view">
+        <div class="section-heading"><div><p class="eyebrow">Capability maturity</p><h2>Skills matrix</h2></div><button class="btn" id="addSkillBtn">Add skill</button></div>
+        <div class="panel stack" id="skillList"></div>
+      </section>
+
+      <section id="schedule" class="view">
+        <div class="section-heading"><div><p class="eyebrow">Continuous learning</p><h2>Scheduled learning plan</h2></div><button class="btn" id="addSessionBtn">Add session</button></div>
+        <div class="panel"><table><thead><tr><th>Date</th><th>Topic</th><th>Badge / Module</th><th>Status</th><th></th></tr></thead><tbody id="scheduleRows"></tbody></table></div>
+      </section>
+
+      <section id="scorm" class="view">
+        <div class="section-heading"><div><p class="eyebrow">SCORM-style runtime</p><h2>Module launcher</h2></div><button class="btn primary" id="launchScorm">Launch sample module</button></div>
+        <div class="notice">This static app simulates the SCORM 1.2 JavaScript API for lightweight tracking. Production SCORM completion, sequencing, score persistence and audit trails should use an LMS or SCORM Cloud-style runtime.</div>
+        <div class="panel" style="margin-top:16px"><iframe class="scorm-frame" id="scormFrame" title="SCORM Module"></iframe></div>
+      </section>
+
+      <section id="settings" class="view">
+        <div class="section-heading"><div><p class="eyebrow">Governance</p><h2>Data and deployment settings</h2></div></div>
+        <div class="panel stack">
+          <div class="card"><h3>Storage model</h3><p>Current version uses browser localStorage, which is suitable for a static MVP and individual learner tracking. For multi-user operations, connect Supabase, Firebase, Moodle, SCORM Cloud, or Microsoft Entra-backed services.</p></div>
+          <div class="card"><h3>Evidence workflow</h3><p>Recommended approval flow: learner completes badge, submits Credly badge URL, manager validates issuer/date/skills, then marks the badge as verified in this app or a future backend.</p></div>
+          <div class="card"><h3>GitHub Pages</h3><p>The included workflow publishes this repository as a static site on every push to <code>main</code>.</p></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+<script>
+const careerPaths = {
+  "AI Solutions Consultant": ["AI Literacy", "Prompt Engineering", "RAG", "API Integration", "Solution Design", "Presentation Skills"],
+  "Cybersecurity Analyst": ["Cybersecurity", "Zero Trust", "Network Security", "SIEM", "Incident Response", "Risk Management"],
+  "Cloud Engineer": ["Cloud Fundamentals", "Linux", "Networking", "Containers", "Infrastructure as Code", "Monitoring"],
+  "Data Analyst": ["Data Literacy", "SQL", "Dashboards", "Data Visualization", "Analytics", "Reporting"],
+  "API Integration Developer": ["API Design", "Gateway", "Authentication", "JavaScript", "GraphQL", "DevOps"],
+  "IT Support Specialist": ["Customer Support", "Hardware", "Networking", "Cyber Hygiene", "Troubleshooting", "Documentation"],
+  "Technical Sales / Pre-Sales": ["Discovery", "Demo Skills", "Cloud", "Cybersecurity", "Business Value", "Proposal Writing"],
+  "LMS / eLearning Coordinator": ["SCORM", "Instructional Design", "Analytics", "Content QA", "Learner Support", "Accessibility"]
+};
+const vendors = [
+  ["MongoDB", "mongodb", ["AI", "RAG", "Database", "Security", "Data Modeling"]],
+  ["Tableau", "tableau", ["Data", "Dashboard", "Analytics", "Visualization", "Reporting"]],
+  ["The Linux Foundation", "the-linux-foundation", ["Cybersecurity", "Zero Trust", "DevOps", "Linux", "Open Source"]],
+  ["Fortinet", "fortinet", ["Cybersecurity", "Firewall", "Network Security", "Threat", "Operations"]],
+  ["Kong", "kong", ["API", "Gateway", "Developer", "APIOps", "Security"]],
+  ["SAP", "sap", ["Business Process", "S/4HANA", "Cloud", "Analytics", "Customer Experience"]],
+  ["SAS", "sas", ["SQL", "Analytics", "Data", "Programming", "Customer Intelligence"]],
+  ["Acronis", "acronis", ["Backup", "Recovery", "Cyber Protection", "Cloud", "Security"]],
+  ["Splunk", "splunk", ["SIEM", "Observability", "Security", "Monitoring", "Technical Selling"]],
+  ["Google Cloud", "google-cloud", ["Cloud", "Compute", "Data", "AI", "Machine Learning"]],
+  ["Microsoft", "microsoft", ["Azure", "AI", "Security", "Data", "Power Platform"]],
+  ["Oracle", "oracle", ["Cloud", "Database", "Analytics", "AI", "Sales Specialist"]],
+  ["Red Hat", "red-hat", ["Linux", "OpenShift", "Ansible", "Containers", "Cloud"]],
+  ["GitHub", "github", ["Git", "Actions", "Copilot", "DevOps", "Sales"]],
+  ["GitLab", "gitlab", ["DevOps", "CI/CD", "Security", "Git", "Source Control"]],
+  ["HashiCorp", "hashicorp", ["Terraform", "Vault", "Cloud", "Infrastructure", "DevOps"]],
+  ["VMware", "vmware", ["vSphere", "Virtualization", "Cloud", "NSX", "Tanzu"]],
+  ["HPE", "hewlett-packard-enterprise", ["Aruba", "Networking", "SD-WAN", "Cloud", "Storage"]],
+  ["Check Point", "checkpoint", ["Cloud", "Security", "Firewall", "Threat Prevention", "Sales"]],
+  ["F5", "f5", ["NGINX", "WAF", "WAAP", "API Security", "Distributed Cloud"]]
+];
+const catalog = vendors.flatMap(([vendor, slug, skills]) => skills.map(skill => ({
+  id: `${slug}-${skill}`.toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+  vendor,
+  skill,
+  level: "Foundational",
+  cost: "Free",
+  query: `site:credly.com/org/${slug}/badge "Cost Free" "${skill}" "Level Foundational"`,
+  url: `https://www.google.com/search?q=${encodeURIComponent(`site:credly.com/org/${slug}/badge "Cost Free" "${skill}" "Level Foundational"`)}`
+})));
+const sampleScorm = `<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui;margin:0;padding:34px;color:#102033;background:linear-gradient(135deg,#f5fbff,#e7fff3)}button{border:0;border-radius:999px;padding:12px 16px;background:#0b6bff;color:white;font-weight:800;cursor:pointer}.box{max-width:760px;margin:auto;background:white;border-radius:22px;padding:26px;box-shadow:0 18px 60px rgba(0,0,0,.12)}</style></head><body><div class="box"><h1>Sample SCORM Badge Sprint Module</h1><p>This demo simulates learner launch, lesson status, score and completion through the parent SCORM API shim.</p><ol><li>Choose a free Credly badge query.</li><li>Complete the vendor learning content.</li><li>Paste the badge URL into your evidence tracker.</li><li>Mark the scheduled learning session complete.</li></ol><button onclick="complete()">Complete module</button><p id="out"></p></div><script>function complete(){const api=parent.API;if(api){api.LMSInitialize('');api.LMSSetValue('cmi.core.lesson_status','completed');api.LMSSetValue('cmi.core.score.raw','100');api.LMSCommit('');api.LMSFinish('');document.getElementById('out').textContent='Module completed and sent to SCORM API shim.'}else{document.getElementById('out').textContent='No SCORM API detected.'}}<\/script></body></html>`;
+let state = JSON.parse(localStorage.getItem('credlyGrowthHub') || '{"profile":null,"skills":[],"badges":[],"schedule":[],"scorm":{}}');
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+function save(){ localStorage.setItem('credlyGrowthHub', JSON.stringify(state)); render(); }
+function todayOffset(n){ const d = new Date(); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+function show(view){ $$('.view').forEach(v=>v.classList.remove('active')); $('#' + view).classList.add('active'); $$('.nav button').forEach(b=>b.classList.toggle('active', b.dataset.view===view)); }
+function escapeHtml(x){ return String(x||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function seedSkills(path){ return (careerPaths[path] || []).map(name => ({name, score: 10, evidence: ''})); }
+function render(){
+  const p = state.profile;
+  $('#profileMini').innerHTML = p ? `<strong>${escapeHtml(p.name)}</strong><br><span class="muted">${escapeHtml(p.role || 'Learner')} → ${escapeHtml(p.careerPath)}</span><br>${p.credlyUrl ? `<a href="${escapeHtml(p.credlyUrl)}" target="_blank" rel="noopener">Credly profile</a>` : '<span class="muted">No Credly URL yet</span>'}` : 'No profile captured yet.';
+  const completed = state.schedule.filter(s=>s.status==='Complete').length;
+  const verified = state.badges.filter(b=>b.status==='Verified').length;
+  const avgSkill = state.skills.length ? Math.round(state.skills.reduce((a,s)=>a+Number(s.score||0),0)/state.skills.length) : 0;
+  $('#stats').innerHTML = [[state.badges.length,'Planned badges'],[verified,'Verified badges'],[state.schedule.length,'Learning sessions'],[avgSkill+'%','Avg. skill maturity']].map(x=>`<div class="stat"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join('');
+  $('#recommendations').innerHTML = !p ? `<div class="card">Start by onboarding a learner profile.</div>` : [
+    `Add 3 free ${escapeHtml(p.careerPath)} badge targets to the plan.`,
+    `Schedule ${escapeHtml(p.weeklyHours || 5)} focused learning hours this week.`,
+    `Paste Credly evidence links as badges are completed.`,
+    completed ? `Review completed sessions and update skill maturity.` : `Complete your first scheduled learning session.`
+  ].map(t=>`<div class="card">${t}</div>`).join('');
+  $('#coverage').innerHTML = state.skills.length ? state.skills.map(s=>`<div><div class="card-title"><strong>${escapeHtml(s.name)}</strong><span>${Number(s.score||0)}%</span></div><div class="progress"><span style="width:${Number(s.score||0)}%"></span></div></div>`).join('') : '<div class="card">No skills seeded yet.</div>';
+  renderBadges(); renderSkills(); renderSchedule();
+}
+function renderBadges(){
+  const q = ($('#badgeSearch')?.value || '').toLowerCase();
+  const list = catalog.filter(b => !q || `${b.vendor} ${b.skill} ${b.query}`.toLowerCase().includes(q));
+  $('#badgeList').innerHTML = list.map(b => `<article class="card"><div class="card-title"><div><h3>${escapeHtml(b.vendor)} — ${escapeHtml(b.skill)}</h3><p><code>${escapeHtml(b.query)}</code></p></div><span class="tag">${b.cost}</span></div><div class="actions"><a class="btn small" href="${b.url}" target="_blank" rel="noopener">Search</a><button class="btn small" onclick="addBadge('${b.id}')">Add to plan</button></div></article>`).join('');
+}
+function renderSkills(){
+  $('#skillList').innerHTML = state.skills.length ? state.skills.map((s,i)=>`<div class="card"><div class="card-title"><strong>${escapeHtml(s.name)}</strong><span class="tag">${Number(s.score||0)}%</span></div><input type="range" min="0" max="100" value="${Number(s.score||0)}" oninput="state.skills[${i}].score=Number(this.value);save()"><input placeholder="Evidence URL or notes" value="${escapeHtml(s.evidence||'')}" onchange="state.skills[${i}].evidence=this.value;save()"><button class="btn small danger" onclick="state.skills.splice(${i},1);save()">Remove</button></div>`).join('') : '<div class="card">No skills yet. Save a profile or add a skill manually.</div>';
+}
+function renderSchedule(){
+  $('#scheduleRows').innerHTML = state.schedule.length ? state.schedule.map((s,i)=>`<tr><td>${escapeHtml(s.date)}</td><td>${escapeHtml(s.topic)}</td><td>${escapeHtml(s.badge)}</td><td><select onchange="state.schedule[${i}].status=this.value;save()"><option ${s.status==='Planned'?'selected':''}>Planned</option><option ${s.status==='In Progress'?'selected':''}>In Progress</option><option ${s.status==='Complete'?'selected':''}>Complete</option></select></td><td><button class="btn small danger" onclick="state.schedule.splice(${i},1);save()">Remove</button></td></tr>`).join('') : '<tr><td colspan="5" class="muted">No sessions scheduled yet.</td></tr>';
+}
+function addBadge(id){ const b = catalog.find(x=>x.id===id); if(!b) return; if(!state.badges.some(x=>x.id===id)) state.badges.push({...b, status:'Planned', evidence:''}); state.schedule.push({date: todayOffset(state.schedule.length+1), topic:b.skill, badge:`${b.vendor} ${b.skill}`, status:'Planned'}); save(); alert('Badge added to learning plan.'); }
+function generatePlan(){
+  const p = state.profile || {careerPath:'AI Solutions Consultant'};
+  const wanted = new Set((careerPaths[p.careerPath] || []).map(x=>x.toLowerCase()));
+  const picks = catalog.filter(b => [...wanted].some(w => b.skill.toLowerCase().includes(w.split(' ')[0]) || w.includes(b.skill.toLowerCase()))).slice(0,10);
+  const fallback = picks.length ? picks : catalog.slice(0,10);
+  fallback.forEach((b,i)=>{ if(!state.badges.some(x=>x.id===b.id)) state.badges.push({...b,status:'Planned',evidence:''}); state.schedule.push({date:todayOffset((i+1)*3), topic:b.skill, badge:`${b.vendor} ${b.skill}`, status:'Planned'}); });
+  save(); show('schedule');
+}
+window.API = {
+  data: {},
+  LMSInitialize(){ this.data.started = new Date().toISOString(); return 'true'; },
+  LMSSetValue(k,v){ this.data[k]=v; state.scorm[k]=v; return 'true'; },
+  LMSGetValue(k){ return this.data[k] || ''; },
+  LMSCommit(){ state.scorm.lastCommit = new Date().toISOString(); localStorage.setItem('credlyGrowthHub', JSON.stringify(state)); return 'true'; },
+  LMSFinish(){ state.scorm.finished = new Date().toISOString(); save(); return 'true'; },
+  LMSGetLastError(){ return '0'; }, LMSGetErrorString(){ return 'No error'; }, LMSGetDiagnostic(){ return 'OK'; }
+};
+$$('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.view));
+$('#careerPath').innerHTML = Object.keys(careerPaths).map(p=>`<option>${p}</option>`).join('');
+$('#profileForm').onsubmit = (e) => { e.preventDefault(); const f = new FormData(e.target); state.profile = Object.fromEntries(f.entries()); state.skills = seedSkills(state.profile.careerPath); save(); show('dashboard'); };
+$('#badgeSearch').oninput = renderBadges;
+$$('[data-filter]').forEach(b=>b.onclick=()=>{ $('#badgeSearch').value = b.dataset.filter === 'all' ? '' : b.dataset.filter; renderBadges(); });
+$('#generatePlan').onclick = generatePlan;
+$('#addSkillBtn').onclick = () => { const name = prompt('Skill name'); if(name){ state.skills.push({name,score:0,evidence:''}); save(); } };
+$('#addSessionBtn').onclick = () => { const topic = prompt('Learning topic'); if(topic){ state.schedule.push({date:todayOffset(1), topic, badge:'Manual / SCORM module', status:'Planned'}); save(); } };
+$('#launchScorm').onclick = () => { $('#scormFrame').srcdoc = sampleScorm; };
+$('#demoBtn').onclick = () => { state = {profile:{name:'Demo Learner',email:'learner@skunkworks.africa',role:'Junior Consultant',careerPath:'AI Solutions Consultant',weeklyHours:5,credlyUrl:'',objective:'Build an AI consulting badge portfolio.'},skills:seedSkills('AI Solutions Consultant'),badges:[],schedule:[],scorm:{}}; generatePlan(); show('dashboard'); };
+$('#exportBtn').onclick = () => { const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='credly-growth-profile.json'; a.click(); URL.revokeObjectURL(a.href); };
+$('#importFile').onchange = async (e) => { const file=e.target.files[0]; if(!file)return; state=JSON.parse(await file.text()); save(); };
+$('#resetBtn').onclick = () => { if(confirm('Reset local learner data?')){ localStorage.removeItem('credlyGrowthHub'); state={profile:null,skills:[],badges:[],schedule:[],scorm:{}}; render(); } };
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+render();
+</script>
+</body>
+</html>
