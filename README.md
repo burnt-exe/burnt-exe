@@ -66,6 +66,9 @@ Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, a
   <table>
     <tr>
       <td><img src="https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight&count_private=true&hide=issues" width="100%"/></td>
+    </tr>
+  </table>
+</div>
       <td><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight&hide=html" width="100%"/></td>
     </tr>
     <tr>
