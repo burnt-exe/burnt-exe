@@ -1,443 +1,5310 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="obsidian">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Credly Growth Hub | Badge Career Tracker</title>
-  <meta name="description" content="Static learning-growth app for onboarding users, tracking skills, planning free Credly badges, and managing continuous SCORM-style learning." />
-  <link rel="manifest" href="manifest.webmanifest" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07090d">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Raydo / @burnt-exe — software engineering, cybersecurity, cloud-native systems, AI, open source and South African GitHub developer metrics.">
+  <meta name="author" content="Raydo Matthee">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta property="og:title" content="@burnt-exe — Code. Defend. Scale. Repeat.">
+  <meta property="og:description" content="Interactive developer portfolio and live GitHub engineering dashboard for @burnt-exe.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://github.com/burnt-exe.png?size=512">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>@burnt-exe — Code. Defend. Scale. Repeat.</title>
+
   <style>
     :root {
-      --bg: #07111f;
-      --bg2: #0b1424;
-      --panel: rgba(13, 27, 46, .88);
-      --panel-solid: #0d1b2e;
-      --panel2: #14243b;
-      --text: #edf5ff;
-      --muted: #9eb3d0;
-      --brand: #63d2ff;
-      --accent: #8cffc1;
-      --warn: #ffd166;
-      --danger: #ff6b6b;
-      --line: rgba(255,255,255,.13);
-      --shadow: 0 24px 70px rgba(0,0,0,.34);
+      --bg: #07090d;
+      --bg-2: #0b0f15;
+      --surface: rgba(14, 19, 27, .76);
+      --surface-strong: #111722;
+      --surface-soft: rgba(255, 255, 255, .035);
+      --border: rgba(255,255,255,.10);
+      --border-strong: rgba(255,255,255,.18);
+      --text: #edf2f7;
+      --muted: #97a4b3;
+      --dim: #6d7885;
+      --green: #66f7c0;
+      --green-2: #00c98c;
+      --cyan: #5ed8ff;
+      --violet: #a98cff;
+      --red: #ff6b7a;
+      --amber: #ffc76a;
+      --shadow: 0 28px 80px rgba(0,0,0,.38);
       --radius: 22px;
-      --header-height: 118px;
+      --max: 1220px;
+      --nav-h: 72px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    html[data-theme="terminal"] {
+      --bg: #020604;
+      --bg-2: #041008;
+      --surface: rgba(2, 18, 10, .84);
+      --surface-strong: #06180e;
+      --surface-soft: rgba(102,247,192,.045);
+      --border: rgba(102,247,192,.16);
+      --border-strong: rgba(102,247,192,.30);
+      --text: #ddffef;
+      --muted: #91c7ad;
+      --dim: #68907a;
+      --cyan: #66f7c0;
+      --violet: #8cf7bd;
+      --amber: #c8ff8f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
+      min-width: 320px;
       background:
-        radial-gradient(circle at top left, rgba(99,210,255,.22), transparent 36rem),
-        radial-gradient(circle at 80% 10%, rgba(140,255,193,.12), transparent 28rem),
-        linear-gradient(135deg, var(--bg), var(--bg2) 52%, #111629);
+        radial-gradient(circle at 15% 0%, rgba(94,216,255,.09), transparent 30rem),
+        radial-gradient(circle at 80% 10%, rgba(169,140,255,.08), transparent 36rem),
+        radial-gradient(circle at 50% 90%, rgba(102,247,192,.055), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
-    a { color: var(--brand); }
-    h1, h2, h3 { margin: 0; line-height: 1.08; }
-    h1 { font-size: clamp(32px, 6vw, 62px); letter-spacing: -.055em; }
-    h2 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -.035em; }
-    h3 { font-size: 18px; }
-    p { color: var(--muted); line-height: 1.65; }
-    code { color: var(--accent); white-space: normal; overflow-wrap: anywhere; }
-    .eyebrow { margin: 0 0 8px; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 900; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, #000, transparent 90%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    ::selection {
+      background: rgba(102,247,192,.22);
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    code,
+    pre,
+    .mono {
+      font-family: var(--mono);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+      transform: translateY(-140%);
+      padding: 10px 14px;
+      background: #fff;
+      color: #000;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 94px 0;
+      position: relative;
+    }
+
+    .section.compact {
+      padding-top: 48px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: var(--green);
+      font: 800 .76rem/1 var(--mono);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin-bottom: 22px;
+      font-size: clamp(3.1rem, 7.2vw, 7rem);
+      line-height: .91;
+      letter-spacing: -.07em;
+      font-weight: 850;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+
+    h3 {
+      letter-spacing: -.02em;
+    }
+
+    .lede,
+    .section-copy {
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.7;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .glass {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        ),
+        var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
-      display: grid;
-      grid-template-columns: minmax(0,1fr) auto;
-      gap: 22px;
-      align-items: center;
-      min-height: var(--header-height);
-      padding: 22px clamp(18px, 4vw, 58px);
-      border-bottom: 1px solid var(--line);
-      background: rgba(7,17,31,.82);
+      z-index: 500;
+      height: var(--nav-h);
+      background: rgba(7,9,13,.72);
+      border-bottom: 1px solid rgba(255,255,255,.065);
       backdrop-filter: blur(18px);
-      box-shadow: 0 12px 36px rgba(0,0,0,.22);
-      transform: translateY(0);
-      transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+      -webkit-backdrop-filter: blur(18px);
     }
-    .topbar.is-hidden { transform: translateY(calc(-1 * var(--header-height) - 16px)); box-shadow: none; }
-    .topbar.is-compact { background: rgba(7,17,31,.92); }
-    .subtitle { max-width: 920px; font-size: 16px; margin: 8px 0 0; }
-    .top-actions, .actions, .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    .top-actions { justify-content: flex-end; }
-    .btn {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--text);
-      background: var(--panel2);
-      padding: 10px 14px;
-      font-weight: 900;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-    .btn:hover { border-color: rgba(99,210,255,.55); transform: translateY(-1px); }
-    .btn.primary { border: 0; color: #04101c; background: linear-gradient(135deg, var(--brand), var(--accent)); }
-    .btn.ghost { background: rgba(255,255,255,.045); }
-    .btn.danger { color: #ffdede; background: rgba(255,107,107,.14); }
-    .btn.small { padding: 7px 10px; font-size: 12px; }
-    .btn.block { justify-content: center; width: 100%; }
-    .file-label input { display: none; }
 
-    .layout { display: grid; grid-template-columns: 285px minmax(0,1fr); gap: 24px; padding: 24px clamp(18px, 4vw, 58px) 96px; }
-    .sidebar { display: grid; gap: 16px; align-content: start; }
-    .panel, .nav, .card, .empty-state {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .panel { padding: 20px; }
-    .nav { padding: 10px; position: sticky; top: 22px; }
-    .nav button {
-      width: 100%;
-      padding: 12px 14px;
-      border: 0;
-      border-radius: 14px;
-      background: transparent;
-      color: var(--muted);
-      text-align: left;
-      font-weight: 900;
-      cursor: pointer;
+    .topbar-inner {
+      height: 100%;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+      font: 800 .92rem/1 var(--mono);
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(102,247,192,.28);
+      border-radius: 11px;
+      background: rgba(102,247,192,.06);
+      color: var(--green);
+      box-shadow: inset 0 0 20px rgba(102,247,192,.045);
+    }
+
+    .brand .cursor {
+      width: 7px;
+      height: 15px;
+      display: inline-block;
+      background: var(--green);
+      animation: blink 1.05s steps(2) infinite;
+      vertical-align: -2px;
+      margin-left: 2px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: .9rem;
+      transition: .2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+      background: rgba(255,255,255,.055);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font: 700 .72rem/1 var(--mono);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 5px rgba(255,199,106,.08);
+    }
+
+    .status-dot.ok {
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(102,247,192,.08);
+    }
+
+    .status-dot.err {
+      background: var(--red);
+      box-shadow: 0 0 0 5px rgba(255,107,122,.08);
+    }
+
+    .icon-btn,
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .icon-btn:hover,
+    .menu-btn:hover {
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,.065);
+      transform: translateY(-1px);
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    .hero {
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      align-items: center;
+      padding: 68px 0 58px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%,-50%);
+      border-radius: 50%;
+      z-index: -2;
+      background: radial-gradient(
+        circle,
+        rgba(102,247,192,.08),
+        transparent 67%
+      );
+      filter: blur(18px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.25fr) minmax(330px,.75fr);
+      gap: clamp(36px, 7vw, 92px);
+      align-items: center;
+    }
+
+    .eyebrow-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font: 700 .74rem/1 var(--mono);
+    }
+
+    .tag b {
+      color: var(--text);
+    }
+
+    .hero h1 .accent {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(237,242,247,.92);
+      text-shadow: 0 0 40px rgba(94,216,255,.10);
+    }
+
+    .hero-copy {
+      max-width: 790px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 17px;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      font-weight: 780;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,.07);
+    }
+
+    .btn.primary {
+      color: #03100b;
+      border-color: rgba(102,247,192,.6);
+      background: linear-gradient(
+        135deg,
+        #8affd1,
+        var(--green)
+      );
+      box-shadow: 0 10px 34px rgba(102,247,192,.16);
+    }
+
+    .btn.primary:hover {
+      box-shadow: 0 14px 40px rgba(102,247,192,.23);
+    }
+
+    .btn.danger {
+      color: #ffdce1;
+      border-color: rgba(255,107,122,.22);
+      background: rgba(255,107,122,.06);
+    }
+
+    .terminal-card {
+      border-radius: 20px;
+      overflow: hidden;
+      transform:
+        perspective(1200px)
+        rotateY(-3deg)
+        rotateX(1deg);
+      transform-origin: center;
+      transition: transform .3s ease;
+    }
+
+    .terminal-card:hover {
+      transform:
+        perspective(1200px)
+        rotateY(0)
+        rotateX(0)
+        translateY(-3px);
+    }
+
+    .terminal-top {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 15px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff605c;
+    }
+
+    .dot:nth-child(2) {
+      background: #ffbd44;
+    }
+
+    .dot:nth-child(3) {
+      background: #00ca4e;
+    }
+
+    .terminal-title {
+      margin-left: auto;
+      color: var(--dim);
+      font: 650 .7rem/1 var(--mono);
+    }
+
+    .terminal-body {
+      min-height: 460px;
+      padding: 22px 20px;
+      background:
+        linear-gradient(
+          rgba(102,247,192,.018) 1px,
+          transparent 1px
+        ),
+        #05080b;
+      background-size: 100% 23px;
+      color: #d6e7df;
+      font:
+        500
+        clamp(.67rem, 1vw, .79rem)/1.56
+        var(--mono);
+      overflow: hidden;
+    }
+
+    .terminal-ascii {
+      margin: 0 0 23px;
+      color: var(--green);
+      white-space: pre;
+      line-height: 1.22;
+      font-size: clamp(.55rem, .82vw, .75rem);
+      filter: drop-shadow(
+        0 0 12px
+        rgba(102,247,192,.1)
+      );
+    }
+
+    .prompt {
+      color: var(--green);
+    }
+
+    .terminal-muted {
+      color: #73837b;
+    }
+
+    .terminal-cyan {
+      color: var(--cyan);
+    }
+
+    .terminal-violet {
+      color: var(--violet);
+    }
+
+    .terminal-line {
+      min-height: 1.56em;
+    }
+
+    .typing::after {
+      content: "▋";
+      color: var(--green);
+      animation: blink 1s steps(2) infinite;
+    }
+
+    .live-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 34px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,.02);
+    }
+
+    .live-stat {
+      min-width: 0;
+      padding: 19px 20px;
+      border-right: 1px solid var(--border);
+    }
+
+    .live-stat:last-child {
+      border-right: 0;
+    }
+
+    .live-stat .label {
+      color: var(--dim);
+      font: 750 .68rem/1 var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .live-stat .value {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      font-weight: 840;
+      letter-spacing: -.05em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: .74fr 1.26fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .profile-card,
+    .bio-card {
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .avatar-wrap {
+      width: 104px;
+      height: 104px;
+      border-radius: 30px;
+      padding: 4px;
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--cyan),
+          var(--violet)
+        );
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 26px;
+      background: #111;
+    }
+
+    .profile-name {
+      margin: 20px 0 4px;
+      font-size: 1.65rem;
+      font-weight: 850;
+      letter-spacing: -.04em;
+    }
+
+    .handle {
+      color: var(--green);
+      font: 700 .86rem/1 var(--mono);
+    }
+
+    .mini-meta {
+      display: grid;
+      gap: 9px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .mini-meta span {
+      display: flex;
+      align-items: baseline;
       gap: 10px;
     }
-    .nav button.active, .nav button:hover { background: rgba(99,210,255,.12); color: var(--text); }
-    .nav kbd { color: var(--muted); font-size: 11px; font-weight: 800; }
-    .view { display: none; }
-    .view.active { display: block; animation: fade .2s ease; }
-    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    .section-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
-    .grid { display: grid; gap: 16px; }
-    .stats { grid-template-columns: repeat(4, minmax(0,1fr)); }
-    .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .three { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
-    .wide { grid-column: 1 / -1; }
-    .stat {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      padding: 18px;
-      min-height: 112px;
+
+    .mini-meta b {
+      min-width: 88px;
+      color: var(--dim);
+      font: 700 .66rem/1 var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .bio-card {
       display: grid;
-      align-content: space-between;
+      align-content: center;
     }
-    .stat strong { display: block; font-size: 34px; letter-spacing: -.04em; }
-    .stat span, .muted { color: var(--muted); }
-    .card, .empty-state { padding: 16px; background: rgba(255,255,255,.045); box-shadow: none; }
-    .empty-state { text-align: center; padding: 28px; }
-    .stack { display: grid; gap: 12px; }
-    .card-title { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
-    .tag, .pill {
-      white-space: nowrap;
-      border: 1px solid var(--line);
-      color: var(--brand);
-      border-radius: 999px;
-      background: rgba(99,210,255,.1);
-      padding: 5px 9px;
-      font-size: 12px;
-      font-weight: 900;
+
+    .bio-card .quote {
+      margin: 0;
+      font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+      font-weight: 760;
     }
-    .pill.done { color: var(--accent); background: rgba(140,255,193,.1); }
-    .pill.warn { color: var(--warn); background: rgba(255,209,102,.1); }
-    .progress { height: 10px; border-radius: 999px; overflow: hidden; border: 1px solid var(--line); background: rgba(255,255,255,.08); }
-    .progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand), var(--accent)); transition: width .18s ease; }
-    label { display: grid; gap: 7px; color: var(--muted); font-size: 13px; font-weight: 900; }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+
+    .bio-card .quote span {
+      color: var(--green);
+    }
+
+    .mission-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mission-list li {
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: var(--muted);
+      background: rgba(255,255,255,.025);
+      line-height: 1.45;
+    }
+
+    .mission-list b {
       color: var(--text);
-      background: #07111f;
-      padding: 12px 13px;
-      font: inherit;
-      outline: none;
+      display: block;
+      margin-bottom: 4px;
     }
-    input:focus, select:focus, textarea:focus { border-color: rgba(99,210,255,.72); box-shadow: 0 0 0 4px rgba(99,210,255,.1); }
-    textarea { resize: vertical; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 12px 8px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
-    th { color: var(--accent); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; }
-    .notice { border-left: 4px solid var(--warn); background: rgba(255,209,102,.1); padding: 13px 15px; border-radius: 14px; color: #ffeec0; }
-    .scorm-frame { width: 100%; min-height: 420px; border: 1px solid var(--line); border-radius: 18px; background: white; }
-    .quick-actions { display: grid; gap: 10px; }
+
+    .projects-toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      min-width: min(320px, 100%);
+      height: 42px;
+      padding: 0 14px 0 38px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      outline: none;
+      color: var(--text);
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0 34px,
+          var(--border) 34px 35px,
+          transparent 35px
+        ),
+        rgba(255,255,255,.025);
+    }
+
+    .search::placeholder {
+      color: var(--dim);
+    }
+
+    .search:focus {
+      border-color: rgba(102,247,192,.4);
+      box-shadow: 0 0 0 4px rgba(102,247,192,.06);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 235px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background:
+        linear-gradient(
+          160deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.01)
+        );
+      overflow: hidden;
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -60px;
+      bottom: -70px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(102,247,192,.10),
+          transparent 67%
+        );
+      transition: .3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(102,247,192,.22);
+      background:
+        linear-gradient(
+          160deg,
+          rgba(102,247,192,.055),
+          rgba(255,255,255,.01)
+        );
+    }
+
+    .project-card:hover::after {
+      transform: scale(1.4);
+    }
+
+    .repo-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 14px;
+    }
+
+    .repo-icon {
+      color: var(--green);
+      font: 900 1.1rem/1 var(--mono);
+    }
+
+    .repo-name {
+      margin: 15px 0 8px;
+      font: 800 1.05rem/1.25 var(--mono);
+      letter-spacing: -.03em;
+    }
+
+    .repo-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.55;
+      min-height: 4.5em;
+    }
+
+    .repo-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      color: var(--dim);
+      font: 700 .72rem/1 var(--mono);
+    }
+
+    .lang-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--cyan);
+      margin-right: 5px;
+    }
+
+    .repo-updated {
+      position: absolute;
+      left: 22px;
+      bottom: 18px;
+      color: var(--dim);
+      font-size: .72rem;
+    }
+
+    .toolbox {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .tool {
+      min-height: 108px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.022);
+      transition: .2s ease;
+    }
+
+    .tool:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.05);
+      border-color: var(--border-strong);
+    }
+
+    .tool-code {
+      color: var(--green);
+      font: 850 .9rem/1 var(--mono);
+    }
+
+    .tool-name {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .stream,
+    .insight-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      margin: 0;
+      font: 800 .86rem/1 var(--mono);
+    }
+
+    .panel-meta {
+      color: var(--dim);
+      font: 700 .66rem/1 var(--mono);
+    }
+
+    .event-list {
+      padding: 8px;
+      max-height: 520px;
+      overflow: auto;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 13px 12px;
+      border-radius: 13px;
+    }
+
+    .event:hover {
+      background: rgba(255,255,255,.035);
+    }
+
+    .event-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--green);
+      font: 800 .72rem/1 var(--mono);
+    }
+
+    .event-main {
+      min-width: 0;
+    }
+
+    .event-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: .88rem;
+    }
+
+    .event-title a {
+      font-weight: 760;
+    }
+
+    .event-time {
+      margin-top: 4px;
+      color: var(--dim);
+      font: 650 .67rem/1 var(--mono);
+    }
+
+    .insight-stack {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .metric-image {
+      min-height: 100px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #090d13;
+    }
+
+    .metric-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .metric-fallback {
+      padding: 24px;
+      color: var(--dim);
+      font: 700 .76rem/1.5 var(--mono);
+    }
+
+    .rank-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    .rank-number {
+      min-width: 150px;
+      text-align: right;
+      font-size: clamp(3.1rem, 8vw, 6.8rem);
+      line-height: .85;
+      letter-spacing: -.08em;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    .rank-source {
+      margin-top: 10px;
+      color: var(--dim);
+      font: 700 .68rem/1.5 var(--mono);
+    }
+
+    .ranking-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255,255,255,.018);
+    }
+
+    .rank-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rank-controls .search {
+      min-width: 240px;
+    }
+
+    .table-scroll {
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      padding: 13px 16px;
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.055);
+      text-align: left;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #0d121a;
+      color: var(--dim);
+      font: 750 .66rem/1 var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    tbody tr {
+      transition: background .18s ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(255,255,255,.032);
+    }
+
+    tbody tr.me {
+      background: rgba(102,247,192,.06);
+      box-shadow: inset 3px 0 0 var(--green);
+    }
+
+    .rank-cell {
+      width: 70px;
+      font: 820 .86rem/1 var(--mono);
+      color: var(--green);
+    }
+
+    .dev {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 200px;
+    }
+
+    .dev img {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      object-fit: cover;
+      background: #121820;
+    }
+
+    .dev strong {
+      display: block;
+      font-size: .86rem;
+    }
+
+    .dev small {
+      color: var(--dim);
+      font: 650 .68rem/1 var(--mono);
+    }
+
+    .contrib {
+      font: 820 .85rem/1 var(--mono);
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .goal {
+      position: relative;
+      min-height: 190px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,.022);
+      overflow: hidden;
+    }
+
+    .goal-index {
+      color: var(--green);
+      font: 800 .69rem/1 var(--mono);
+      letter-spacing: .08em;
+    }
+
+    .goal h3 {
+      margin: 42px 0 9px;
+      font-size: 1.05rem;
+    }
+
+    .goal p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    .contact-card {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 30px;
+      align-items: end;
+      padding: clamp(28px, 6vw, 72px);
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -70% 30%;
+      height: 130%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(102,247,192,.12),
+          transparent 58%
+        );
+      pointer-events: none;
+    }
+
+    .contact-card h2 {
+      font-size: clamp(3rem,7vw,7rem);
+      max-width: 800px;
+    }
+
+    .contact-card h2 span {
+      color: var(--green);
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 14px 15px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: rgba(0,0,0,.12);
+      color: var(--muted);
+      transition: .2s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--text);
+      transform: translateX(3px);
+      border-color: var(--border-strong);
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      border-top:
+        1px solid
+        rgba(255,255,255,.06);
+      color: var(--dim);
+      font-size: .78rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-code {
+      font-family: var(--mono);
+    }
+
     .toast {
       position: fixed;
       right: 18px;
-      bottom: 22px;
-      z-index: 100;
-      max-width: min(420px, calc(100vw - 36px));
-      border: 1px solid rgba(140,255,193,.35);
-      background: rgba(8,26,28,.96);
-      color: var(--text);
-      border-radius: 18px;
-      padding: 14px 16px;
+      bottom: 18px;
+      z-index: 1200;
+      max-width:
+        min(
+          380px,
+          calc(100vw - 36px)
+        );
+      padding: 13px 15px;
+      border: 1px solid var(--border-strong);
+      border-radius: 13px;
+      background: #101721;
       box-shadow: var(--shadow);
-      transform: translateY(24px);
+      color: var(--muted);
+      font-size: .83rem;
+      transform: translateY(130%);
       opacity: 0;
-      pointer-events: none;
-      transition: .22s ease;
+      transition: .28s ease;
     }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .bottom-nav { display: none; }
-    .mini-meter { display: grid; gap: 8px; }
-    .mini-meter-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
-    .badge-card { position: relative; overflow: hidden; }
-    .badge-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: linear-gradient(var(--brand), var(--accent)); opacity: .8; }
-    .badge-card > * { position: relative; }
-    @media (max-width: 960px) {
-      :root { --header-height: 98px; }
-      .topbar, .layout, .stats, .two, .three, .form-grid { grid-template-columns: 1fr; }
-      .top-actions { justify-content: flex-start; }
-      .topbar { padding: 18px; }
-      .subtitle { display: none; }
-      .layout { padding: 18px 16px 112px; }
-      .sidebar { display: none; }
-      .section-heading { display: grid; }
-      .bottom-nav {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0,1fr));
-        gap: 8px;
-        position: fixed;
-        z-index: 60;
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        padding: 8px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: rgba(7,17,31,.92);
-        backdrop-filter: blur(16px);
-        box-shadow: var(--shadow);
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast b {
+      color: var(--text);
+    }
+
+    .command {
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      display: none;
+      place-items: start center;
+      padding-top: min(18vh,160px);
+      background: rgba(0,0,0,.58);
+      backdrop-filter: blur(10px);
+    }
+
+    .command.open {
+      display: grid;
+    }
+
+    .command-box {
+      width:
+        min(
+          640px,
+          calc(100vw - 30px)
+        );
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #0d121a;
+      box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.6);
+    }
+
+    .command-input {
+      width: 100%;
+      height: 58px;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      outline: 0;
+      padding: 0 18px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--mono);
+    }
+
+    .command-list {
+      padding: 8px;
+      max-height: 340px;
+      overflow: auto;
+    }
+
+    .command-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 12px;
+      border: 0;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .command-item:hover,
+    .command-item.active {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+    }
+
+    .command-item kbd {
+      color: var(--dim);
+      font: 650 .65rem/1 var(--mono);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity .65s ease,
+        transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 auto;
+      z-index: 480;
+      padding: 12px 20px 22px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,9,13,.96);
+      backdrop-filter: blur(18px);
+    }
+
+    .mobile-drawer.open {
+      display: grid;
+    }
+
+    .mobile-drawer a {
+      padding: 13px 4px;
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+      color: var(--muted);
+    }
+
+    .skeleton {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,.035);
+      color: transparent !important;
+      border-radius: 7px;
+    }
+
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.07),
+          transparent
+        );
+      animation: shimmer 1.3s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
       }
-      .bottom-nav button { border: 0; border-radius: 16px; color: var(--muted); background: transparent; padding: 10px 6px; font-size: 11px; font-weight: 900; }
-      .bottom-nav button.active { color: #04101c; background: linear-gradient(135deg, var(--brand), var(--accent)); }
-      th:nth-child(3), td:nth-child(3) { display: none; }
+    }
+
+    @keyframes shimmer {
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    @media (max-width: 1020px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-grid;
+        margin-left: auto;
+      }
+
+      .status-pill {
+        display: none;
+      }
+
+      .hero-grid,
+      .profile-grid,
+      .activity-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .terminal-card {
+        transform: none;
+        max-width: 760px;
+      }
+
+      .live-strip {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .live-stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .live-stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .toolbox {
+        grid-template-columns: repeat(4,1fr);
+      }
+
+      .goals-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .contact-links {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --nav-h: 64px;
+      }
+
+      .shell {
+        width:
+          min(
+            var(--max),
+            calc(100% - 26px)
+          );
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      h1 {
+        font-size: clamp(3rem,16vw,5.1rem);
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 50px 0 34px;
+      }
+
+      .hero-grid {
+        gap: 34px;
+      }
+
+      .terminal-body {
+        min-height: 390px;
+        padding: 18px 14px;
+      }
+
+      .terminal-ascii {
+        font-size: clamp(.42rem,2.2vw,.62rem);
+        overflow: hidden;
+      }
+
+      .live-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .live-stat {
+        border-right: 0 !important;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .live-stat:last-child {
+        border-bottom: 0;
+      }
+
+      .mission-list,
+      .project-grid,
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbox {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+      .rank-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .rank-number {
+        text-align: left;
+      }
+
+      .contact-card {
+        padding: 28px 22px;
+        min-height: 480px;
+      }
+
+      .footer-inner {
+        display: grid;
+      }
+
+      .project-card {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .toolbox {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .brand span.label {
+        display: none;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="topbar" id="topbar">
-    <div>
-      <p class="eyebrow">Credly Growth Hub</p>
-      <h1>Free badge career tracker</h1>
-      <p class="subtitle">Onboard learners, map skills, schedule continuous learning, track badge evidence, and launch SCORM-style modules from a GitHub Pages static app.</p>
-    </div>
-    <div class="top-actions">
-      <button class="btn ghost" id="demoBtn">Load demo</button>
-      <button class="btn ghost" id="exportBtn">Export</button>
-      <label class="btn ghost file-label">Import<input type="file" id="importFile" accept="application/json"></label>
-      <button class="btn danger" id="resetBtn">Reset</button>
+
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
+  <header class="topbar">
+    <div class="shell topbar-inner">
+
+      <a
+        class="brand"
+        href="#top"
+        aria-label="@burnt-exe home"
+      >
+        <span
+          class="brand-mark"
+          aria-hidden="true"
+        >&gt;_</span>
+
+        <span class="label">@burnt-exe</span>
+
+        <span
+          class="cursor"
+          aria-hidden="true"
+        ></span>
+      </a>
+
+      <nav
+        class="desktop-nav"
+        aria-label="Primary"
+      >
+        <a class="nav-link" href="#about">
+          About
+        </a>
+
+        <a class="nav-link" href="#projects">
+          Projects
+        </a>
+
+        <a class="nav-link" href="#stack">
+          Toolbox
+        </a>
+
+        <a class="nav-link" href="#activity">
+          Activity
+        </a>
+
+        <a class="nav-link" href="#ranking">
+          ZA Index
+        </a>
+
+        <a class="nav-link" href="#contact">
+          Contact
+        </a>
+      </nav>
+
+      <span
+        class="status-pill"
+        title="Live-data state"
+      >
+        <span
+          id="api-dot"
+          class="status-dot"
+        ></span>
+
+        <span id="api-state">
+          SYNCING
+        </span>
+      </span>
+
+      <button
+        class="icon-btn"
+        id="theme-toggle"
+        aria-label="Toggle visual theme"
+        title="Toggle theme"
+      >
+        ◐
+      </button>
+
+      <button
+        class="icon-btn"
+        id="cmd-open"
+        aria-label="Open command palette"
+        title="Command palette (Ctrl/⌘ K)"
+      >
+        ⌘
+      </button>
+
+      <button
+        class="menu-btn"
+        id="menu-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
+
     </div>
   </header>
 
-  <main class="layout">
-    <aside class="sidebar">
-      <nav class="nav" aria-label="Primary navigation" id="sideNav">
-        <button class="active" data-view="dashboard">Dashboard <kbd>1</kbd></button>
-        <button data-view="onboard">Onboarding <kbd>2</kbd></button>
-        <button data-view="badges">Badge finder <kbd>3</kbd></button>
-        <button data-view="skills">Skills matrix <kbd>4</kbd></button>
-        <button data-view="schedule">Learning schedule <kbd>5</kbd></button>
-        <button data-view="scorm">SCORM player <kbd>6</kbd></button>
-        <button data-view="settings">Settings <kbd>7</kbd></button>
-      </nav>
-      <section class="panel">
-        <p class="eyebrow">Active learner</p>
-        <div id="profileMini" class="muted">No profile captured yet.</div>
-      </section>
-      <section class="panel quick-actions">
-        <p class="eyebrow">Quick actions</p>
-        <button class="btn block primary" data-action="go" data-target="onboard">Update profile</button>
-        <button class="btn block" data-action="generate-plan">Generate plan</button>
-        <button class="btn block" data-action="go" data-target="badges">Find badges</button>
-      </section>
-    </aside>
+  <div
+    class="mobile-drawer"
+    id="mobile-menu"
+  >
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#stack">Toolbox</a>
+    <a href="#activity">Activity</a>
+    <a href="#ranking">ZA Index</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-    <section>
-      <section id="dashboard" class="view active">
-        <div class="section-heading">
-          <div><p class="eyebrow">Progress intelligence</p><h2>Career growth dashboard</h2></div>
-          <div class="actions"><button class="btn primary" data-action="generate-plan">Generate 30-day plan</button><button class="btn" data-action="go" data-target="onboard">Onboard user</button></div>
-        </div>
-        <div class="grid stats" id="stats"></div>
-        <div class="grid two" style="margin-top:16px">
-          <article class="panel"><h3>Next best actions</h3><div class="stack" id="recommendations"></div></article>
-          <article class="panel"><h3>Skill coverage</h3><div class="stack" id="coverage"></div></article>
-        </div>
-        <div class="panel" style="margin-top:16px"><div class="section-heading"><div><p class="eyebrow">Active plan</p><h2>Badge pipeline</h2></div><button class="btn small" data-action="go" data-target="schedule">Open schedule</button></div><div class="stack" id="pipeline"></div></div>
-      </section>
+  <main id="main">
 
-      <section id="onboard" class="view">
-        <div class="section-heading"><div><p class="eyebrow">Learner intake</p><h2>Onboard a user</h2><p>Capture the learner’s baseline, target role and growth objective. Saving the profile automatically seeds a role-aligned skills matrix.</p></div></div>
-        <form id="profileForm" class="panel form-grid">
-          <label>Full name<input name="name" required placeholder="Learner name"></label>
-          <label>Email<input name="email" type="email" required placeholder="learner@company.com"></label>
-          <label>Current role<input name="role" placeholder="Junior Developer / Sales / Analyst"></label>
-          <label>Target career path<select name="careerPath" id="careerPath"></select></label>
-          <label>Weekly study hours<input name="weeklyHours" type="number" min="1" max="40" value="5"></label>
-          <label>Credly profile URL<input name="credlyUrl" type="url" placeholder="https://www.credly.com/users/.../badges"></label>
-          <label class="wide">Growth objective<textarea name="objective" rows="4" placeholder="Revenue, placement, delivery, certification or career target"></textarea></label>
-          <button class="btn primary wide" type="submit">Save profile and seed skills</button>
-        </form>
-      </section>
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
 
-      <section id="badges" class="view">
-        <div class="section-heading">
-          <div><p class="eyebrow">Free Credly discovery</p><h2>Badge finder</h2><p>Search by vendor, skill, or career theme. Add strong matches to the learner’s scheduled plan.</p></div>
-          <input id="badgeSearch" placeholder="Search vendor, skill or query..." style="max-width:340px">
-        </div>
-        <div class="panel">
-          <div class="toolbar" style="margin-bottom:14px">
-            <button class="btn small" data-filter="all">All</button><button class="btn small" data-filter="AI">AI</button><button class="btn small" data-filter="Cybersecurity">Cybersecurity</button><button class="btn small" data-filter="Cloud">Cloud</button><button class="btn small" data-filter="Data">Data</button><button class="btn small" data-filter="DevOps">DevOps</button><button class="btn small" data-filter="Sales">Sales</button>
+    <section
+      class="hero"
+      id="top"
+    >
+
+      <div class="shell">
+
+        <div class="hero-grid">
+
+          <div class="hero-copy reveal">
+
+            <div class="eyebrow-row">
+
+              <span class="tag">
+                <b>Software Engineer</b>
+              </span>
+
+              <span class="tag">
+                Cybersecurity
+              </span>
+
+              <span class="tag">
+                Cloud Native
+              </span>
+
+              <span
+                class="tag"
+                id="location-tag"
+              >
+                South Africa
+              </span>
+
+            </div>
+
+            <p class="kicker">
+              WELCOME // SYSTEM ONLINE
+            </p>
+
+            <h1>
+              Code. Defend.
+              <br>
+              <span class="accent">
+                Scale. Repeat.
+              </span>
+            </h1>
+
+            <p class="lede">
+              I’m Raydo —
+              <strong>CTO at Skunkworks</strong>,
+              multi-cloud software engineer and
+              cybersecurity strategist.
+              I build secure systems,
+              automate infrastructure,
+              and turn AI into
+              production-grade capability.
+            </p>
+
+            <div class="hero-actions">
+
+              <a
+                class="btn primary"
+                href="https://github.com/burnt-exe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View GitHub ↗
+              </a>
+
+              <a
+                class="btn"
+                href="#projects"
+              >
+                Explore Projects ↓
+              </a>
+
+              <button
+                class="btn"
+                id="copy-email"
+                type="button"
+              >
+                Copy Email
+              </button>
+
+            </div>
+
+            <div
+              class="live-strip"
+              aria-label="Live GitHub profile statistics"
+            >
+
+              <div class="live-stat">
+
+                <span class="label">
+                  Public repos
+                </span>
+
+                <span
+                  class="value skeleton"
+                  id="stat-repos"
+                >
+                  000
+                </span>
+
+              </div>
+
+              <div class="live-stat">
+
+                <span class="label">
+                  Followers
+                </span>
+
+                <span
+                  class="value skeleton"
+                  id="stat-followers"
+                >
+                  000
+                </span>
+
+              </div>
+
+              <div class="live-stat">
+
+                <span class="label">
+                  Following
+                </span>
+
+                <span
+                  class="value skeleton"
+                  id="stat-following"
+                >
+                  000
+                </span>
+
+              </div>
+
+              <div class="live-stat">
+
+                <span class="label">
+                  Last profile update
+                </span>
+
+                <span
+                  class="value skeleton"
+                  id="stat-updated"
+                  style="font-size:1.05rem"
+                >
+                  loading
+                </span>
+
+              </div>
+
+            </div>
+
           </div>
-          <div class="stack" id="badgeList"></div>
+
+          <div
+            class="terminal-card glass reveal"
+            aria-label="Interactive profile terminal"
+          >
+
+            <div class="terminal-top">
+
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+
+              <span class="terminal-title">
+                burnt-exe@skunkworks:~
+              </span>
+
+            </div>
+
+            <div class="terminal-body">
+
+<pre
+  class="terminal-ascii"
+  aria-hidden="true"
+>
+ _                            _
+| |__  _   _ _ __  __  _    _| |_
+| '_ \| | | | '_ \/ _` | / _` | __|
+| |_) | |_| | | | | (_| | | (_| | |_
+|_.__/ \__,_|_| |_|\__, |  \__,_|\__|
+                    |___/
+</pre>
+
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                whoami
+              </div>
+
+              <div
+                class="terminal-line terminal-cyan"
+              >
+                Raydo // @burnt-exe
+              </div>
+
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                cat mission.txt
+              </div>
+
+              <div
+                class="terminal-line terminal-muted"
+              >
+                → build secure, scalable systems
+              </div>
+
+              <div
+                class="terminal-line terminal-muted"
+              >
+                → automate modern cloud infrastructure
+              </div>
+
+              <div
+                class="terminal-line terminal-muted"
+              >
+                → operationalise AI responsibly
+              </div>
+
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                stack --current
+              </div>
+
+              <div
+                class="terminal-line terminal-violet"
+              >
+                IBM · Red Hat · SAP · Google · Microsoft
+              </div>
+
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                github --status
+              </div>
+
+              <div
+                class="terminal-line"
+                id="terminal-live"
+              >
+                syncing public profile…
+              </div>
+
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                motto
+              </div>
+
+              <div
+                class="terminal-line typing"
+              >
+                Code. Defend. Scale. Repeat.
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-      </section>
 
-      <section id="skills" class="view">
-        <div class="section-heading"><div><p class="eyebrow">Capability maturity</p><h2>Skills matrix</h2><p>Update maturity as learners complete badges, modules, labs and manager-reviewed evidence.</p></div><button class="btn" id="addSkillBtn">Add skill</button></div>
-        <div class="panel stack" id="skillList"></div>
-      </section>
+      </div>
 
-      <section id="schedule" class="view">
-        <div class="section-heading"><div><p class="eyebrow">Continuous learning</p><h2>Scheduled learning plan</h2><p>Use this as the learner’s weekly operating rhythm for badge progress and evidence review.</p></div><button class="btn" id="addSessionBtn">Add session</button></div>
-        <div class="panel"><table><thead><tr><th>Date</th><th>Topic</th><th>Badge / Module</th><th>Status</th><th></th></tr></thead><tbody id="scheduleRows"></tbody></table></div>
-      </section>
-
-      <section id="scorm" class="view">
-        <div class="section-heading"><div><p class="eyebrow">SCORM-style runtime</p><h2>Module launcher</h2></div><button class="btn primary" id="launchScorm">Launch sample module</button></div>
-        <div class="notice">This static app simulates the SCORM 1.2 JavaScript API for lightweight tracking. Production SCORM completion, sequencing, score persistence and audit trails should use an LMS or SCORM Cloud-style runtime.</div>
-        <div class="panel" style="margin-top:16px"><iframe class="scorm-frame" id="scormFrame" title="SCORM Module"></iframe></div>
-      </section>
-
-      <section id="settings" class="view">
-        <div class="section-heading"><div><p class="eyebrow">Governance</p><h2>Data and deployment settings</h2></div></div>
-        <div class="panel stack">
-          <div class="card"><h3>Storage model</h3><p>Current version uses browser localStorage, which is suitable for a static MVP and individual learner tracking. For multi-user operations, connect Microsoft Entra-backed services.</p></div>
-          <div class="card"><h3>Evidence workflow</h3><p>Recommended approval flow: learner completes badge, submits Credly badge URL, manager validates issuer/date/skills, then marks the badge as verified in this app or a future backend.</p></div>
-          <div class="card"><h3>GitHub Pages</h3><p>The included workflow publishes this repository as a static site on every push to <code>main</code>.</p></div>
-        </div>
-      </section>
     </section>
+
+    <!-- =======================================================
+         ABOUT
+         ======================================================= -->
+
+    <section
+      class="section compact"
+      id="about"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              01 // WHO I AM
+            </p>
+
+            <h2>
+              Engineering across the attack surface.
+            </h2>
+
+            <p class="section-copy">
+              Software, infrastructure,
+              security and AI are treated
+              as one system—not separate disciplines.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="profile-grid">
+
+          <article
+            class="profile-card glass reveal"
+          >
+
+            <div class="avatar-wrap">
+
+              <img
+                id="profile-avatar"
+                src="https://github.com/burnt-exe.png?size=240"
+                alt="GitHub avatar for @burnt-exe"
+                width="104"
+                height="104"
+              >
+
+            </div>
+
+            <div
+              class="profile-name"
+              id="profile-name"
+            >
+              Raydo
+            </div>
+
+            <div class="handle">
+              @burnt-exe
+            </div>
+
+            <div class="mini-meta">
+
+              <span>
+                <b>Role</b>
+                <span>
+                  CTO · Skunkworks
+                </span>
+              </span>
+
+              <span>
+                <b>Location</b>
+                <span id="profile-location">
+                  South Africa
+                </span>
+              </span>
+
+              <span>
+                <b>Company</b>
+                <span id="profile-company">
+                  Skunkworks
+                </span>
+              </span>
+
+              <span>
+                <b>GitHub since</b>
+                <span id="profile-since">
+                  —
+                </span>
+              </span>
+
+            </div>
+
+          </article>
+
+          <article
+            class="bio-card glass reveal"
+          >
+
+            <p class="quote">
+              Build the platform.
+              <span>Threat-model it.</span>
+              Automate the boring parts.
+              Instrument everything.
+            </p>
+
+            <ul class="mission-list">
+
+              <li>
+                <b>Secure by design</b>
+                Zero-trust architecture,
+                identity-aware access,
+                hardened delivery paths.
+              </li>
+
+              <li>
+                <b>Cloud by default</b>
+                Portable workloads,
+                policy-as-code,
+                resilient automation
+                and observability.
+              </li>
+
+              <li>
+                <b>AI with controls</b>
+                Production LLM systems
+                with governance,
+                traceability
+                and measurable value.
+              </li>
+
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         PROJECTS
+         ======================================================= -->
+
+    <section
+      class="section"
+      id="projects"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              02 // PROJECTS
+            </p>
+
+            <h2>
+              Recently active repositories.
+            </h2>
+
+            <p class="section-copy">
+              Loaded live from the public
+              GitHub REST API and sorted
+              by recent repository activity.
+            </p>
+
+          </div>
+
+          <div class="projects-toolbar">
+
+            <input
+              class="search"
+              id="repo-search"
+              type="search"
+              placeholder="⌕ filter repositories"
+              aria-label="Filter repositories"
+            >
+
+            <button
+              class="btn"
+              id="refresh-projects"
+              type="button"
+            >
+              Refresh
+            </button>
+
+          </div>
+
+        </div>
+
+        <div
+          class="project-grid"
+          id="project-grid"
+          aria-live="polite"
+        >
+
+          <article
+            class="project-card skeleton"
+            style="min-height:235px"
+          ></article>
+
+          <article
+            class="project-card skeleton"
+            style="min-height:235px"
+          ></article>
+
+          <article
+            class="project-card skeleton"
+            style="min-height:235px"
+          ></article>
+
+        </div>
+
+        <div
+          class="hero-actions"
+          style="margin-top:22px"
+        >
+
+          <a
+            class="btn"
+            href="https://github.com/burnt-exe?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            All repositories ↗
+          </a>
+
+          <a
+            class="btn"
+            href="https://github.com/Skunkworks-Lab-Services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Skunkworks Lab Services ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         TOOLBOX
+         ======================================================= -->
+
+    <section
+      class="section compact"
+      id="stack"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              03 // TOOLBOX
+            </p>
+
+            <h2>
+              Ship stack.
+            </h2>
+
+            <p class="section-copy">
+              A practical mix of application
+              engineering, platform automation,
+              cloud delivery, observability
+              and security tooling.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="toolbox reveal">
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">TS</div>
+              <div class="tool-name">TypeScript</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">PY</div>
+              <div class="tool-name">Python</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">BASH</div>
+              <div class="tool-name">Shell</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">YAML</div>
+              <div class="tool-name">IaC / Pipelines</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">RE</div>
+              <div class="tool-name">React</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">NODE</div>
+              <div class="tool-name">Node.js</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">CTR</div>
+              <div class="tool-name">Containers</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">GHA</div>
+              <div class="tool-name">GitHub Actions</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">OCP</div>
+              <div class="tool-name">OpenShift</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">PROM</div>
+              <div class="tool-name">Prometheus</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">GRAF</div>
+              <div class="tool-name">Grafana</div>
+            </div>
+          </div>
+
+          <div class="tool">
+            <div>
+              <div class="tool-code">ZTA</div>
+              <div class="tool-name">Zero Trust</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         LIVE ACTIVITY
+         ======================================================= -->
+
+    <section
+      class="section"
+      id="activity"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              04 // LIVE SIGNALS
+            </p>
+
+            <h2>
+              GitHub activity &amp; insights.
+            </h2>
+
+            <p class="section-copy">
+              Public events update on page load.
+              Third-party charts degrade gracefully
+              when a metrics service is unavailable.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="activity-grid">
+
+          <article
+            class="stream glass reveal"
+          >
+
+            <div class="panel-head">
+
+              <h3 class="panel-title">
+                public_event_stream.log
+              </h3>
+
+              <span
+                class="panel-meta"
+                id="events-meta"
+              >
+                SYNCING
+              </span>
+
+            </div>
+
+            <div
+              class="event-list"
+              id="event-list"
+            >
+
+              <div class="event">
+
+                <div class="event-icon">
+                  …
+                </div>
+
+                <div class="event-main">
+
+                  <div
+                    class="event-title skeleton"
+                  >
+                    Loading event stream
+                  </div>
+
+                  <div class="event-time">
+                    GitHub public events API
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <article
+            class="insight-card glass reveal"
+          >
+
+            <div class="panel-head">
+
+              <h3 class="panel-title">
+                visual_metrics.dashboard
+              </h3>
+
+              <span class="panel-meta">
+                EXTERNAL RENDERERS
+              </span>
+
+            </div>
+
+            <div class="insight-stack">
+
+              <div class="metric-image">
+
+                <img
+                  loading="lazy"
+                  data-fallback
+                  alt="GitHub profile details"
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=burnt-exe&theme=tokyonight"
+                >
+
+              </div>
+
+              <div class="metric-image">
+
+                <img
+                  loading="lazy"
+                  data-fallback
+                  alt="GitHub activity graph"
+                  src="https://github-readme-activity-graph.vercel.app/graph?username=burnt-exe&theme=tokyo-night&hide_border=true&area=true"
+                >
+
+              </div>
+
+              <div class="metric-image">
+
+                <img
+                  loading="lazy"
+                  data-fallback
+                  alt="GitHub streak metrics"
+                  src="https://streak-stats.demolab.com/?user=burnt-exe&theme=tokyonight&hide_border=true"
+                >
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         SOUTH AFRICA RANKING
+         ======================================================= -->
+
+    <section
+      class="section compact"
+      id="ranking"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              05 // SOUTH AFRICA INDEX
+            </p>
+
+            <h2>
+              Top GitHub developers in South Africa.
+            </h2>
+
+            <p class="section-copy">
+              Rankings are refreshed from the public
+              <code>gayanvoice/top-github-users</code>
+              South Africa dataset at runtime.
+              The page displays the source timestamp
+              instead of pretending the dataset
+              is real-time.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          class="rank-hero glass reveal"
+        >
+
+          <div>
+
+            <p class="kicker">
+              YOUR CURRENT DATASET POSITION
+            </p>
+
+            <h3
+              style="
+                font-size:clamp(1.4rem,3vw,2.5rem);
+                margin-bottom:8px
+              "
+            >
+              @burnt-exe
+            </h3>
+
+            <p
+              class="section-copy"
+              id="rank-summary"
+            >
+              Locating your row in the current
+              South Africa dataset…
+            </p>
+
+            <div
+              class="rank-source"
+              id="rank-source"
+            >
+              Source sync pending.
+            </div>
+
+          </div>
+
+          <div
+            class="rank-number"
+            id="my-rank"
+          >
+            #—
+          </div>
+
+        </div>
+
+        <div
+          class="ranking-wrap reveal"
+        >
+
+          <div class="rank-controls">
+
+            <div>
+
+              <strong
+                style="
+                  font-family:var(--mono);
+                  font-size:.82rem
+                "
+              >
+                TOP 20 // PUBLIC CONTRIBUTIONS
+              </strong>
+
+              <div
+                class="rank-source"
+                id="rank-count"
+              >
+                Loading dataset…
+              </div>
+
+            </div>
+
+            <input
+              class="search"
+              id="rank-search"
+              type="search"
+              placeholder="⌕ filter top 20"
+              aria-label="Filter ranking table"
+            >
+
+          </div>
+
+          <div class="table-scroll">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Rank</th>
+                  <th>Developer</th>
+                  <th>Location</th>
+                  <th>Public contributions</th>
+                  <th>Status</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="ranking-body"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+        <div
+          class="hero-actions"
+          style="margin-top:20px"
+        >
+
+          <a
+            class="btn"
+            href="https://github.com/gayanvoice/top-github-users/blob/main/markdown/public_contributions/south_africa.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ranking source ↗
+          </a>
+
+          <a
+            class="btn"
+            href="https://committers.top/south_africa.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            committers.top ↗
+          </a>
+
+          <a
+            class="btn"
+            href="https://github.com/search?q=location%3A%22South+Africa%22&type=users"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub location query ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         GOALS
+         ======================================================= -->
+
+    <section
+      class="section"
+      id="goals"
+    >
+
+      <div class="shell">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <p class="kicker">
+              06 // GOALS
+            </p>
+
+            <h2>
+              Current vector.
+            </h2>
+
+          </div>
+
+        </div>
+
+        <div class="goals-grid reveal">
+
+          <article class="goal">
+
+            <span class="goal-index">
+              G01
+            </span>
+
+            <h3>
+              Expand Skunkworks
+            </h3>
+
+            <p>
+              Build repeatable delivery capacity
+              across Africa, LATAM and Europe.
+            </p>
+
+          </article>
+
+          <article class="goal">
+
+            <span class="goal-index">
+              G02
+            </span>
+
+            <h3>
+              Secure Everything
+            </h3>
+
+            <p>
+              Reduce identity, endpoint,
+              application and cloud attack
+              surface by default.
+            </p>
+
+          </article>
+
+          <article class="goal">
+
+            <span class="goal-index">
+              G03
+            </span>
+
+            <h3>
+              Train 1,000+
+            </h3>
+
+            <p>
+              Scale hands-on technical learning
+              through automation-led bootcamps.
+            </p>
+
+          </article>
+
+          <article class="goal">
+
+            <span class="goal-index">
+              G04
+            </span>
+
+            <h3>
+              Automate Smarter
+            </h3>
+
+            <p>
+              Use telemetry and AI
+              to remove toil without hiding
+              operational risk.
+            </p>
+
+          </article>
+
+          <article class="goal">
+
+            <span class="goal-index">
+              G05
+            </span>
+
+            <h3>
+              Release OSS
+            </h3>
+
+            <p>
+              Publish practical ethical-hacking,
+              DevSecOps and platform engineering
+              toolkits.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         CONTACT
+         ======================================================= -->
+
+    <section
+      class="section"
+      id="contact"
+    >
+
+      <div class="shell">
+
+        <div
+          class="contact-card glass reveal"
+        >
+
+          <div>
+
+            <p class="kicker">
+              07 // REACH OUT
+            </p>
+
+            <h2>
+              Build something
+              <span>hard to break.</span>
+            </h2>
+
+            <p class="section-copy">
+              Software engineering ·
+              cybersecurity ·
+              cloud platforms ·
+              AI automation ·
+              technical enablement.
+            </p>
+
+          </div>
+
+          <div class="contact-links">
+
+            <a
+              class="contact-link"
+              href="mailto:info@skunkworks.africa"
+            >
+              <span>
+                info@skunkworks.africa
+              </span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://burnt-exe.github.io/burnt-exe.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                burnt-exe.github.io
+              </span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://www.skunkworks.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                skunkworks.africa
+              </span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/raydo-matthee/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                LinkedIn
+              </span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://github.com/burnt-exe"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                GitHub / @burnt-exe
+              </span>
+              <span>↗</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <nav class="bottom-nav" aria-label="Mobile navigation" id="bottomNav">
-    <button class="active" data-view="dashboard">Home</button>
-    <button data-view="badges">Badges</button>
-    <button data-view="skills">Skills</button>
-    <button data-view="schedule">Plan</button>
-  </nav>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
 
-<script>
-const careerPaths = {
-  "AI Solutions Consultant": ["AI Literacy", "Prompt Engineering", "RAG", "API Integration", "Solution Design", "Presentation Skills"],
-  "Cybersecurity Analyst": ["Cybersecurity", "Zero Trust", "Network Security", "SIEM", "Incident Response", "Risk Management"],
-  "Cloud Engineer": ["Cloud Fundamentals", "Linux", "Networking", "Containers", "Infrastructure as Code", "Monitoring"],
-  "Data Analyst": ["Data Literacy", "SQL", "Dashboards", "Data Visualization", "Analytics", "Reporting"],
-  "API Integration Developer": ["API Design", "Gateway", "Authentication", "JavaScript", "GraphQL", "DevOps"],
-  "IT Support Specialist": ["Customer Support", "Hardware", "Networking", "Cyber Hygiene", "Troubleshooting", "Documentation"],
-  "Technical Sales / Pre-Sales": ["Discovery", "Demo Skills", "Cloud", "Cybersecurity", "Business Value", "Proposal Writing"],
-  "LMS / eLearning Coordinator": ["SCORM", "Instructional Design", "Analytics", "Content QA", "Learner Support", "Accessibility"]
-};
-const vendors = [
-  ["MongoDB", "mongodb", ["AI", "RAG", "Database", "Security", "Data Modeling"]],
-  ["Tableau", "tableau", ["Data", "Dashboard", "Analytics", "Visualization", "Reporting"]],
-  ["The Linux Foundation", "the-linux-foundation", ["Cybersecurity", "Zero Trust", "DevOps", "Linux", "Open Source"]],
-  ["Fortinet", "fortinet", ["Cybersecurity", "Firewall", "Network Security", "Threat", "Operations"]],
-  ["Kong", "kong", ["API", "Gateway", "Developer", "APIOps", "Security"]],
-  ["SAP", "sap", ["Business Process", "S/4HANA", "Cloud", "Analytics", "Customer Experience"]],
-  ["SAS", "sas", ["SQL", "Analytics", "Data", "Programming", "Customer Intelligence"]],
-  ["Acronis", "acronis", ["Backup", "Recovery", "Cyber Protection", "Cloud", "Security"]],
-  ["Splunk", "splunk", ["SIEM", "Observability", "Security", "Monitoring", "Technical Selling"]],
-  ["Google Cloud", "google-cloud", ["Cloud", "Compute", "Data", "AI", "Machine Learning"]],
-  ["Microsoft", "microsoft", ["Azure", "AI", "Security", "Data", "Power Platform"]],
-  ["Oracle", "oracle", ["Cloud", "Database", "Analytics", "AI", "Sales Specialist"]],
-  ["Red Hat", "red-hat", ["Linux", "OpenShift", "Ansible", "Containers", "Cloud"]],
-  ["GitHub", "github", ["Git", "Actions", "Copilot", "DevOps", "Sales"]],
-  ["GitLab", "gitlab", ["DevOps", "CI/CD", "Security", "Git", "Source Control"]],
-  ["HashiCorp", "hashicorp", ["Terraform", "Vault", "Cloud", "Infrastructure", "DevOps"]],
-  ["VMware", "vmware", ["vSphere", "Virtualization", "Cloud", "NSX", "Tanzu"]],
-  ["HPE", "hewlett-packard-enterprise", ["Aruba", "Networking", "SD-WAN", "Cloud", "Storage"]],
-  ["Check Point", "checkpoint", ["Cloud", "Security", "Firewall", "Threat Prevention", "Sales"]],
-  ["F5", "f5", ["NGINX", "WAF", "WAAP", "API Security", "Distributed Cloud"]]
-];
-const catalog = vendors.flatMap(([vendor, slug, skills]) => skills.map(skill => ({
-  id: `${slug}-${skill}`.toLowerCase().replace(/[^a-z0-9]+/g, '-'), vendor, skill, level: 'Foundational', cost: 'Free',
-  query: `site:credly.com/org/${slug}/badge "Cost Free" "${skill}" "Level Foundational"`,
-  url: `https://www.google.com/search?q=${encodeURIComponent(`site:credly.com/org/${slug}/badge "Cost Free" "${skill}" "Level Foundational"`)}`
-})));
-const sampleScorm = `<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui;margin:0;padding:34px;color:#102033;background:linear-gradient(135deg,#f5fbff,#e7fff3)}button{border:0;border-radius:999px;padding:12px 16px;background:#0b6bff;color:white;font-weight:800;cursor:pointer}.box{max-width:760px;margin:auto;background:white;border-radius:22px;padding:26px;box-shadow:0 18px 60px rgba(0,0,0,.12)}</style></head><body><div class="box"><h1>Sample SCORM Badge Sprint Module</h1><p>This demo simulates learner launch, lesson status, score and completion through the parent SCORM API shim.</p><ol><li>Choose a free Credly badge query.</li><li>Complete the vendor learning content.</li><li>Paste the badge URL into your evidence tracker.</li><li>Mark the scheduled learning session complete.</li></ol><button onclick="complete()">Complete module</button><p id="out"></p></div><script>function complete(){const api=parent.API;if(api){api.LMSInitialize('');api.LMSSetValue('cmi.core.lesson_status','completed');api.LMSSetValue('cmi.core.score.raw','100');api.LMSCommit('');api.LMSFinish('');document.getElementById('out').textContent='Module completed and sent to SCORM API shim.'}else{document.getElementById('out').textContent='No SCORM API detected.'}}<\/script></body></html>`;
-let state = JSON.parse(localStorage.getItem('credlyGrowthHub') || '{"profile":null,"skills":[],"badges":[],"schedule":[],"scorm":{}}');
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const escapeHtml = x => String(x || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const todayOffset = n => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
-let toastTimer;
-function toast(message){ const node = $('#toast'); node.textContent = message; node.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => node.classList.remove('show'), 2600); }
-function save(){ localStorage.setItem('credlyGrowthHub', JSON.stringify(state)); render(); }
-function show(view){ $$('.view').forEach(v => v.classList.remove('active')); $('#' + view).classList.add('active'); $$('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === view)); window.scrollTo({top: 0, behavior: 'smooth'}); }
-function seedSkills(path){ return (careerPaths[path] || []).map(name => ({ name, score: 10, evidence: '' })); }
-function statusPill(status){ return status === 'Complete' ? '<span class="pill done">Complete</span>' : status === 'In Progress' ? '<span class="pill warn">In progress</span>' : '<span class="pill">Planned</span>'; }
-function render(){
-  const p = state.profile;
-  $('#profileMini').innerHTML = p ? `<strong>${escapeHtml(p.name)}</strong><br><span class="muted">${escapeHtml(p.role || 'Learner')} → ${escapeHtml(p.careerPath)}</span><br>${p.credlyUrl ? `<a href="${escapeHtml(p.credlyUrl)}" target="_blank" rel="noopener">Credly profile</a>` : '<span class="muted">No Credly URL yet</span>'}` : 'No profile captured yet.';
-  const completed = state.schedule.filter(s => s.status === 'Complete').length;
-  const verified = state.badges.filter(b => b.status === 'Verified').length;
-  const avgSkill = state.skills.length ? Math.round(state.skills.reduce((a,s) => a + Number(s.score || 0), 0) / state.skills.length) : 0;
-  $('#stats').innerHTML = [[state.badges.length, 'Planned badges'], [verified, 'Verified badges'], [state.schedule.length, 'Learning sessions'], [avgSkill + '%', 'Avg. skill maturity']].map(([n,l]) => `<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join('');
-  $('#recommendations').innerHTML = !p ? `<div class="empty-state"><h3>Start with onboarding</h3><p>Create the learner profile first, then generate a badge plan.</p><button class="btn primary" data-action="go" data-target="onboard">Onboard learner</button></div>` : [`Add 3 free ${escapeHtml(p.careerPath)} badge targets to the plan.`, `Schedule ${escapeHtml(p.weeklyHours || 5)} focused learning hours this week.`, 'Paste Credly evidence links as badges are completed.', completed ? 'Review completed sessions and update skill maturity.' : 'Complete your first scheduled learning session.'].map(t => `<div class="card">${t}</div>`).join('');
-  $('#coverage').innerHTML = state.skills.length ? state.skills.map(s => `<div class="mini-meter"><div class="mini-meter-row"><strong>${escapeHtml(s.name)}</strong><span>${Number(s.score || 0)}%</span></div><div class="progress"><span style="width:${Number(s.score || 0)}%"></span></div></div>`).join('') : '<div class="empty-state"><h3>No skills seeded yet</h3><p>Save a learner profile to automatically create a role-aligned skills matrix.</p></div>';
-  $('#pipeline').innerHTML = state.badges.length ? state.badges.slice(0,6).map(b => `<div class="card badge-card"><div class="card-title"><div><strong>${escapeHtml(b.vendor)} — ${escapeHtml(b.skill)}</strong><p style="margin:6px 0 0"><code>${escapeHtml(b.query)}</code></p></div><span class="tag">${escapeHtml(b.status || 'Planned')}</span></div></div>`).join('') : '<div class="empty-state"><h3>No badges in the pipeline</h3><p>Generate a plan or add badges manually from the badge finder.</p><button class="btn primary" data-action="generate-plan">Generate plan</button></div>';
-  renderBadges(); renderSkills(); renderSchedule();
-}
-function renderBadges(){
-  const q = ($('#badgeSearch')?.value || '').toLowerCase();
-  const list = catalog.filter(b => !q || `${b.vendor} ${b.skill} ${b.query}`.toLowerCase().includes(q));
-  $('#badgeList').innerHTML = list.length ? list.map(b => `<article class="card badge-card"><div class="card-title"><div><h3>${escapeHtml(b.vendor)} — ${escapeHtml(b.skill)}</h3><p><code>${escapeHtml(b.query)}</code></p></div><span class="tag">${b.cost}</span></div><div class="actions"><a class="btn small" href="${b.url}" target="_blank" rel="noopener">Search</a><button class="btn small primary" data-action="add-badge" data-id="${b.id}">Add to plan</button></div></article>`).join('') : '<div class="empty-state"><h3>No matches</h3><p>Try a broader term such as AI, Cloud, Data, Cybersecurity, DevOps or Sales.</p></div>';
-}
-function renderSkills(){
-  $('#skillList').innerHTML = state.skills.length ? state.skills.map((s,i) => `<div class="card"><div class="card-title"><strong>${escapeHtml(s.name)}</strong><span class="tag">${Number(s.score || 0)}%</span></div><input class="skill-range" data-index="${i}" type="range" min="0" max="100" value="${Number(s.score || 0)}"><input class="skill-evidence" data-index="${i}" placeholder="Evidence URL or notes" value="${escapeHtml(s.evidence || '')}"><button class="btn small danger" data-action="remove-skill" data-index="${i}">Remove</button></div>`).join('') : '<div class="empty-state"><h3>No skills yet</h3><p>Save a profile or add a skill manually.</p></div>';
-}
-function renderSchedule(){
-  $('#scheduleRows').innerHTML = state.schedule.length ? state.schedule.map((s,i) => `<tr><td>${escapeHtml(s.date)}</td><td>${escapeHtml(s.topic)}</td><td>${escapeHtml(s.badge)}</td><td>${statusPill(s.status)}<br><select class="session-status" data-index="${i}" style="margin-top:8px"><option ${s.status === 'Planned' ? 'selected' : ''}>Planned</option><option ${s.status === 'In Progress' ? 'selected' : ''}>In Progress</option><option ${s.status === 'Complete' ? 'selected' : ''}>Complete</option></select></td><td><button class="btn small danger" data-action="remove-session" data-index="${i}">Remove</button></td></tr>`).join('') : '<tr><td colspan="5" class="muted">No sessions scheduled yet.</td></tr>';
-}
-function addBadge(id){ const b = catalog.find(x => x.id === id); if(!b) return; if(!state.badges.some(x => x.id === id)) state.badges.push({...b, status:'Planned', evidence:''}); state.schedule.push({ date: todayOffset(state.schedule.length + 1), topic: b.skill, badge: `${b.vendor} ${b.skill}`, status: 'Planned' }); save(); toast('Badge added to the learning plan.'); }
-function generatePlan(){ const p = state.profile || { careerPath: 'AI Solutions Consultant' }; const wanted = new Set((careerPaths[p.careerPath] || []).map(x => x.toLowerCase())); const picks = catalog.filter(b => [...wanted].some(w => b.skill.toLowerCase().includes(w.split(' ')[0]) || w.includes(b.skill.toLowerCase()))).slice(0,10); (picks.length ? picks : catalog.slice(0,10)).forEach((b,i) => { if(!state.badges.some(x => x.id === b.id)) state.badges.push({...b, status:'Planned', evidence:''}); state.schedule.push({ date: todayOffset((i + 1) * 3), topic: b.skill, badge: `${b.vendor} ${b.skill}`, status: 'Planned' }); }); save(); show('schedule'); toast('30-day learning plan generated.'); }
-window.API = { data:{}, LMSInitialize(){ this.data.started = new Date().toISOString(); return 'true'; }, LMSSetValue(k,v){ this.data[k]=v; state.scorm[k]=v; return 'true'; }, LMSGetValue(k){ return this.data[k] || ''; }, LMSCommit(){ state.scorm.lastCommit = new Date().toISOString(); localStorage.setItem('credlyGrowthHub', JSON.stringify(state)); return 'true'; }, LMSFinish(){ state.scorm.finished = new Date().toISOString(); save(); return 'true'; }, LMSGetLastError(){ return '0'; }, LMSGetErrorString(){ return 'No error'; }, LMSGetDiagnostic(){ return 'OK'; } };
-function initScrollHeader(){ const topbar = $('#topbar'); let lastY = window.scrollY; window.addEventListener('scroll', () => { const y = window.scrollY; topbar.classList.toggle('is-compact', y > 16); if (y > 120 && y > lastY + 4) topbar.classList.add('is-hidden'); if (y < lastY - 4 || y < 60) topbar.classList.remove('is-hidden'); lastY = y; }, { passive: true }); }
-$$('[data-view]').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
-$('#careerPath').innerHTML = Object.keys(careerPaths).map(p => `<option>${p}</option>`).join('');
-$('#profileForm').addEventListener('submit', e => { e.preventDefault(); const f = new FormData(e.target); state.profile = Object.fromEntries(f.entries()); state.skills = seedSkills(state.profile.careerPath); save(); show('dashboard'); toast('Profile saved and skills seeded.'); });
-$('#badgeSearch').addEventListener('input', renderBadges);
-$$('[data-filter]').forEach(b => b.addEventListener('click', () => { $('#badgeSearch').value = b.dataset.filter === 'all' ? '' : b.dataset.filter; renderBadges(); toast(b.dataset.filter === 'all' ? 'Showing all badge queries.' : `Filtered by ${b.dataset.filter}.`); }));
-$('#addSkillBtn').addEventListener('click', () => { const name = prompt('Skill name'); if(name){ state.skills.push({ name, score: 0, evidence: '' }); save(); toast('Skill added.'); } });
-$('#addSessionBtn').addEventListener('click', () => { const topic = prompt('Learning topic'); if(topic){ state.schedule.push({ date: todayOffset(1), topic, badge: 'Manual / SCORM module', status: 'Planned' }); save(); toast('Learning session added.'); } });
-$('#launchScorm').addEventListener('click', () => { $('#scormFrame').srcdoc = sampleScorm; toast('Sample SCORM module launched.'); });
-$('#demoBtn').addEventListener('click', () => { state = { profile: { name:'Demo Learner', email:'learner@skunkworks.africa', role:'Junior Consultant', careerPath:'AI Solutions Consultant', weeklyHours:5, credlyUrl:'', objective:'Build an AI consulting badge portfolio.' }, skills: seedSkills('AI Solutions Consultant'), badges: [], schedule: [], scorm: {} }; generatePlan(); show('dashboard'); toast('Demo learner loaded.'); });
-$('#exportBtn').addEventListener('click', () => { const blob = new Blob([JSON.stringify(state,null,2)], { type:'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'credly-growth-profile.json'; a.click(); URL.revokeObjectURL(a.href); toast('Learner data exported.'); });
-$('#importFile').addEventListener('change', async e => { const file = e.target.files[0]; if(!file) return; state = JSON.parse(await file.text()); save(); toast('Learner data imported.'); });
-$('#resetBtn').addEventListener('click', () => { if(confirm('Reset local learner data?')){ localStorage.removeItem('credlyGrowthHub'); state = { profile:null, skills:[], badges:[], schedule:[], scorm:{} }; render(); toast('Local learner data reset.'); } });
-document.addEventListener('click', e => { const t = e.target.closest('[data-action]'); if(!t) return; const a = t.dataset.action; if(a === 'go') show(t.dataset.target); if(a === 'generate-plan') generatePlan(); if(a === 'add-badge') addBadge(t.dataset.id); if(a === 'remove-skill'){ state.skills.splice(Number(t.dataset.index),1); save(); toast('Skill removed.'); } if(a === 'remove-session'){ state.schedule.splice(Number(t.dataset.index),1); save(); toast('Session removed.'); } });
-document.addEventListener('input', e => { if(e.target.classList.contains('skill-range')){ state.skills[Number(e.target.dataset.index)].score = Number(e.target.value); save(); } });
-document.addEventListener('change', e => { if(e.target.classList.contains('skill-evidence')){ state.skills[Number(e.target.dataset.index)].evidence = e.target.value; save(); toast('Skill evidence updated.'); } if(e.target.classList.contains('session-status')){ state.schedule[Number(e.target.dataset.index)].status = e.target.value; save(); toast('Session status updated.'); } });
-document.addEventListener('keydown', e => { if(e.target.matches('input, textarea, select')) return; const map = { '1':'dashboard','2':'onboard','3':'badges','4':'skills','5':'schedule','6':'scorm','7':'settings' }; if(map[e.key]) show(map[e.key]); });
-initScrollHeader();
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {});
-render();
-</script>
+  <footer>
+
+    <div class="shell footer-inner">
+
+      <div>
+        ©
+        <span id="year"></span>
+        Raydo / Skunkworks Lab Services
+      </div>
+
+      <div class="footer-code">
+        status:
+        <span style="color:var(--green)">
+          always_building
+        </span>
+        //
+        always_learning
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================================
+       TOAST
+       ========================================================= -->
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <!-- =========================================================
+       COMMAND PALETTE
+       ========================================================= -->
+
+  <div
+    class="command"
+    id="command"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Command palette"
+  >
+
+    <div class="command-box">
+
+      <input
+        class="command-input"
+        id="command-input"
+        placeholder="Type a command or section…"
+        autocomplete="off"
+      >
+
+      <div
+        class="command-list"
+        id="command-list"
+      ></div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       APPLICATION RUNTIME
+       ========================================================= -->
+
+  <script>
+  (() => {
+    'use strict';
+
+    const USER = 'burnt-exe';
+
+    const GITHUB_API =
+      'https://api.github.com';
+
+    const RANKING_URL =
+      'https://raw.githubusercontent.com/gayanvoice/top-github-users/main/markdown/public_contributions/south_africa.md';
+
+    const $ = (
+      selector,
+      root = document
+    ) => root.querySelector(selector);
+
+    const $$ = (
+      selector,
+      root = document
+    ) => [
+      ...root.querySelectorAll(selector)
+    ];
+
+    const FALLBACK_RANKING = [
+      {
+        rank: 1,
+        login: 'snopoke',
+        name: 'Simon Kelly',
+        location: 'Cape Town',
+        contributions: 8036
+      },
+      {
+        rank: 2,
+        login: 'Raphasha27',
+        name: 'Raphasha27',
+        location: 'Johannesburg, South Africa',
+        contributions: 5035
+      },
+      {
+        rank: 3,
+        login: 'govert',
+        name: 'Govert van Drimmelen',
+        location: 'Johannesburg, South Africa',
+        contributions: 4632
+      },
+      {
+        rank: 4,
+        login: 'datashaman',
+        name: 'datashaman',
+        location: 'Cape Town, South Africa',
+        contributions: 4301
+      },
+      {
+        rank: 5,
+        login: 'GedMarc',
+        name: 'Marc Magon',
+        location: 'Johannesburg, South Africa',
+        contributions: 4247
+      },
+      {
+        rank: 6,
+        login: 'mattleibow',
+        name: 'Matthew Leibowitz',
+        location: 'Cape Town, South Africa',
+        contributions: 3170
+      },
+      {
+        rank: 7,
+        login: 'bshongwe',
+        name: 'Ernest Bhekizwe Shongwe',
+        location: 'Johannesburg, South Africa',
+        contributions: 2823
+      },
+      {
+        rank: 8,
+        login: 'longhotsummer',
+        name: 'Greg Kempe',
+        location: 'Cape Town, South Africa',
+        contributions: 2747
+      },
+      {
+        rank: 9,
+        login: 'roryp',
+        name: 'Rory Preddy',
+        location: 'Johannesburg',
+        contributions: 2702
+      },
+      {
+        rank: 10,
+        login: 'rebelchris',
+        name: 'Chris Bongers',
+        location: 'Cape Town',
+        contributions: 2620
+      },
+      {
+        rank: 11,
+        login: 'nikrich',
+        name: 'Jannik Richter',
+        location: 'Cape Town, South Africa',
+        contributions: 2374
+      },
+      {
+        rank: 12,
+        login: 'schalkneethling',
+        name: 'Schalk Neethling',
+        location: 'Pretoria, South Africa',
+        contributions: 2331
+      },
+      {
+        rank: 13,
+        login: 'aidan-bailey',
+        name: 'Aidan Bailey',
+        location: 'Cape Town, South Africa',
+        contributions: 2156
+      },
+      {
+        rank: 14,
+        login: 'gititGoro',
+        name: 'Justin',
+        location: 'Cape Town',
+        contributions: 1872
+      },
+      {
+        rank: 15,
+        login: 'DavidBakerEffendi',
+        name: 'David Baker Effendi',
+        location: 'Cape Town',
+        contributions: 1827
+      },
+      {
+        rank: 16,
+        login: 'wkirschbaum',
+        name: 'Wilhelm Kirschbaum',
+        location: 'Cape Town, South Africa',
+        contributions: 1798
+      },
+      {
+        rank: 17,
+        login: 'jonathanbossenger',
+        name: 'Jonathan Bossenger',
+        location: 'South Africa',
+        contributions: 1665
+      },
+      {
+        rank: 18,
+        login: 'RobynAwesome',
+        name: 'Kholofelo Robyn Rababalela',
+        location: 'Cape Town',
+        contributions: 1629
+      },
+      {
+        rank: 19,
+        login: 'davidbits',
+        name: 'David',
+        location: 'South Africa',
+        contributions: 1461
+      },
+      {
+        rank: 20,
+        login: 'awinogradov',
+        name: 'Anton Vinogradov',
+        location: 'Cape Town',
+        contributions: 1407
+      }
+    ];
+
+    let allRepos = [];
+    let topRanking = [];
+    let allRanking = [];
+
+    const fmt =
+      new Intl.NumberFormat('en-ZA');
+
+    const rel =
+      new Intl.RelativeTimeFormat(
+        'en',
+        {
+          numeric: 'auto'
+        }
+      );
+
+    /* =========================================================
+       DATE HELPERS
+       ========================================================= */
+
+    function timeAgo(dateLike) {
+      const d =
+        new Date(dateLike);
+
+      const seconds =
+        Math.round(
+          (d - new Date()) / 1000
+        );
+
+      const abs =
+        Math.abs(seconds);
+
+      if (abs < 60) {
+        return rel.format(
+          seconds,
+          'second'
+        );
+      }
+
+      const minutes =
+        Math.round(
+          seconds / 60
+        );
+
+      if (
+        Math.abs(minutes) < 60
+      ) {
+        return rel.format(
+          minutes,
+          'minute'
+        );
+      }
+
+      const hours =
+        Math.round(
+          minutes / 60
+        );
+
+      if (
+        Math.abs(hours) < 24
+      ) {
+        return rel.format(
+          hours,
+          'hour'
+        );
+      }
+
+      const days =
+        Math.round(
+          hours / 24
+        );
+
+      if (
+        Math.abs(days) < 30
+      ) {
+        return rel.format(
+          days,
+          'day'
+        );
+      }
+
+      const months =
+        Math.round(
+          days / 30
+        );
+
+      if (
+        Math.abs(months) < 12
+      ) {
+        return rel.format(
+          months,
+          'month'
+        );
+      }
+
+      return rel.format(
+        Math.round(months / 12),
+        'year'
+      );
+    }
+
+    function exactDate(dateLike) {
+      const d =
+        new Date(dateLike);
+
+      return Number.isNaN(
+        d.valueOf()
+      )
+        ? '—'
+        : d.toLocaleDateString(
+            'en-ZA',
+            {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            }
+          );
+    }
+
+    /* =========================================================
+       SECURITY / STRING HELPERS
+       ========================================================= */
+
+    function escapeHTML(
+      value = ''
+    ) {
+      return String(value)
+        .replace(
+          /[&<>"']/g,
+          c => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+          }[c])
+        );
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    function toast(
+      title,
+      message = ''
+    ) {
+      const el =
+        $('#toast');
+
+      el.innerHTML =
+        '<b>' +
+        escapeHTML(title) +
+        '</b>' +
+        (
+          message
+            ? '<br>' +
+              escapeHTML(message)
+            : ''
+        );
+
+      el.classList.add(
+        'show'
+      );
+
+      clearTimeout(
+        toast.t
+      );
+
+      toast.t =
+        setTimeout(
+          () => {
+            el.classList.remove(
+              'show'
+            );
+          },
+          3200
+        );
+    }
+
+    /* =========================================================
+       API STATUS
+       ========================================================= */
+
+    function setApiState(
+      state,
+      detail = ''
+    ) {
+      const dot =
+        $('#api-dot');
+
+      const text =
+        $('#api-state');
+
+      dot.classList.remove(
+        'ok',
+        'err'
+      );
+
+      if (
+        state === 'ok'
+      ) {
+        dot.classList.add(
+          'ok'
+        );
+
+        text.textContent =
+          'LIVE';
+      }
+      else if (
+        state === 'err'
+      ) {
+        dot.classList.add(
+          'err'
+        );
+
+        text.textContent =
+          'DEGRADED';
+      }
+      else {
+        text.textContent =
+          'SYNCING';
+      }
+
+      if (detail) {
+        text.title = detail;
+      }
+    }
+
+    /* =========================================================
+       GITHUB REST API
+       ========================================================= */
+
+    async function api(path) {
+
+      const res =
+        await fetch(
+          GITHUB_API + path,
+          {
+            headers: {
+              'Accept':
+                'application/vnd.github+json',
+
+              'X-GitHub-Api-Version':
+                '2022-11-28'
+            },
+
+            cache: 'no-store'
+          }
+        );
+
+      if (!res.ok) {
+
+        const remaining =
+          res.headers.get(
+            'x-ratelimit-remaining'
+          );
+
+        throw new Error(
+          `GitHub API ${res.status}${
+            remaining === '0'
+              ? ' — rate limit reached'
+              : ''
+          }`
+        );
+      }
+
+      return res.json();
+    }
+
+    function clearSkeleton(
+      el,
+      text
+    ) {
+      el.classList.remove(
+        'skeleton'
+      );
+
+      el.textContent =
+        text;
+    }
+
+    /* =========================================================
+       PROFILE
+       ========================================================= */
+
+    async function loadProfile() {
+
+      try {
+
+        const p =
+          await api(
+            `/users/${USER}`
+          );
+
+        clearSkeleton(
+          $('#stat-repos'),
+          fmt.format(
+            p.public_repos ?? 0
+          )
+        );
+
+        clearSkeleton(
+          $('#stat-followers'),
+          fmt.format(
+            p.followers ?? 0
+          )
+        );
+
+        clearSkeleton(
+          $('#stat-following'),
+          fmt.format(
+            p.following ?? 0
+          )
+        );
+
+        clearSkeleton(
+          $('#stat-updated'),
+          timeAgo(
+            p.updated_at
+          )
+        );
+
+        if (p.avatar_url) {
+          $('#profile-avatar').src =
+            p.avatar_url;
+        }
+
+        $('#profile-name').textContent =
+          p.name ||
+          'Raydo';
+
+        $('#profile-location').textContent =
+          p.location ||
+          'South Africa';
+
+        $('#location-tag').textContent =
+          p.location ||
+          'South Africa';
+
+        $('#profile-company').textContent =
+          p.company ||
+          'Skunkworks';
+
+        $('#profile-since').textContent =
+          exactDate(
+            p.created_at
+          );
+
+        $('#terminal-live').textContent =
+          `${
+            p.public_repos ?? 0
+          } public repos · ${
+            p.followers ?? 0
+          } followers · profile ${
+            timeAgo(
+              p.updated_at
+            )
+          }`;
+
+        setApiState(
+          'ok',
+          'GitHub public REST API reachable'
+        );
+
+      }
+      catch (err) {
+
+        [
+          '#stat-repos',
+          '#stat-followers',
+          '#stat-following',
+          '#stat-updated'
+        ].forEach(
+          (sel, i) => {
+
+            const vals = [
+              '—',
+              '—',
+              '—',
+              'unavailable'
+            ];
+
+            clearSkeleton(
+              $(sel),
+              vals[i]
+            );
+          }
+        );
+
+        $('#terminal-live')
+          .textContent =
+            'GitHub API unavailable — static content active';
+
+        setApiState(
+          'err',
+          err.message
+        );
+
+        toast(
+          'GitHub data degraded',
+          err.message
+        );
+      }
+    }
+
+    /* =========================================================
+       REPOSITORIES
+       ========================================================= */
+
+    function repoCard(repo) {
+
+      const language =
+        repo.language ||
+        'Mixed';
+
+      const desc =
+        repo.description ||
+        'Public repository — open on GitHub for current code, documentation and activity.';
+
+      return `
+        <article class="project-card">
+
+          <div class="repo-top">
+
+            <span class="repo-icon">
+              ⌘/
+            </span>
+
+            <span class="tag">
+              ${
+                repo.archived
+                  ? 'ARCHIVED'
+                  : (
+                    repo.fork
+                      ? 'FORK'
+                      : 'PUBLIC'
+                  )
+              }
+            </span>
+
+          </div>
+
+          <h3 class="repo-name">
+
+            <a
+              href="${escapeHTML(repo.html_url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ${escapeHTML(repo.name)}
+            </a>
+
+          </h3>
+
+          <p class="repo-desc">
+            ${escapeHTML(desc)}
+          </p>
+
+          <div class="repo-meta">
+
+            <span>
+              <i class="lang-dot"></i>
+              ${escapeHTML(language)}
+            </span>
+
+            <span>
+              ★ ${
+                fmt.format(
+                  repo.stargazers_count || 0
+                )
+              }
+            </span>
+
+            <span>
+              ⑂ ${
+                fmt.format(
+                  repo.forks_count || 0
+                )
+              }
+            </span>
+
+          </div>
+
+          <div class="repo-updated">
+
+            updated ${
+              escapeHTML(
+                timeAgo(
+                  repo.pushed_at ||
+                  repo.updated_at
+                )
+              )
+            }
+
+          </div>
+
+        </article>`;
+    }
+
+    function renderRepos(list) {
+
+      const grid =
+        $('#project-grid');
+
+      if (!list.length) {
+
+        grid.innerHTML = `
+          <article
+            class="project-card"
+            style="grid-column:1/-1"
+          >
+
+            <h3>
+              No repositories match
+              that filter.
+            </h3>
+
+            <p class="repo-desc">
+              Clear the search field
+              to restore the live
+              repository list.
+            </p>
+
+          </article>
+        `;
+
+        return;
+      }
+
+      grid.innerHTML =
+        list
+          .slice(0, 9)
+          .map(repoCard)
+          .join('');
+    }
+
+    async function loadRepos(
+      showToast = false
+    ) {
+
+      const grid =
+        $('#project-grid');
+
+      grid.setAttribute(
+        'aria-busy',
+        'true'
+      );
+
+      try {
+
+        const repos =
+          await api(
+            `/users/${USER}/repos?sort=updated&direction=desc&per_page=30&type=owner`
+          );
+
+        allRepos =
+          repos
+            .filter(
+              r => !r.archived
+            )
+            .sort(
+              (a,b) =>
+                new Date(
+                  b.pushed_at ||
+                  b.updated_at
+                ) -
+                new Date(
+                  a.pushed_at ||
+                  a.updated_at
+                )
+            );
+
+        renderRepos(
+          allRepos
+        );
+
+        if (showToast) {
+
+          toast(
+            'Repositories refreshed',
+            `${
+              allRepos.length
+            } public repositories loaded.`
+          );
+        }
+
+      }
+      catch (err) {
+
+        allRepos = [
+          {
+            name:
+              'ci-cd',
+
+            html_url:
+              'https://github.com/Skunkworks-Lab-Services/ci-cd',
+
+            description:
+              'CI/CD automation using GitHub Actions.',
+
+            language:
+              'YAML',
+
+            stargazers_count:
+              0,
+
+            forks_count:
+              0,
+
+            updated_at:
+              new Date().toISOString()
+          },
+          {
+            name:
+              'security-monitoring',
+
+            html_url:
+              'https://github.com/Skunkworks-Lab-Services/security-monitoring',
+
+            description:
+              'Real-time threat detection pipelines.',
+
+            language:
+              'Python',
+
+            stargazers_count:
+              0,
+
+            forks_count:
+              0,
+
+            updated_at:
+              new Date().toISOString()
+          },
+          {
+            name:
+              'ai-chatbots',
+
+            html_url:
+              'https://github.com/Skunkworks-Lab-Services/ai-chatbots',
+
+            description:
+              'LLM-based conversational agents.',
+
+            language:
+              'TypeScript',
+
+            stargazers_count:
+              0,
+
+            forks_count:
+              0,
+
+            updated_at:
+              new Date().toISOString()
+          },
+          {
+            name:
+              'aiops-insights',
+
+            html_url:
+              'https://github.com/Skunkworks-Lab-Services/aiops-insights',
+
+            description:
+              'Predictive monitoring and remediation.',
+
+            language:
+              'Python',
+
+            stargazers_count:
+              0,
+
+            forks_count:
+              0,
+
+            updated_at:
+              new Date().toISOString()
+          },
+          {
+            name:
+              'custom-saas',
+
+            html_url:
+              'https://github.com/Skunkworks-Lab-Services/custom-saas',
+
+            description:
+              'Tailored SaaS deployments.',
+
+            language:
+              'TypeScript',
+
+            stargazers_count:
+              0,
+
+            forks_count:
+              0,
+
+            updated_at:
+              new Date().toISOString()
+          }
+        ];
+
+        renderRepos(
+          allRepos
+        );
+
+        setApiState(
+          'err',
+          err.message
+        );
+
+      }
+      finally {
+
+        grid.removeAttribute(
+          'aria-busy'
+        );
+      }
+    }
+
+    /* =========================================================
+       PUBLIC EVENTS
+       ========================================================= */
+
+    function eventLabel(e) {
+
+      const map = {
+
+        PushEvent: [
+          'PUSH',
+          `pushed to ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        PullRequestEvent: [
+          'PR',
+          `${
+            e.payload?.action ||
+            'updated'
+          } PR in ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        IssuesEvent: [
+          'ISS',
+          `${
+            e.payload?.action ||
+            'updated'
+          } issue in ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        IssueCommentEvent: [
+          'MSG',
+          `commented in ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        CreateEvent: [
+          'NEW',
+          `created ${
+            e.payload?.ref_type ||
+            'resource'
+          } in ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        ForkEvent: [
+          'FORK',
+          `forked ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        WatchEvent: [
+          'STAR',
+          `starred ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ],
+
+        ReleaseEvent: [
+          'REL',
+          `${
+            e.payload?.action ||
+            'updated'
+          } release in ${
+            e.repo?.name ||
+            'repository'
+          }`
+        ]
+
+      };
+
+      return map[e.type] || [
+        'EVT',
+
+        `${
+          (
+            e.type ||
+            'GitHubEvent'
+          ).replace(
+            'Event',
+            ''
+          )
+        } · ${
+          e.repo?.name ||
+          'repository'
+        }`
+      ];
+    }
+
+    async function loadEvents() {
+
+      try {
+
+        const events =
+          await api(
+            `/users/${USER}/events/public?per_page=20`
+          );
+
+        $('#events-meta')
+          .textContent =
+            `${
+              events.length
+            } PUBLIC EVENTS`;
+
+        $('#event-list')
+          .innerHTML =
+            events
+              .slice(0,14)
+              .map(
+                e => {
+
+                  const [
+                    code,
+                    label
+                  ] =
+                    eventLabel(e);
+
+                  const repo =
+                    escapeHTML(
+                      e.repo?.name ||
+                      ''
+                    );
+
+                  const href =
+                    repo
+                      ? `https://github.com/${repo}`
+                      : `https://github.com/${USER}`;
+
+                  return `
+                    <div class="event">
+
+                      <div class="event-icon">
+                        ${code}
+                      </div>
+
+                      <div class="event-main">
+
+                        <div class="event-title">
+
+                          <a
+                            href="${href}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            ${
+                              escapeHTML(
+                                label
+                              )
+                            }
+                          </a>
+
+                        </div>
+
+                        <div class="event-time">
+                          ${
+                            escapeHTML(
+                              timeAgo(
+                                e.created_at
+                              )
+                            )
+                          }
+                        </div>
+
+                      </div>
+
+                    </div>
+                  `;
+                }
+              )
+              .join('') ||
+
+            `
+              <div class="metric-fallback">
+                No public events returned
+                by GitHub.
+              </div>
+            `;
+
+      }
+      catch (err) {
+
+        $('#events-meta')
+          .textContent =
+            'UNAVAILABLE';
+
+        $('#event-list')
+          .innerHTML = `
+            <div class="metric-fallback">
+              Public event stream is
+              temporarily unavailable.
+              ${
+                escapeHTML(
+                  err.message
+                )
+              }
+            </div>
+          `;
+      }
+    }
+
+    /* =========================================================
+       SOUTH AFRICA RANKING
+       ========================================================= */
+
+    function parseRankingHTML(
+      text
+    ) {
+
+      const sourceDate =
+        text.match(
+          /public contributions[^`]*`([^`]+)`/i
+        )?.[1] || '';
+
+      const tracked =
+        text.match(
+          /There are `([\d,]+) users`/i
+        )?.[1] || '';
+
+      const doc =
+        new DOMParser()
+          .parseFromString(
+            text,
+            'text/html'
+          );
+
+      const rows = [
+        ...doc.querySelectorAll(
+          'tr'
+        )
+      ];
+
+      const parsed = [];
+
+      rows.forEach(
+        row => {
+
+          const tds = [
+            ...row.querySelectorAll(
+              'td'
+            )
+          ];
+
+          if (
+            tds.length < 6
+          ) {
+            return;
+          }
+
+          const rank =
+            Number(
+              tds[0]
+                .textContent
+                .trim()
+            );
+
+          if (
+            !Number.isFinite(rank) ||
+            rank < 1
+          ) {
+            return;
+          }
+
+          const userAnchor =
+            tds[1]
+              .querySelector(
+                'a[href*="github.com/"]'
+              );
+
+          if (!userAnchor) {
+            return;
+          }
+
+          const href =
+            userAnchor
+              .getAttribute(
+                'href'
+              ) || '';
+
+          const login =
+            decodeURIComponent(
+              href
+                .split('/')
+                .filter(Boolean)
+                .pop() || ''
+            ).trim();
+
+          const img =
+            tds[1]
+              .querySelector(
+                'img'
+              );
+
+          const compactText =
+            tds[1]
+              .textContent
+              .replace(
+                /\s+/g,
+                ' '
+              )
+              .trim();
+
+          let name =
+            compactText
+              .replace(
+                login,
+                ''
+              )
+              .trim() ||
+            login;
+
+          const location =
+            tds[4]
+              .textContent
+              .replace(
+                /\s+/g,
+                ' '
+              )
+              .trim();
+
+          const contributions =
+            Number(
+              tds[5]
+                .textContent
+                .replace(
+                  /[^\d]/g,
+                  ''
+                )
+            ) || 0;
+
+          parsed.push({
+
+            rank,
+
+            login,
+
+            name,
+
+            location,
+
+            contributions,
+
+            avatar:
+              img?.getAttribute(
+                'src'
+              ) ||
+              `https://github.com/${
+                encodeURIComponent(
+                  login
+                )
+              }.png?size=80`
+
+          });
+        }
+      );
+
+      return {
+        sourceDate,
+        tracked,
+        rows: parsed
+      };
+    }
+
+    function rankingRow(r) {
+
+      const me =
+        r.login
+          .toLowerCase() ===
+        USER
+          .toLowerCase();
+
+      return `
+        <tr
+          class="${me ? 'me' : ''}"
+          data-search="${
+            escapeHTML(
+              (
+                r.login +
+                ' ' +
+                r.name +
+                ' ' +
+                r.location
+              ).toLowerCase()
+            )
+          }"
+        >
+
+          <td class="rank-cell">
+            #${r.rank}
+          </td>
+
+          <td>
+
+            <a
+              class="dev"
+              href="https://github.com/${
+                encodeURIComponent(
+                  r.login
+                )
+              }"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <img
+                loading="lazy"
+                src="${
+                  escapeHTML(
+                    r.avatar ||
+                    `https://github.com/${
+                      encodeURIComponent(
+                        r.login
+                      )
+                    }.png?size=80`
+                  )
+                }"
+                alt=""
+                width="34"
+                height="34"
+              >
+
+              <span>
+
+                <strong>
+                  ${
+                    escapeHTML(
+                      r.name ||
+                      r.login
+                    )
+                  }
+                </strong>
+
+                <small>
+                  @${
+                    escapeHTML(
+                      r.login
+                    )
+                  }
+                </small>
+
+              </span>
+
+            </a>
+
+          </td>
+
+          <td>
+            ${
+              escapeHTML(
+                r.location ||
+                '—'
+              )
+            }
+          </td>
+
+          <td class="contrib">
+            ${
+              fmt.format(
+                r.contributions
+              )
+            }
+          </td>
+
+          <td>
+
+            ${
+              me
+                ? `
+                    <span
+                      class="tag"
+                      style="color:var(--green)"
+                    >
+                      YOU
+                    </span>
+                  `
+                : `
+                    <span class="tag">
+                      ACTIVE
+                    </span>
+                  `
+            }
+
+          </td>
+
+        </tr>
+      `;
+    }
+
+    function renderRanking(
+      list
+    ) {
+
+      $('#ranking-body')
+        .innerHTML =
+          list
+            .map(
+              rankingRow
+            )
+            .join('');
+    }
+
+    async function loadRanking() {
+
+      let sourceDate =
+        '30 June 2026 fallback snapshot';
+
+      let tracked =
+        '971';
+
+      let rows =
+        FALLBACK_RANKING
+          .map(
+            r => ({
+              ...r,
+
+              avatar:
+                `https://github.com/${
+                  r.login
+                }.png?size=80`
+            })
+          );
+
+      try {
+
+        const res =
+          await fetch(
+            RANKING_URL,
+            {
+              cache: 'no-store'
+            }
+          );
+
+        if (!res.ok) {
+
+          throw new Error(
+            `ranking source ${
+              res.status
+            }`
+          );
+        }
+
+        const text =
+          await res.text();
+
+        const parsed =
+          parseRankingHTML(
+            text
+          );
+
+        if (
+          parsed.rows.length >= 20
+        ) {
+
+          rows =
+            parsed.rows;
+
+          sourceDate =
+            parsed.sourceDate ||
+            sourceDate;
+
+          tracked =
+            parsed.tracked ||
+            tracked;
+        }
+
+      }
+      catch (err) {
+
+        console.warn(
+          'Ranking fetch degraded:',
+          err
+        );
+      }
+
+      allRanking =
+        rows;
+
+      topRanking =
+        rows.slice(
+          0,
+          20
+        );
+
+      renderRanking(
+        topRanking
+      );
+
+      $('#rank-count')
+        .textContent =
+          `${tracked} tracked users · source ${sourceDate}`;
+
+      $('#rank-source')
+        .textContent =
+          `gayanvoice/top-github-users · ${sourceDate}`;
+
+      const me =
+        rows.find(
+          r =>
+            r.login
+              .toLowerCase() ===
+            USER
+              .toLowerCase()
+        );
+
+      if (me) {
+
+        $('#my-rank')
+          .textContent =
+            `#${me.rank}`;
+
+        $('#rank-summary')
+          .textContent =
+            `${
+              fmt.format(
+                me.contributions
+              )
+            } public contributions in the current source snapshot. ${
+              me.rank <= 20
+                ? 'Currently inside the displayed Top 20.'
+                : 'Outside the displayed Top 20; your exact dataset row is still detected live.'
+            }`;
+
+      }
+      else {
+
+        $('#my-rank')
+          .textContent =
+            '#—';
+
+        $('#rank-summary')
+          .textContent =
+            'Your handle was not present in the dataset returned by the ranking source. Use the source links below to verify current eligibility and inclusion.';
+      }
+    }
+
+    /* =========================================================
+       THIRD-PARTY METRICS FALLBACK
+       ========================================================= */
+
+    function setupMetricFallbacks() {
+
+      $$(
+        'img[data-fallback]'
+      ).forEach(
+        img => {
+
+          img.addEventListener(
+            'error',
+
+            () => {
+
+              const box =
+                img.closest(
+                  '.metric-image'
+                );
+
+              if (!box) {
+                return;
+              }
+
+              box.innerHTML = `
+                <div class="metric-fallback">
+                  This third-party metrics
+                  renderer is unavailable
+                  right now.
+                  The live GitHub API sections
+                  above remain independent.
+                </div>
+              `;
+
+            },
+
+            {
+              once: true
+            }
+          );
+        }
+      );
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    function setupReveal() {
+
+      if (
+        matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches
+      ) {
+
+        $$('.reveal')
+          .forEach(
+            el =>
+              el.classList.add(
+                'visible'
+              )
+          );
+
+        return;
+      }
+
+      const io =
+        new IntersectionObserver(
+
+          entries => {
+
+            entries.forEach(
+              e => {
+
+                if (
+                  e.isIntersecting
+                ) {
+
+                  e.target
+                    .classList
+                    .add(
+                      'visible'
+                    );
+
+                  io.unobserve(
+                    e.target
+                  );
+                }
+              }
+            );
+          },
+
+          {
+            threshold: .08,
+
+            rootMargin:
+              '0px 0px -40px'
+          }
+        );
+
+      $$('.reveal')
+        .forEach(
+          el =>
+            io.observe(el)
+        );
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    function setupNav() {
+
+      const sections =
+        $$(
+          'main section[id]'
+        );
+
+      const links =
+        $$(
+          '.nav-link'
+        );
+
+      const io =
+        new IntersectionObserver(
+
+          entries => {
+
+            entries.forEach(
+              e => {
+
+                if (
+                  !e.isIntersecting
+                ) {
+                  return;
+                }
+
+                links.forEach(
+                  a =>
+
+                    a.classList.toggle(
+
+                      'active',
+
+                      a.getAttribute(
+                        'href'
+                      ) ===
+                      '#' +
+                      e.target.id
+                    )
+                );
+              }
+            );
+          },
+
+          {
+            rootMargin:
+              '-35% 0px -55% 0px'
+          }
+        );
+
+      sections.forEach(
+        s =>
+          io.observe(s)
+      );
+
+      const btn =
+        $('#menu-toggle');
+
+      const drawer =
+        $('#mobile-menu');
+
+      btn.addEventListener(
+        'click',
+        () => {
+
+          const open =
+            drawer
+              .classList
+              .toggle(
+                'open'
+              );
+
+          btn.setAttribute(
+            'aria-expanded',
+            String(open)
+          );
+
+          btn.textContent =
+            open
+              ? '×'
+              : '☰';
+        }
+      );
+
+      $$('#mobile-menu a')
+        .forEach(
+          a =>
+
+            a.addEventListener(
+              'click',
+              () => {
+
+                drawer
+                  .classList
+                  .remove(
+                    'open'
+                  );
+
+                btn.setAttribute(
+                  'aria-expanded',
+                  'false'
+                );
+
+                btn.textContent =
+                  '☰';
+              }
+            )
+        );
+    }
+
+    /* =========================================================
+       THEME
+       ========================================================= */
+
+    function setupTheme() {
+
+      const saved =
+        localStorage
+          .getItem(
+            'burnt-exe-theme'
+          );
+
+      if (
+        saved === 'terminal' ||
+        saved === 'obsidian'
+      ) {
+
+        document
+          .documentElement
+          .dataset
+          .theme =
+            saved;
+      }
+
+      $('#theme-toggle')
+        .addEventListener(
+          'click',
+          () => {
+
+            const next =
+              document
+                .documentElement
+                .dataset
+                .theme ===
+              'terminal'
+
+                ? 'obsidian'
+
+                : 'terminal';
+
+            document
+              .documentElement
+              .dataset
+              .theme =
+                next;
+
+            localStorage
+              .setItem(
+                'burnt-exe-theme',
+                next
+              );
+
+            toast(
+
+              'Theme switched',
+
+              next ===
+              'terminal'
+
+                ? 'Terminal green mode enabled.'
+
+                : 'Obsidian mode enabled.'
+            );
+          }
+        );
+    }
+
+    /* =========================================================
+       COMMAND PALETTE
+       ========================================================= */
+
+    const commands = [
+
+      {
+        label:
+          'Go to About',
+
+        hint:
+          'A',
+
+        action:
+          () =>
+            location.hash =
+              'about'
+      },
+
+      {
+        label:
+          'Go to Projects',
+
+        hint:
+          'P',
+
+        action:
+          () =>
+            location.hash =
+              'projects'
+      },
+
+      {
+        label:
+          'Go to South Africa Index',
+
+        hint:
+          'R',
+
+        action:
+          () =>
+            location.hash =
+              'ranking'
+      },
+
+      {
+        label:
+          'Refresh live GitHub data',
+
+        hint:
+          '↻',
+
+        action:
+          async () => {
+
+            await Promise.all([
+              loadProfile(),
+              loadRepos(true),
+              loadEvents()
+            ]);
+          }
+      },
+
+      {
+        label:
+          'Toggle visual theme',
+
+        hint:
+          'T',
+
+        action:
+          () =>
+            $('#theme-toggle')
+              .click()
+      },
+
+      {
+        label:
+          'Open GitHub profile',
+
+        hint:
+          '↗',
+
+        action:
+          () =>
+            window.open(
+              'https://github.com/burnt-exe',
+              '_blank',
+              'noopener'
+            )
+      },
+
+      {
+        label:
+          'Copy contact email',
+
+        hint:
+          '⌘C',
+
+        action:
+          () =>
+            copyEmail()
+      }
+
+    ];
+
+    function setupCommand() {
+
+      const overlay =
+        $('#command');
+
+      const input =
+        $('#command-input');
+
+      const list =
+        $('#command-list');
+
+      function render(
+        filter = ''
+      ) {
+
+        const q =
+          filter
+            .trim()
+            .toLowerCase();
+
+        const matches =
+          commands.filter(
+            c =>
+              c.label
+                .toLowerCase()
+                .includes(q)
+          );
+
+        list.innerHTML =
+          matches
+            .map(
+              (c, i) =>
+
+                `
+                  <button
+                    class="command-item ${
+                      i === 0
+                        ? 'active'
+                        : ''
+                    }"
+                    data-index="${
+                      commands.indexOf(c)
+                    }"
+                  >
+
+                    <span>
+                      ${
+                        escapeHTML(
+                          c.label
+                        )
+                      }
+                    </span>
+
+                    <kbd>
+                      ${
+                        escapeHTML(
+                          c.hint
+                        )
+                      }
+                    </kbd>
+
+                  </button>
+                `
+            )
+            .join('');
+
+        $$('.command-item', list)
+          .forEach(
+            btn =>
+
+              btn.addEventListener(
+                'click',
+                () =>
+                  run(
+                    Number(
+                      btn.dataset.index
+                    )
+                  )
+              )
+          );
+      }
+
+      function open() {
+
+        overlay
+          .classList
+          .add(
+            'open'
+          );
+
+        input.value =
+          '';
+
+        render();
+
+        setTimeout(
+          () =>
+            input.focus(),
+          20
+        );
+      }
+
+      function close() {
+
+        overlay
+          .classList
+          .remove(
+            'open'
+          );
+      }
+
+      function run(index) {
+
+        close();
+
+        commands[index]
+          ?.action();
+      }
+
+      $('#cmd-open')
+        .addEventListener(
+          'click',
+          open
+        );
+
+      overlay
+        .addEventListener(
+          'click',
+          e => {
+
+            if (
+              e.target ===
+              overlay
+            ) {
+
+              close();
+            }
+          }
+        );
+
+      input
+        .addEventListener(
+          'input',
+          () =>
+            render(
+              input.value
+            )
+        );
+
+      input
+        .addEventListener(
+          'keydown',
+          e => {
+
+            if (
+              e.key ===
+              'Escape'
+            ) {
+
+              close();
+            }
+
+            if (
+              e.key ===
+              'Enter'
+            ) {
+
+              $(
+                '.command-item.active',
+                list
+              )?.click();
+            }
+          }
+        );
+
+      document
+        .addEventListener(
+          'keydown',
+          e => {
+
+            if (
+              (
+                e.metaKey ||
+                e.ctrlKey
+              ) &&
+              e.key
+                .toLowerCase() ===
+              'k'
+            ) {
+
+              e.preventDefault();
+
+              overlay
+                .classList
+                .contains(
+                  'open'
+                )
+
+                ? close()
+
+                : open();
+            }
+
+            if (
+              e.key ===
+              'Escape' &&
+              overlay
+                .classList
+                .contains(
+                  'open'
+                )
+            ) {
+
+              close();
+            }
+          }
+        );
+    }
+
+    /* =========================================================
+       COPY EMAIL
+       ========================================================= */
+
+    async function copyEmail() {
+
+      const email =
+        'info@skunkworks.africa';
+
+      try {
+
+        await navigator
+          .clipboard
+          .writeText(
+            email
+          );
+
+        toast(
+          'Copied',
+          email
+        );
+
+      }
+      catch {
+
+        location.href =
+          'mailto:' +
+          email;
+      }
+    }
+
+    /* =========================================================
+       FILTERS
+       ========================================================= */
+
+    function setupFilters() {
+
+      $('#repo-search')
+        .addEventListener(
+          'input',
+          e => {
+
+            const q =
+              e.target
+                .value
+                .trim()
+                .toLowerCase();
+
+            const filtered =
+              !q
+                ? allRepos
+
+                : allRepos.filter(
+                    r =>
+
+                      [
+                        r.name,
+                        r.description,
+                        r.language
+                      ]
+                        .filter(Boolean)
+                        .some(
+                          v =>
+                            String(v)
+                              .toLowerCase()
+                              .includes(q)
+                        )
+                  );
+
+            renderRepos(
+              filtered
+            );
+          }
+        );
+
+      $('#refresh-projects')
+        .addEventListener(
+          'click',
+          () =>
+            loadRepos(true)
+        );
+
+      $('#rank-search')
+        .addEventListener(
+          'input',
+          e => {
+
+            const q =
+              e.target
+                .value
+                .trim()
+                .toLowerCase();
+
+            const filtered =
+              !q
+                ? topRanking
+
+                : topRanking.filter(
+                    r =>
+
+                      (
+                        r.login +
+                        ' ' +
+                        r.name +
+                        ' ' +
+                        r.location
+                      )
+                        .toLowerCase()
+                        .includes(q)
+                  );
+
+            renderRanking(
+              filtered
+            );
+          }
+        );
+
+      $('#copy-email')
+        .addEventListener(
+          'click',
+          copyEmail
+        );
+    }
+
+    /* =========================================================
+       INITIALIZATION
+       ========================================================= */
+
+    setupReveal();
+
+    setupNav();
+
+    setupTheme();
+
+    setupCommand();
+
+    setupFilters();
+
+    setupMetricFallbacks();
+
+    $('#year')
+      .textContent =
+        new Date()
+          .getFullYear();
+
+    Promise.allSettled([
+      loadProfile(),
+      loadRepos(),
+      loadEvents(),
+      loadRanking()
+    ]);
+
+  })();
+  </script>
+
 </body>
 </html>
