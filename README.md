@@ -63,23 +63,48 @@ Currently mastering ecosystems from **IBM**, **Red Hat**, **SAP**, **Google**, a
 ## 📊 GitHub Insights
 
 <div align="center">
+
+  <!-- Profile Summary -->
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=burnt-exe&theme=tokyonight" width="100%" />
+
   <table>
     <tr>
-      <td><img src="https://github-readme-stats.vercel.app/api?username=burnt-exe&show_icons=true&theme=tokyonight&count_private=true&hide=issues" width="100%"/></td>
+      <td>
+        <img src="https://streak-stats.demolab.com/?user=burnt-exe&theme=tokyonight" width="100%" />
+      </td>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=burnt-exe&theme=tokyonight" width="100%" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=burnt-exe&theme=tokyonight" width="100%" />
+      </td>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=burnt-exe&theme=tokyonight" width="100%" />
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=burnt-exe&theme=tokyonight" width="100%" />
+      </td>
     </tr>
   </table>
+
+  <!-- GitHub Skyline (fallback GIF) -->
+  <img src="https://skyline.github.com/burnt-exe/2024.gif" width="100%" alt="GitHub Skyline" />
+
+  <!-- Contribution Snake -->
+  <img src="https://raw.githubusercontent.com/burnt-exe/burnt-exe/output/github-contribution-grid-snake-dark.svg" width="100%" />
+
+  <!-- Metrics Dashboard -->
+  <img src="https://metrics.lecoq.io/burnt-exe?template=classic&isocalendar=1&languages=1&followup=1&achievements=1&base=header&theme=tokyonight" width="100%" />
+
 </div>
-      <td><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=burnt-exe&layout=compact&theme=tokyonight&hide=html" width="100%"/></td>
-    </tr>
-    <tr>
-      <td><img src="https://streak-stats.demolab.com/?user=burnt-exe&theme=tokyonight" width="100%"/></td>
-      <td><img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=burnt-exe&theme=tokyonight" width="100%"/></td>
-    </tr>
-    <tr>
-      <td colspan="2"><img src="https://github-readme-activity-graph.vercel.app/graph?username=burnt-exe&theme=tokyonight" width="100%"/></td>
-    </tr>
-  </table>
-</div>
+
+
 
 ---
 
