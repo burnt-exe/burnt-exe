@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
+  <title id="title">Raydo Matthee profile banner</title>
+  <desc id="desc">Secure digital platforms, AI-enabled learning and cloud systems.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#05080f"/>
+      <stop offset="52%" stop-color="#0b3157"/>
+      <stop offset="100%" stop-color="#10263d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0%" stop-color="#00b8d4"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="280" fill="url(#background)"/>
+  <circle cx="1080" cy="42" r="152" fill="#00b8d4" opacity=".10"/>
+  <circle cx="1135" cy="248" r="148" fill="#7c3aed" opacity=".12"/>
+  <path d="M0 222 C175 160 305 294 475 214 S786 122 1200 198 V280 H0Z" fill="#00b8d4" opacity=".08"/>
+  <path d="M0 242 C180 196 306 284 510 226 S818 161 1200 219" fill="none" stroke="#00b8d4" stroke-width="2" opacity=".46"/>
+  <g opacity=".50">
+    <circle cx="1018" cy="90" r="5" fill="#00b8d4"/>
+    <circle cx="1056" cy="118" r="4" fill="#ffffff"/>
+    <circle cx="1094" cy="84" r="4" fill="#7c3aed"/>
+    <path d="M1018 90 L1056 118 L1094 84" fill="none" stroke="#00b8d4" stroke-width="2"/>
+  </g>
+  <g transform="translate(72 72)">
+    <rect width="94" height="94" rx="24" fill="url(#accent)" filter="url(#glow)"/>
+    <text x="47" y="63" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#ffffff">R</text>
+  </g>
+  <text x="196" y="112" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700" letter-spacing="3" fill="#ffffff">RAYDO MATTHEE</text>
+  <text x="198" y="153" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#b9d8ea">Secure digital platforms  •  AI-enabled learning  •  Cloud systems</text>
+  <rect x="198" y="185" width="338" height="36" rx="18" fill="#ffffff" opacity=".12"/>
+  <text x="367" y="209" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="1.4" fill="#ffffff">BUILD  •  SECURE  •  ENABLE</text>
+  <text x="198" y="249" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#8bb9d2">Skunkworks Africa  /  Skunkworks Academy</text>
+</svg>
