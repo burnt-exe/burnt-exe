@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1100" viewBox="0 0 1200 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Selected recent Skunkworks projects</title>
+  <desc id="desc">Ten current public projects across Skunkworks Academy and Skunkworks Africa.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#0d1d31"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0%" stop-color="#00b8d4"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1100" fill="url(#page)"/>
+  <circle cx="1106" cy="70" r="165" fill="#00b8d4" opacity=".07"/>
+  <circle cx="93" cy="1066" r="200" fill="#7c3aed" opacity=".07"/>
+  <text x="70" y="78" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#ffffff">SELECTED RECENT WORK</text>
+  <text x="70" y="113" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#a9c7d9">Ten high-impact public projects across the Skunkworks platform ecosystem</text>
+  <rect x="70" y="136" width="1060" height="4" rx="2" fill="url(#line)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="174" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="113" cy="218" r="23" fill="#00b8d4"/><text x="113" y="225" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#07111f">01</text>
+    <text x="150" y="218" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Academy Web Platform</text>
+    <text x="150" y="249" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Global shell, content delivery and platform foundation.</text>
+    <rect x="150" y="270" width="117" height="24" rx="12" fill="#00b8d4" opacity=".16"/><text x="209" y="287" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#75e7f6">PLATFORM</text>
+
+    <rect x="620" y="174" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="663" cy="218" r="23" fill="#7c3aed"/><text x="663" y="225" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">02</text>
+    <text x="700" y="218" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Learner Portal</text>
+    <text x="700" y="249" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Identity, dashboards, learning journeys and labs.</text>
+    <rect x="700" y="270" width="102" height="24" rx="12" fill="#7c3aed" opacity=".18"/><text x="751" y="287" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#d8c7ff">IDENTITY</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="344" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="113" cy="388" r="23" fill="#00b8d4"/><text x="113" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#07111f">03</text>
+    <text x="150" y="388" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Unified Course Catalogue</text>
+    <text x="150" y="419" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Search, course discovery and learning pathways.</text>
+    <rect x="150" y="440" width="94" height="24" rx="12" fill="#00b8d4" opacity=".16"/><text x="197" y="457" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#75e7f6">SEARCH</text>
+
+    <rect x="620" y="344" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="663" cy="388" r="23" fill="#7c3aed"/><text x="663" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">04</text>
+    <text x="700" y="388" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">GitHub Developer Index</text>
+    <text x="700" y="419" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Contributor intelligence and country-level discovery.</text>
+    <rect x="700" y="440" width="82" height="24" rx="12" fill="#7c3aed" opacity=".18"/><text x="741" y="457" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#d8c7ff">DATA</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="514" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="113" cy="558" r="23" fill="#00b8d4"/><text x="113" y="565" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#07111f">05</text>
+    <text x="150" y="558" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Security Hub</text>
+    <text x="150" y="589" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Cybersecurity, ethical hacking and capability building.</text>
+    <rect x="150" y="610" width="102" height="24" rx="12" fill="#00b8d4" opacity=".16"/><text x="201" y="627" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#75e7f6">SECURITY</text>
+
+    <rect x="620" y="514" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="663" cy="558" r="23" fill="#7c3aed"/><text x="663" y="565" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">06</text>
+    <text x="700" y="558" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Skunkworks Africa Gateway</text>
+    <text x="700" y="589" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Global company platform and adaptive brand system.</text>
+    <rect x="700" y="610" width="92" height="24" rx="12" fill="#7c3aed" opacity=".18"/><text x="746" y="627" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#d8c7ff">WEB</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="684" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="113" cy="728" r="23" fill="#00b8d4"/><text x="113" y="735" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#07111f">07</text>
+    <text x="150" y="728" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Shopify Commerce</text>
+    <text x="150" y="759" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Storefront, product discovery and Horizon theme work.</text>
+    <rect x="150" y="780" width="110" height="24" rx="12" fill="#00b8d4" opacity=".16"/><text x="205" y="797" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#75e7f6">COMMERCE</text>
+
+    <rect x="620" y="684" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="663" cy="728" r="23" fill="#7c3aed"/><text x="663" y="735" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">08</text>
+    <text x="700" y="728" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">CompTIA Hub</text>
+    <text x="700" y="759" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Campaign, catalogue and measurement platform.</text>
+    <rect x="700" y="780" width="88" height="24" rx="12" fill="#7c3aed" opacity=".18"/><text x="744" y="797" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#d8c7ff">ANALYTICS</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="854" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="113" cy="898" r="23" fill="#00b8d4"/><text x="113" y="905" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#07111f">09</text>
+    <text x="150" y="898" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Drools 10.2 Learning Site</text>
+    <text x="150" y="929" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Self-paced course, labs and ISO-aligned learning aids.</text>
+    <rect x="150" y="950" width="102" height="24" rx="12" fill="#00b8d4" opacity=".16"/><text x="201" y="967" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#75e7f6">LEARNING</text>
+
+    <rect x="620" y="854" width="510" height="145" rx="20" fill="#111e30" stroke="#244768"/>
+    <circle cx="663" cy="898" r="23" fill="#7c3aed"/><text x="663" y="905" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">10</text>
+    <text x="700" y="898" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Academy Learn</text>
+    <text x="700" y="929" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#b9d8ea">Course delivery, learner experience and conformance.</text>
+    <rect x="700" y="950" width="102" height="24" rx="12" fill="#7c3aed" opacity=".18"/><text x="751" y="967" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#d8c7ff">DELIVERY</text>
+  </g>
+  <text x="600" y="1052" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#87acc1">Skunkworks Academy  •  Skunkworks Africa  •  build · secure · enable</text>
+</svg>

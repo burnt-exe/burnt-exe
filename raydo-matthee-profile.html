@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Raydo Matthee — Founder & CTO at Skunkworks (Pty) Ltd | IBM Certified Technical Trainer & Solutions Architect. Integration, automation, data, hybrid cloud, and CP4I Proof of Value support." />
+  <title>Raydo Matthee — Professional Profile (Skunkworks)</title>
+
+  <style>
+    :root{
+      --bg: #0f1116;
+      --bg2:#0b0d12;
+
+      --card:#151823;
+      --card2:#121522;
+
+      --text:#f4f2ec;
+      --muted:#c2bcaf;
+      --muted2:#9c9488;
+
+      --line: rgba(244,242,236,.10);
+      --line2: rgba(244,242,236,.16);
+
+      --accent:#42c6a3;
+      --accent2:#caa05a;
+
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --shadow2: 0 10px 28px rgba(0,0,0,.32);
+
+      --radius: 18px;
+      --radius2: 14px;
+
+      --max: 1120px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+      --focus: 0 0 0 4px rgba(66,198,163,.20);
+
+      /* Responsive sizing tokens */
+      --fs-body: clamp(14px, 0.35vw + 13px, 16px);
+      --fs-h1: clamp(22px, 2.0vw + 14px, 34px);
+      --size-mark: clamp(40px, 4.2vw, 46px);
+      --size-avatar: clamp(54px, 7vw, 68px);
+      --icon: 1.15em;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#fbfaf6;
+        --bg2:#f2efe6;
+
+        --card:#ffffff;
+        --card2:#ffffff;
+
+        --text:#12141a;
+        --muted:#465047;
+        --muted2:#5a655c;
+
+        --line: rgba(18,20,26,.10);
+        --line2: rgba(18,20,26,.16);
+
+        --shadow: 0 18px 50px rgba(16,24,40,.10);
+        --shadow2: 0 10px 28px rgba(16,24,40,.08);
+
+        --focus: 0 0 0 4px rgba(66,198,163,.18);
+      }
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: var(--sans);
+      font-size: var(--fs-body);
+      color: var(--text);
+      line-height:1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      background:
+        radial-gradient(1100px 520px at 16% 10%, rgba(66,198,163,.18), transparent 62%),
+        radial-gradient(900px 520px at 86% 0%, rgba(202,160,90,.16), transparent 58%),
+        radial-gradient(900px 520px at 85% 105%, rgba(66,198,163,.10), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible{
+      outline:none;
+      box-shadow: var(--focus);
+      border-radius: 12px;
+    }
+
+    /* Responsive media defaults */
+    img, video, canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* Keep SVG responsive without breaking inline icon layout */
+    svg { display: block; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(18px, 2.6vw, 28px) 18px 56px;
+    }
+
+    /* Visually hidden utility (for dynamic status text) */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    /* Top sticky header */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(15,17,22,.86), rgba(15,17,22,.62));
+      border-bottom: 1px solid var(--line);
+    }
+    @media (prefers-color-scheme: light){
+      .topbar{
+        background: linear-gradient(180deg, rgba(251,250,246,.92), rgba(251,250,246,.70));
+      }
+    }
+
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    @media (max-width: 680px){
+      .topbar-inner{
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .actions{
+        justify-content: flex-start !important;
+      }
+    }
+
+    .idblock{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      min-width: 0;
+    }
+
+    .mark{
+      width: var(--size-mark);
+      height: var(--size-mark);
+      border-radius: clamp(12px, 1.6vw, 14px);
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.28), transparent 62%),
+        linear-gradient(135deg, rgba(66,198,163,.95), rgba(202,160,90,.88));
+      box-shadow: var(--shadow2);
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(244,242,236,.16);
+      flex: 0 0 auto;
+    }
+    @media (prefers-color-scheme: light){
+      .mark{ border: 1px solid rgba(18,20,26,.10); }
+    }
+    /* Make the logo SVG scale with container */
+    .mark svg{ width: 55%; height: 55%; opacity:.95; }
+
+    .idtext{ min-width:0; }
+    .name{
+      font-size: clamp(15px, 0.7vw + 13px, 17px);
+      font-weight: 850;
+      letter-spacing: .15px;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .title{
+      margin: 2px 0 0;
+      font-size: clamp(12px, 0.45vw + 11px, 13px);
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line2);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      font-weight: 700;
+      font-size: 12.5px;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
+    }
+    @media (prefers-color-scheme: light){
+      .btn{ background: linear-gradient(180deg, rgba(18,20,26,.04), rgba(18,20,26,.02)); }
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow2);
+      text-decoration: none;
+      border-color: rgba(66,198,163,.28);
+    }
+    /* Responsive icons: scale with font-size */
+    .btn svg{
+      width: var(--icon);
+      height: var(--icon);
+      opacity: .9;
+      flex: 0 0 auto;
+    }
+
+    .btn.primary{
+      border: 1px solid rgba(66,198,163,.55);
+      background: linear-gradient(135deg, rgba(66,198,163,.18), rgba(202,160,90,.14));
+    }
+
+    .btn.ghost{
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background:
+        radial-gradient(1200px 460px at 10% 0%, rgba(66,198,163,.14), transparent 62%),
+        radial-gradient(900px 460px at 80% 32%, rgba(202,160,90,.12), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+    @media (prefers-color-scheme: light){
+      .hero{
+        background:
+          radial-gradient(1200px 460px at 10% 0%, rgba(66,198,163,.10), transparent 62%),
+          radial-gradient(900px 460px at 80% 32%, rgba(202,160,90,.09), transparent 62%),
+          linear-gradient(180deg, rgba(18,20,26,.03), rgba(18,20,26,.01));
+      }
+    }
+    .hero-inner{
+      padding: 22px 20px 18px;
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; }
+    }
+
+    .headline{
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+    }
+    .avatar{
+      width: var(--size-avatar);
+      height: var(--size-avatar);
+      border-radius: clamp(18px, 2vw, 22px);
+      border: 1px solid var(--line2);
+      background:
+        radial-gradient(30px 30px at 30% 35%, rgba(255,255,255,.28), transparent 62%),
+        linear-gradient(135deg, rgba(66,198,163,.18), rgba(202,160,90,.14));
+      box-shadow: var(--shadow2);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .avatar svg{ width: 45%; height: 45%; opacity: .92; }
+
+    h1{
+      margin: 0;
+      font-size: var(--fs-h1);
+      letter-spacing: -0.35px;
+      line-height: 1.12;
+    }
+    .subhead{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: clamp(13px, 0.55vw + 12px, 15px);
+      max-width: 70ch;
+    }
+
+    .chips{
+      margin-top: 12px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      color: var(--text);
+    }
+    @media (prefers-color-scheme: light){
+      .chip{ background: rgba(18,20,26,.03); }
+    }
+    .chip .dot{
+      width: 0.55em;
+      height: 0.55em;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 0.25em rgba(66,198,163,.14);
+      flex: 0 0 auto;
+    }
+
+    .quickfacts{
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 14px 14px 12px;
+    }
+    @media (prefers-color-scheme: light){
+      .quickfacts{ background: rgba(18,20,26,.02); }
+    }
+    .q-title{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .q-title h2{
+      margin:0;
+      font-size: 12.8px;
+      letter-spacing: .18px;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,198,163,.34);
+      background: rgba(66,198,163,.10);
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .badge svg{ width: var(--icon); height: var(--icon); flex:0 0 auto; }
+
+    .q-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .q-item{
+      display:grid;
+      grid-template-columns: 1.2em 1fr;
+      gap: 10px;
+      align-items:start;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .q-item strong{ color: var(--text); font-weight: 750; }
+    .q-item svg{ width: 1.2em; height: 1.2em; opacity: .9; margin-top: .05em; }
+
+    .q-links{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+    .q-links a{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.025);
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+    }
+    .q-links a:hover{ text-decoration:none; box-shadow: var(--shadow2); transform: translateY(-1px); border-color: rgba(202,160,90,.25); }
+    .q-links svg{ width: var(--icon); height: var(--icon); opacity: .9; flex:0 0 auto; }
+
+    /* Main sections */
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      box-shadow: var(--shadow2);
+      overflow: hidden;
+    }
+    @media (prefers-color-scheme: light){
+      .card{
+        background: linear-gradient(180deg, rgba(18,20,26,.03), rgba(18,20,26,.01));
+      }
+    }
+    .card-head{
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-head h3{
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .kicker{
+      font-size: 12px;
+      color: var(--muted2);
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .kicker svg{ width: var(--icon); height: var(--icon); opacity: .85; flex:0 0 auto; }
+    .card-body{
+      padding: 14px 16px 16px;
+    }
+
+    .lead{
+      font-size: clamp(13.5px, 0.55vw + 12.5px, 15px);
+      color: var(--muted);
+      margin: 0;
+      max-width: 92ch;
+    }
+
+    /* ... (rest of your original CSS can remain unchanged) ... */
+
+    /* Email snippet */
+    .snippet{
+      margin-top: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(202,160,90,.35);
+      background: rgba(202,160,90,.10);
+      padding: 12px;
+    }
+    .snippet .row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .snippet h4{
+      margin: 0;
+      font-size: 13.5px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .snippet h4 svg{ width: var(--icon); height: var(--icon); flex:0 0 auto; }
+
+    .copybtn{
+      border: 1px solid rgba(202,160,90,.45);
+      background: rgba(202,160,90,.12);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 780;
+      font-size: 12px;
+      cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+    }
+    .copybtn:hover{ box-shadow: var(--shadow2); transform: translateY(-1px); border-color: rgba(202,160,90,.60); }
+    .copybtn svg{ width: var(--icon); height: var(--icon); flex:0 0 auto; }
+
+    .snippet pre{
+      margin: 0;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(244,242,236,.12);
+      background: rgba(11,13,18,.42);
+      overflow:auto;
+      color: rgba(244,242,236,.96);
+      font-size: 12px;
+      line-height: 1.55;
+      font-family: var(--mono);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    @media (prefers-color-scheme: light){
+      .snippet pre{
+        background: rgba(18,20,26,.03);
+        color: rgba(18,20,26,.92);
+        border-color: rgba(18,20,26,.10);
+      }
+    }
+
+    /* Print */
+    @media print{
+      .topbar{ position: static; backdrop-filter: none; border-bottom: none; }
+      .btn, .copybtn{ display:none !important; }
+      body{ background: #fff !important; color: #12141a !important; }
+      .hero, .card{ box-shadow: none !important; border-color: rgba(18,20,26,.18) !important; }
+      a{ color: #12141a !important; text-decoration: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky header -->
+  <div class="topbar" role="banner" aria-label="Sticky profile header">
+    <div class="topbar-inner">
+      <div class="idblock">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2.6c5.2 0 9.4 4.2 9.4 9.4S17.2 21.4 12 21.4 2.6 17.2 2.6 12 6.8 2.6 12 2.6Z" stroke="rgba(255,255,255,.92)" stroke-width="1.6"/>
+            <path d="M7.2 12h9.6M12 7.2v9.6" stroke="rgba(255,255,255,.92)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="idtext">
+          <p class="name">Raydo Matthee</p>
+          <p class="title">Founder &amp; CTO — Skunkworks (Pty) Ltd · IBM Certified Technical Trainer &amp; Solutions Architect</p>
+        </div>
+      </div>
+
+      <div class="actions" role="navigation" aria-label="Primary contact actions">
+        <a class="btn primary" href="mailto:raydo@skunkworks.africa" aria-label="Email Raydo">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
+            <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Email
+        </a>
+        <a class="btn" href="tel:+27833807950" aria-label="Call Raydo">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7.5 4.5c-.5 1.7-.4 3.7 1.3 5.4l1 1c1.6 1.6 3.6 3.3 5.6 4.8l.8.6c1.5 1.1 3.1 1.4 4.3.8l.7-.4c.3-.2.4-.6.3-1l-.9-3c-.1-.3-.4-.6-.8-.6l-3-.3c-.3 0-.6.1-.8.3l-.7.7c-1.4-.8-3.4-2.3-5.4-4.4l.7-.7c.2-.2.3-.5.3-.8l-.3-3c0-.3-.3-.6-.6-.8l-3-1c-.4-.1-.8 0-1 .3l-.5.6Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Call
+        </a>
+        <a class="btn" href="https://www.skunkworks.africa" target="_blank" rel="noreferrer" aria-label="Open Skunkworks website">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10 14a3 3 0 0 0 4 0l2.5-2.5a3 3 0 0 0-4.2-4.2L11.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M14 10a3 3 0 0 0-4 0L7.5 12.5a3 3 0 1 0 4.2 4.2L12.5 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Website
+        </a>
+        <a class="btn ghost" href="#cta" aria-label="Jump to call to action section">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.5 9.5 12 15l5.5-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          CTA
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap" role="main">
+    <!-- Keep your existing body content exactly as before.
+         Only changes below are to the "dynamic elements" section (Copy) and responsiveness already handled in CSS. -->
+
+    <!-- ... YOUR EXISTING CONTENT HERE ... -->
+
+    <!-- Example: update your snippet block to include aria-live status -->
+    <div class="snippet" aria-label="Email-ready summary snippet" id="cta">
+      <div class="row">
+        <h4>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.6" />
+            <path d="M5 8l7 6 7-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Email-ready summary snippet
+        </h4>
+
+        <button class="copybtn" type="button" id="copyBtn" aria-label="Copy email snippet to clipboard">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 9.5h10v10H9v-10Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M5 14.5V5.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Copy
+        </button>
+
+        <span id="copyStatus" class="sr-only" aria-live="polite"></span>
+      </div>
+
+      <pre id="emailSnippet">Thank you for the update regarding CourseMonster’s IBM-authorised training offerings.
+
+Kindly share an overview of the IBM trainings currently available—especially those aligned to integration, automation, data, and hybrid cloud solutions—along with delivery formats, certification tracks, and any recommended enterprise learning paths.
+
+In addition, please confirm whether CourseMonster supports IBM solution deployments and Proof of Value (POV) engagements.
+
+Context: We have a live client opportunity where IBM Cloud Pak for Integration (CP4I) has been demonstrated (including ESB and API management). The client is close to proceeding to deployment, but has requested a POV first. Please advise whether your consultants can support the CP4I POV, including scope options, timeline ranges, and prerequisites required from our side.
+
+Regards,
+Raydo Matthee
+Founder & CTO — Skunkworks (Pty) Ltd
+raydo@skunkworks.africa | +27 83 380 7950 | https://www.skunkworks.africa</pre>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('copyBtn');
+      const snippet = document.getElementById('emailSnippet');
+      const status = document.getElementById('copyStatus');
+
+      if(!btn || !snippet) return;
+
+      // Robust clipboard copy (works on HTTPS; falls back to execCommand otherwise)
+      async function copyToClipboard(text){
+        // Modern clipboard API (requires secure context in most browsers)
+        try{
+          if (navigator.clipboard && window.isSecureContext){
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        }catch(e){ /* fall through */ }
+
+        // Fallback: execCommand copy
+        try{
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '0';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, ta.value.length);
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          return ok;
+        }catch(e){
+          return false;
+        }
+      }
+
+      function setBtnState(state){
+        // state: "idle" | "copied" | "failed"
+        if(state === 'copied'){
+          btn.setAttribute('aria-label', 'Copied to clipboard');
+          if(status) status.textContent = 'Copied to clipboard';
+          btn.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+            '<path d="M6.5 12.5 10 16l7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            'Copied';
+          return;
+        }
+        if(state === 'failed'){
+          btn.setAttribute('aria-label', 'Copy failed');
+          if(status) status.textContent = 'Copy failed';
+          btn.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+            '<path d="M12 8.5v4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<path d="M12 16.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+            '<path d="M12 21.2A9.2 9.2 0 1 0 12 2.8a9.2 9.2 0 0 0 0 18.4Z" stroke="currentColor" stroke-width="1.6"/></svg>' +
+            'Copy failed';
+          return;
+        }
+        // idle
+        btn.setAttribute('aria-label', 'Copy email snippet to clipboard');
+        if(status) status.textContent = '';
+        btn.innerHTML =
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+          '<path d="M9 9.5h10v10H9v-10Z" stroke="currentColor" stroke-width="1.6"/>' +
+          '<path d="M5 14.5V5.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
+          'Copy';
+      }
+
+      btn.addEventListener('click', async function(){
+        const text = snippet.textContent || '';
+        const ok = await copyToClipboard(text);
+        setBtnState(ok ? 'copied' : 'failed');
+        window.clearTimeout(btn._t);
+        btn._t = window.setTimeout(()=> setBtnState('idle'), 1400);
+      });
+
+      // Optional: smooth scroll for in-page anchors (fixes jumpy “dynamic” feel)
+      document.addEventListener('click', function(e){
+        const a = e.target.closest('a[href^="#"]');
+        if(!a) return;
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', id);
+      });
+    })();
+  </script>
+</body>
+</html>

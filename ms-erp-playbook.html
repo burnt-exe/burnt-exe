@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Microsoft EPP Interview Playbook — Skunkworks</title>
+  <meta name="description" content="A graphic-rich, single-page interview playbook for Microsoft EPP. Includes agenda, solution alignment, technical capacity, growth plan, mock interview, and ready-to-copy opener & close." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #121621;
+      --card: #171c2a;
+      --text: #e8eefc;
+      --muted: #a9b3c7;
+      --link: #a0c7ff;
+      --accent: #6aa6ff;
+      --ok: #4cd97b;
+      --warn: #ffd166;
+      --danger: #ff6b6b;
+      /* Microsoft-esque squares */
+      --ms-blue:#0078D4; --ms-green:#107C10; --ms-yellow:#FFB900; --ms-red:#D13438;
+      --ring: rgba(160,199,255,.25);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html,body { height: 100%; }
+    body {
+      margin: 0; font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: radial-gradient(1200px 800px at 80% -10%, rgba(106,166,255,.15), transparent 60%), linear-gradient(180deg, #0b0d12, #0b0d12 200px, #0a0e16 700px);
+      color: var(--text);
+    }
+    a { color: var(--link); text-decoration: none; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 32px 20px 80px; }
+    header.hero { position: relative; padding: 28px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(23,28,42,.8), rgba(23,28,42,.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%230078D4"/><stop offset="1" stop-color="%236aa6ff"/></linearGradient></defs><g opacity="0.07"><circle cx="150" cy="120" r="120" fill="url(%23g)"/><circle cx="420" cy="80" r="80" fill="url(%23g)"/><circle cx="1000" cy="160" r="140" fill="url(%23g)"/></g></svg>') center/cover no-repeat; box-shadow: var(--shadow); overflow: hidden; }
+    .hero .brand { display:flex; align-items:center; gap:14px; margin-bottom: 8px; }
+    .ms-tiles { display:inline-grid; grid-template-columns: repeat(2, 14px); grid-auto-rows: 14px; gap: 4px; }
+    .ms-tiles span { display:block; border-radius:3px; }
+    .ms-tiles .b{background:var(--ms-blue)} .g{background:var(--ms-green)} .y{background:var(--ms-yellow)} .r{background:var(--ms-red)}
+    .hero h1 { margin: 6px 0 8px; font-weight: 800; letter-spacing: -0.02em; font-size: clamp(24px, 3.6vw, 42px); }
+    .hero p { margin: 6px 0 16px; color: var(--muted); max-width: 72ch; }
+    .chiprow { display:flex; flex-wrap:wrap; gap:10px; margin: 16px 0 10px; }
+    .chip { padding:8px 12px; border-radius: 999px; background: #0f1320; border: 1px solid rgba(160,199,255,.25); color:#cfe0ff; font-weight:600; font-size: 13px; letter-spacing:.2px; }
+    .cta { display:flex; flex-wrap:wrap; gap:10px; margin-top: 8px; }
+    .btn { border:1px solid rgba(255,255,255,.15); background: linear-gradient(180deg, #1a2032, #151b2a); color: #eaf2ff; padding:10px 14px; border-radius: 10px; font-weight:700; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+    .btn:active { transform: translateY(1px); }
+    .grid { display:grid; grid-template-columns: 1fr; gap: 18px; margin-top: 22px; }
+    @media (min-width: 900px){ .grid { grid-template-columns: 1.1fr .9fr; } }
+    .stats { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; }
+    @media (min-width: 640px){ .stats{ grid-template-columns: repeat(4,1fr);} }
+    .stat { background: var(--card); border: 1px solid rgba(160,199,255,.2); border-radius: 14px; padding:14px; text-align:center; box-shadow: var(--shadow); }
+    .stat h3 { margin:8px 0 2px; font-size: clamp(18px, 2.4vw, 26px); }
+    .stat p { margin:0; color: var(--muted); font-size: 12px; }
+
+    .section { margin-top: 26px; padding: 20px; background: var(--surface); border: 1px solid rgba(160,199,255,.18); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .section h2 { margin: 0 0 12px; font-size: clamp(18px, 2.6vw, 28px); letter-spacing:-.01em; }
+    .kicker { color: #c1cff0; text-transform: uppercase; font-weight: 800; font-size: 11px; letter-spacing: .2em; }
+
+    .cards { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 760px){ .cards { grid-template-columns: repeat(2, 1fr); }}
+    @media (min-width: 1100px){ .cards { grid-template-columns: repeat(3, 1fr); }}
+    .card { background: linear-gradient(180deg, #151b2a, #121726); border: 1px solid rgba(160,199,255,.18); border-radius: 14px; padding: 14px; position:relative; overflow:hidden; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card ul { padding-left: 18px; margin: 8px 0 0; color: var(--muted); }
+    .badge { display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:12px; background:#0f1422; border:1px solid var(--ring); color:#def; padding:6px 10px; border-radius: 999px; }
+    .rule { height:1px; background: linear-gradient(90deg, transparent, rgba(160,199,255,.3), transparent); margin: 12px 0; }
+
+    .timeline { display:grid; gap:10px; }
+    .step { display:flex; gap:12px; align-items:flex-start; background: #0f1422; border:1px solid rgba(160,199,255,.18); border-radius: 12px; padding: 10px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; outline: 6px solid var(--ring); background: var(--accent); margin-top: 6px; }
+
+    details { border: 1px solid rgba(160,199,255,.25); border-radius: 12px; background: #0e1320; padding: 10px 12px; }
+    details + details { margin-top: 8px; }
+    summary { cursor: pointer; font-weight: 700; }
+    summary::marker{ color: var(--accent); }
+    .qna p { color: var(--muted); margin: 8px 0 0; }
+
+    .list-chips { display:flex; flex-wrap: wrap; gap: 8px; }
+    .list-chips .chip { background:#0e1424; }
+
+    .quote { background: #0e1320; border-left: 4px solid var(--ms-blue); padding: 14px; border-radius: 12px; color:#d9e7ff; }
+
+    .two { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media(min-width: 880px){ .two { grid-template-columns: 1fr 1fr; }}
+
+    .copybox { position: relative; background:#0e1320; border:1px dashed rgba(160,199,255,.35); border-radius:12px; padding:12px; }
+    .copybox textarea { width:100%; background:transparent; border:none; color:#eaf2ff; font-family: inherit; font-size: 14px; resize: vertical; min-height: 100px; outline: none; }
+    .copybtn { position:absolute; top:8px; right:8px; }
+
+    .grid-mini { display:grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .pill { padding:8px 10px; background:#0f1422; border:1px solid rgba(160,199,255,.2); border-radius:999px; font-size:12px; color:#cfe0ff; }
+
+    footer { margin: 24px 0; display:flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .logo-squares { display:grid; grid-template-columns: repeat(2, 18px); gap:6px; }
+    .logo-squares span{ border-radius: 3px; }
+
+    .watermark { position:absolute; inset:auto -30px -50px auto; width: 170px; height: 170px; opacity:.06; display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:1fr; gap:10px; transform: rotate(15deg); }
+    .wbox{ border-radius: 6px; }
+
+    /* Print styles */
+    @media print {
+      body { background: #fff; color:#000; }
+      header.hero, .section { break-inside: avoid; box-shadow:none; border-color:#ddd; background:#fff; }
+      .btn, .copybtn { display:none !important; }
+      a { color:#000; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" role="banner">
+      <div class="brand">
+        <div class="ms-tiles" aria-hidden="true" title="Microsoft color tiles">
+          <span class="b"></span><span class="g"></span><span class="y"></span><span class="r"></span>
+        </div>
+        <strong>Skunkworks — Microsoft EPP Prep</strong>
+      </div>
+      <h1>Microsoft EPP Interview Playbook</h1>
+      <p>Concise, metrics-led brief for a 15–30 minute alignment call. Use this to structure your narrative, prove capability, and make a crisp ask.</p>
+      <div class="chiprow" aria-label="Core focus areas">
+        <span class="chip">Security</span>
+        <span class="chip">Azure Infrastructure</span>
+        <span class="chip">App Innovation</span>
+        <span class="chip">Data &amp; AI</span>
+        <span class="chip">Modern Work</span>
+      </div>
+      <div class="cta">
+        <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+        <a class="btn" href="#mock" aria-label="Jump to mock interview">Practice mock interview</a>
+      </div>
+      <div class="grid" style="margin-top:18px">
+        <div class="stats">
+          <div class="stat"><h3>20+ </h3><p>Workloads migrated</p></div>
+          <div class="stat"><h3>40% ↓</h3><p>Phishing after Defender</p></div>
+          <div class="stat"><h3>25% ↓</h3><p>L1 tickets via AI PoV</p></div>
+          <div class="stat"><h3>99.95%</h3><p>Target SLA post‑migration</p></div>
+        </div>
+        <div class="quote">
+          <div class="kicker">Vision</div>
+          <p><strong>Upskill talent and modernize securely</strong>—standardized Azure landing zones, Zero‑Trust by default, and AI-ready apps that deliver measurable outcomes.</p>
+        </div>
+      </div>
+      <div class="watermark" aria-hidden="true">
+        <div class="wbox" style="background:var(--ms-blue)"></div>
+        <div class="wbox" style="background:var(--ms-green)"></div>
+        <div class="wbox" style="background:var(--ms-yellow)"></div>
+        <div class="wbox" style="background:var(--ms-red)"></div>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="agenda">
+      <h2 id="agenda">Call Agenda in 4 Beats</h2>
+      <div class="timeline">
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><strong>1) Align to Microsoft solution areas (≤90s):</strong> Security, Azure Infra, App Innovation, Data/AI, Modern Work—each with one proof metric.</div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><strong>2) Technical capacity &amp; delivery (≤2m):</strong> Team certs, runbooks &amp; SLOs, IaC &amp; DevSecOps, three short case wins.</div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><strong>3) Customer base &amp; growth (≤2m):</strong> Regions &amp; ICP, pipeline, 12‑month plan for designations, offers &amp; co‑sell.</div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><strong>4) Vision &amp; asks (≤60s):</strong> Why you, outcomes you deliver, and exactly what help you want from Microsoft.</div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="align">
+      <h2 id="align">Alignment to Microsoft Solution Areas</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="badge"><span style="width:8px;height:8px;background:var(--ms-blue);display:inline-block;border-radius:50%"></span> Modern Work</span>
+          <h3>Microsoft 365 + Copilot Adoption</h3>
+          <div class="rule"></div>
+          <ul>
+            <li>Secure baseline: MFA, Conditional Access, device compliance via Intune.</li>
+            <li>Copilot pilots &amp; readiness assessments; adoption playbooks.</li>
+            <li><em>Proof:</em> Seat deployments, phishing drop %, secure score ↑.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="badge"><span style="width:8px;height:8px;background:var(--ms-green);display:inline-block;border-radius:50%"></span> Security</span>
+          <h3>Defender XDR + Sentinel MDR</h3>
+          <div class="rule"></div>
+          <ul>
+            <li>Onboarding, analytics rules, automation (Logic Apps), MITRE coverage.</li>
+            <li>Entra ID governance: PIM, access reviews, identity hygiene.</li>
+            <li><em>Proof:</em> MTTR ↓, alert fatigue ↓, incident closure SLA.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="badge"><span style="width:8px;height:8px;background:var(--ms-yellow);display:inline-block;border-radius:50%"></span> Azure Infrastructure</span>
+          <h3>Landing Zones &amp; Migration</h3>
+          <div class="rule"></div>
+          <ul>
+            <li>CAF-aligned landing zones, policy guardrails, HUB/Spoke networking.</li>
+            <li>App Service / AKS modernization; Arc for hybrid.</li>
+            <li><em>Proof:</em> 20+ workloads migrated, 28% cost optimization.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="badge"><span style="width:8px;height:8px;background:var(--ms-blue);display:inline-block;border-radius:50%"></span> Digital &amp; App Innovation</span>
+          <h3>AI App Factory on Azure</h3>
+          <div class="rule"></div>
+          <ul>
+            <li>Azure OpenAI + Functions + Event Grid; GitHub Actions CI/CD.</li>
+            <li>API-led integration patterns; secret mgmt via Key Vault &amp; MSI.</li>
+            <li><em>Proof:</em> 25% L1 deflection in pilot, lead time ↓.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="badge"><span style="width:8px;height:8px;background:var(--ms-green);display:inline-block;border-radius:50%"></span> Data &amp; AI</span>
+          <h3>Fabric / Synapse &amp; Power BI</h3>
+          <div class="rule"></div>
+          <ul>
+            <li>Data pipelines &amp; governance; semantic models; RLS.</li>
+            <li>BI adoption &amp; refresh SLAs; Copilot for BI pilots.</li>
+            <li><em>Proof:</em> Active users ↑, refresh success %, time-to-insight.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tech">
+      <h2 id="tech">Technical Capacity &amp; Delivery</h2>
+      <div class="two">
+        <div>
+          <ul>
+            <li><strong>Team &amp; creds:</strong> MCT-led; Azure/Entra/Defender architects; GitHub &amp; DevOps.</li>
+            <li><strong>Method:</strong> Well-Architected + CAF; IaC (Bicep/Terraform); PR gates &amp; scanners.</li>
+            <li><strong>Ops:</strong> Incident playbooks, weekly ops reviews, SLOs for MTTA/MTTR, RTO/RPO.</li>
+          </ul>
+          <p class="kicker" style="margin-top:10px">Case snapshots</p>
+          <ul>
+            <li><strong>M365 hardening (350 seats):</strong> MFA/CA + Defender for O365 → <em>42% phishing ↓ in 90d</em>.</li>
+            <li><strong>Landing zone + migration:</strong> 8 apps, 99.95% SLA; <em>28% cost ↓</em> via RI + AHB.</li>
+            <li><strong>AI helpdesk PoV:</strong> Azure OpenAI; <em>~25% L1 deflection</em>.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="grid-mini">
+            <div class="pill">Sentinel rules &amp; KQL</div>
+            <div class="pill">Defender XDR</div>
+            <div class="pill">Entra PIM</div>
+            <div class="pill">Intune compliance</div>
+            <div class="pill">Key Vault + MSI</div>
+            <div class="pill">Bicep/Terraform</div>
+            <div class="pill">GitHub Actions</div>
+            <div class="pill">App Service / AKS</div>
+            <div class="pill">Power BI Governance</div>
+            <div class="pill">Azure OpenAI</div>
+          </div>
+          <p style="margin-top:10px;color:var(--muted)">Runbooks &amp; service guides available on request. We track DORA metrics for software delivery and monthly CSAT.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="growth">
+      <h2 id="growth">Customer Base &amp; 12‑Month Growth Plan</h2>
+      <div class="two">
+        <div>
+          <p><strong>Where we win:</strong> SMB &amp; mid‑market across South Africa with expansion to Cameroon, Botswana, Rwanda, Portugal, and Mexico. Verticals: education, healthcare, financial services, selective public sector.</p>
+          <div class="list-chips" aria-label="Market focus">
+            <span class="chip">SMB Security</span>
+            <span class="chip">Azure Migrate &amp; Modernize</span>
+            <span class="chip">Copilot Readiness</span>
+            <span class="chip">AI App Factory PoVs</span>
+          </div>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Designations:</strong> Security, Infra, Digital &amp; App Innovation.</li>
+            <li><strong>Offers:</strong> MDR for SMB, Landing Zone + Migration, AI App Factory.</li>
+            <li><strong>Marketplace:</strong> Publish transactable offer; build 2 co‑sellable stories.</li>
+            <li><strong>Enablement:</strong> 6 engineers trained; 3 certs/quarter; 2 refs per area.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="founder">
+      <h2 id="founder">Founder Story &amp; Clarity</h2>
+      <p class="quote">We exist to uplift talent and modernize customers on Microsoft Cloud. Our approach is standardized, secure by default, and outcome‑driven—so customers see risk reduced, costs optimized, and teams enabled.</p>
+    </section>
+
+    <section class="section" id="mock" aria-labelledby="mock-title">
+      <h2 id="mock-title">Mock Interview — Practice Deck</h2>
+      <div class="qna">
+        <details open>
+          <summary>1) 60‑second overview</summary>
+          <p>Who you are → solution areas → proof metrics → vision. Use the opener below; keep to ≤60s.</p>
+        </details>
+        <details>
+          <summary>2) Core solution areas &amp; why</summary>
+          <p>Security, Infra, App Innovation: tie to regional demand and customer pains; add one result metric per area.</p>
+        </details>
+        <details>
+          <summary>3) Recent delivery win (use STAR)</summary>
+          <p><strong>S</strong>ituation, <strong>T</strong>ask, <strong>A</strong>ction, <strong>R</strong>esult with numbers. Prepare 3 variants (security, infra, app).</p>
+        </details>
+        <details>
+          <summary>4) Security approach</summary>
+          <p>Zero‑Trust: verify explicitly (MFA/CA), least privilege (PIM), assume breach (XDR+SIEM), secure dev (DevSecOps).</p>
+        </details>
+        <details>
+          <summary>5) ICP &amp; pipeline</summary>
+          <p>Regions, buyer persona, typical land-and-expand motion, quarter pipeline signal.</p>
+        </details>
+        <details>
+          <summary>6) Growth plan &amp; differentiation</summary>
+          <p>Designations, marketplace, co‑sell readiness; repeatable blueprints; time‑to‑value; training capability.</p>
+        </details>
+        <details>
+          <summary>7) What do you want from Microsoft?</summary>
+          <p>Co‑sell guidance, engineering hours for PoVs, marketplace amplification, field introductions.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ask">
+      <h2 id="ask">Smart Questions to Ask Microsoft</h2>
+      <div class="list-chips">
+        <span class="chip">Which regional plays are top‑priority this quarter?</span>
+        <span class="chip">Fastest path to co‑sell readiness for us?</span>
+        <span class="chip">Preferred marketplace + case‑study format?</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sheet">
+      <h2 id="sheet">One‑Page Talking Sheet</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Offers (pick 3)</h3>
+          <ul>
+            <li>Sentinel‑powered MDR for SMB</li>
+            <li>Azure Landing Zone + Migration</li>
+            <li>AI App Factory PoV</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Tech Stack</h3>
+          <ul>
+            <li>Entra / Defender / Sentinel</li>
+            <li>Azure: App Service, AKS, Functions, Arc</li>
+            <li>GitHub, Power Platform, Fabric/Power BI</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Proof</h3>
+          <ul>
+            <li>20+ workloads migrated; 99.95% SLA</li>
+            <li>40% phishing ↓ post‑Defender</li>
+            <li>~25% L1 deflection via AI PoV</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Asks</h3>
+          <ul>
+            <li>Co‑sell guidance &amp; field intros</li>
+            <li>Engineering hours for PoVs</li>
+            <li>Marketplace amplification</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="scripts">
+      <h2 id="scripts">Opener &amp; Close — Copy &amp; Paste</h2>
+      <div class="two">
+        <div class="copybox">
+          <button class="btn copybtn" onclick="copyBox('#openertxt', this)">Copy</button>
+<textarea id="openertxt">Thanks for meeting us. Skunkworks helps SMB and mid‑market customers secure and modernize on Microsoft Cloud. Our focus is Security, Azure Infrastructure, and App Innovation. We standardize landing zones and zero‑trust baselines, then build or integrate apps—often with Azure OpenAI and GitHub. In the last year we’ve migrated over 20 workloads, reduced phishing by 40% post‑Defender rollout, and piloted AI assistants that cut L1 tickets by ~25%. We’re expanding across Southern Africa and into Portugal and Mexico, and we’re ready to package these as marketplace offers and co‑sell with your field.</textarea>
+        </div>
+        <div class="copybox">
+          <button class="btn copybtn" onclick="copyBox('#closetxt', this)">Copy</button>
+<textarea id="closetxt">Top takeaways: repeatable security + migration offers, proven results, and a packaged AI app factory. We’re eager to align to your regional plays and become co‑sell ready. What’s the fastest next step you recommend?</textarea>
+        </div>
+      </div>
+      <p style="color:var(--muted);margin-top:10px">Optional reading: <a href="https://learn.microsoft.com/azure/architecture/framework/" target="_blank" rel="noreferrer noopener">Well‑Architected Framework</a> · <a href="https://learn.microsoft.com/azure/cloud-adoption-framework/" target="_blank" rel="noreferrer noopener">Cloud Adoption Framework</a> · <a href="https://learn.microsoft.com/security/zero-trust/" target="_blank" rel="noreferrer noopener">Zero‑Trust</a></p>
+    </section>
+
+    <footer>
+      <div style="opacity:.9">© Skunkworks — Microsoft EPP Prep</div>
+      <div class="logo-squares" aria-hidden="true">
+        <span style="background:var(--ms-blue)"></span>
+        <span style="background:var(--ms-green)"></span>
+        <span style="background:var(--ms-yellow)"></span>
+        <span style="background:var(--ms-red)"></span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function copyBox(sel, btn){
+      const el = document.querySelector(sel);
+      el.select(); el.setSelectionRange(0, 99999);
+      try { document.execCommand('copy'); btn.textContent = 'Copied!'; setTimeout(()=>btn.textContent='Copy', 1500);} catch(e){ btn.textContent='Select & copy'; }
+    }
+  </script>
+</body>
+</html>
